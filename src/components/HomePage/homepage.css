@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.homepage__header {
+  width: 100%;
+  background-color: #F5F3FE;
+  height: 11vh;
+}
+.homepage__header__section {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.homepage__header__section__nav1 {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.homepage__header__section__nav1__navcontent {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  list-style: none;
+}
+.homepage__header__section__nav1__navcontent li a {
+  text-decoration: none;
+  color: black;
+}
+.homepage__header__section__nav1__navcontent li a:hover {
+  color: #4A49D9;
+  border: 1px solid #7c7be2;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+.homepage__header__section__nav2__buttons {
+  display: flex;
+  gap: 2rem;
+}
+.homepage__header__section__nav2__buttons button {
+  font-size: 1.2vw;
+  padding: 0.5rem 1rem;
+  border-radius: 1.25rem;
+  border: none;
+  font-weight: 600;
+}
+.homepage__header__section__nav2__buttons button:nth-child(1) {
+  background-color: #DBDBF7;
+  color: #333333;
+}
+.homepage__header__section__nav2__buttons button:nth-child(2) {
+  background-color: #4A49D9;
+  color: #ffffff;
+}
+.homepage__header__section__hamburger {
+  display: none;
+  position: relative;
+}
+.homepage__header__section__hamburger .toggledropdown {
+  position: absolute;
+  top: 99%;
+  right: -0.05rem;
+  background-color: #F5F3FE;
+  width: 30vw;
+  padding: 1rem 0;
+  max-width: 300px;
+  border-radius: 0.25rem;
+}
+.homepage__header__section__hamburger .toggledropdown ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+.homepage__header__section__hamburger .toggledropdown ul li {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid black;
+}
+.homepage__header__section__hamburger .toggledropdown ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 2.25vw;
+  padding: 0.25rem 0.5rem;
+}
+.homepage__header__section__hamburger .toggledropdown .dropdown-btns {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.75rem 0 0.5rem 0;
+}
+.homepage__header__section__hamburger .toggledropdown .dropdown-btns button:nth-child(1) {
+  background-color: #DBDBF7;
+  color: #333333;
+}
+.homepage__header__section__hamburger .toggledropdown .dropdown-btns button:nth-child(2) {
+  background-color: #4A49D9;
+  color: #ffffff;
+}
+
+.homepage__banner {
+  background-color: #4A49D9;
+  color: #ffffff;
+}
+.homepage__banner__main {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+}
+.homepage__banner__main__content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+.homepage__banner__main__content__title {
+  font-size: 3vw;
+  font-weight: 700;
+  line-height: 135%;
+}
+.homepage__banner__main__content__description {
+  font-size: 1.35vw;
+  padding: 3rem 0;
+}
+.homepage__banner__main__content__button button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #7c7be2;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.35vw;
+}
+.homepage__banner__main__video {
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+}
+.homepage__banner__main__video img {
+  width: 35vw;
+  height: 60vh;
+}
+
+@media (max-width: 768px) {
+  .homepage__header__section {
+    width: 90%;
+  }
+  .homepage__header__section__nav1__navcontent {
+    display: none;
+  }
+  .homepage__header__section__nav2 {
+    display: none;
+  }
+  .homepage__header__section__hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem 0 1rem;
+  }
+  .homepage__header__section__hamburger button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #F5F3FE;
+    font-weight: 600;
+  }
+  .homepage__header__section__hamburger button i {
+    font-size: 1.75rem;
+    color: #4A49D9;
+    background-color: #F5F3FE;
+  }
+}/*# sourceMappingURL=homepage.css.map */

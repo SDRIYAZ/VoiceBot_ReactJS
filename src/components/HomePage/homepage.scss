@@ -1,0 +1,210 @@
+$primary_color: #4A49D9;
+$secondary_color: #7c7be2;
+$color3: #DBDBF7;
+$color4: #F5F3FE;
+$color5: #ffffff;
+$color6: black;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+// Developer Sairam
+// HomePage Navbar Styling
+.homepage__header {
+    width: 100%;
+    background-color: $color4;
+    height: 11vh;
+
+    &__section {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+
+        &__nav1 {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            &__navcontent {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+                list-style: none;
+
+                li a {
+                    text-decoration: none;
+                    color: $color6;
+                    &:hover{
+                        color: $primary_color;
+                        border: 1px solid $secondary_color;
+                        padding: .5rem 1rem;
+                        border-radius: 1rem;
+                    }
+                }
+            }
+        }
+
+        &__nav2 {
+            &__buttons {
+                display: flex;
+                gap: 2rem;
+
+                button {
+                    font-size: 1.2vw;
+                    padding: .5rem 1rem;
+                    border-radius: 1.25rem;
+                    border: none;
+                    font-weight: 600;
+
+                    &:nth-child(1) {
+                        background-color: $color3;
+                        color: #333333;
+                    }
+
+                    &:nth-child(2) {
+                        background-color: $primary_color;
+                        color: $color5;
+                    }
+                }
+            }
+        }
+
+        &__hamburger {
+            display: none;
+            position: relative;
+            & .toggledropdown {
+                position: absolute;
+                top: 99%;
+                right: -0.05rem;
+                background-color: $color4;
+                width: 30vw;
+                padding: 1rem 0;
+                max-width: 300px;
+                border-radius: .25rem;
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    text-align: left;
+                    li {
+                        margin-bottom: 0.5rem;
+                        padding-bottom: .75rem;
+                        border-bottom: 1px solid $color6;
+                        a {
+                            color: $color6;
+                            text-decoration: none;
+                            font-size: 2.25vw;
+                            padding: 0.25rem .5rem;
+                        }
+                    }
+                }
+                .dropdown-btns{
+                    display: flex;
+                    justify-content: space-evenly;
+                    padding: .75rem 0 0.5rem 0;
+                    button{
+                        &:nth-child(1){
+                            background-color: $color3;
+                            color: #333333;
+                        }
+                        &:nth-child(2){
+                            background-color: $primary_color;
+                            color: $color5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// HomePage Banner Styling
+.homepage__banner{
+    background-color: $primary_color;
+    color: $color5;
+    &__main{
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        &__content{
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0;
+            &__title{
+                font-size: 3vw;
+                font-weight: 700;
+                line-height: 135%;
+            }
+            &__description{
+                font-size: 1.35vw;
+                padding: 3rem 0;
+            }
+            &__button{
+                button{
+                    padding: .75rem 1.5rem;
+                    border-radius: 2rem;
+                    border: none;
+                    background-color: $secondary_color;
+                    color: $color5;
+                    font-weight: 600;
+                    font-size: 1.35vw;
+                }
+            }
+        }
+        &__video{
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            img{
+                width: 35vw;
+                height: 60vh;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .homepage__header {
+
+        &__section {
+            width: 90%;
+
+            &__nav1 {
+
+                &__navcontent {
+                    display: none;
+                }
+            }
+
+            &__nav2 {
+                display: none;
+            }
+
+            &__hamburger {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 1rem 0 1rem;
+
+                button {
+                    padding: .5rem 1rem;
+                    border: none;
+                    border-radius: 1rem;
+                    background-color: $color4;
+                    font-weight: 600;
+                    i {
+                        font-size: 1.75rem;
+                        color: $primary_color;
+                        background-color: $color4;
+                    }
+                }
+            }
+        }
+    }
+}
