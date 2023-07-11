@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/HomePage_Assets/Branelogo.png";
+import logo from "homepage_assets/Branelogo.png";
 
 // Developer Name Sairam
 const Navbar = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import bannerimg from "../../assets/HomePage_Assets/bannerimage.jpg";
+import bannerimg from "homepage_assets/bannerimage.jpg";
 
 const Banner = () => {
     return (
@@ -14,7 +14,7 @@ const Banner = () => {
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos nam, dolores laboriosam delectus ut Lorem, ipsum Lorem, ipsum dolor.
                         </article>
                         <article className='homepage__banner__main__content__button'>
-                            <button>Get Started <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                            <button>Get Started <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
                         </article>
                     </article>
                     <article className='homepage__banner__main__video'>

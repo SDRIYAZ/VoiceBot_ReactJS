@@ -13,197 +13,346 @@ $color6: black;
 }
 
 // Developer Sairam
-// HomePage Navbar Styling
-.homepage__header {
-    width: 100%;
-    background-color: $color4;
-    height: 11vh;
+.homepage {
 
-    &__section {
-        width: 80%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 100%;
+    // HomePage Navbar Styling
+    &__header {
+        width: 100%;
+        background-color: $color4;
+        height: 11vh;
 
-        &__nav1 {
+        &__section {
+            width: 80%;
+            margin: 0 auto;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 2rem;
+            height: 100%;
 
-            &__navcontent {
+            &__nav1 {
                 display: flex;
-                gap: 2rem;
                 align-items: center;
-                list-style: none;
-
-                li a {
-                    text-decoration: none;
-                    color: $color6;
-                    &:hover{
-                        color: $primary_color;
-                        border: 1px solid $secondary_color;
-                        padding: .5rem 1rem;
-                        border-radius: 1rem;
-                    }
-                }
-            }
-        }
-
-        &__nav2 {
-            &__buttons {
-                display: flex;
                 gap: 2rem;
 
-                button {
-                    font-size: 1.2vw;
-                    padding: .5rem 1rem;
-                    border-radius: 1.25rem;
-                    border: none;
-                    font-weight: 600;
-
-                    &:nth-child(1) {
-                        background-color: $color3;
-                        color: #333333;
-                    }
-
-                    &:nth-child(2) {
-                        background-color: $primary_color;
-                        color: $color5;
-                    }
-                }
-            }
-        }
-
-        &__hamburger {
-            display: none;
-            position: relative;
-            & .toggledropdown {
-                position: absolute;
-                top: 99%;
-                right: -0.05rem;
-                background-color: $color4;
-                width: 30vw;
-                padding: 1rem 0;
-                max-width: 300px;
-                border-radius: .25rem;
-                ul {
+                &__navcontent {
+                    display: flex;
+                    gap: 2rem;
+                    align-items: center;
                     list-style: none;
-                    padding: 0;
-                    text-align: left;
-                    li {
-                        margin-bottom: 0.5rem;
-                        padding-bottom: .75rem;
-                        border-bottom: 1px solid $color6;
-                        a {
-                            color: $color6;
-                            text-decoration: none;
-                            font-size: 2.25vw;
-                            padding: 0.25rem .5rem;
+
+                    li a {
+                        text-decoration: none;
+                        color: $color6;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $primary_color;
+                            border: 1px solid $secondary_color;
+                            padding: .5rem 1rem;
+                            border-radius: 1rem;
                         }
                     }
                 }
-                .dropdown-btns{
+            }
+
+            &__nav2 {
+                &__buttons {
                     display: flex;
-                    justify-content: space-evenly;
-                    padding: .75rem 0 0.5rem 0;
-                    button{
-                        &:nth-child(1){
+                    gap: 2rem;
+
+                    button {
+                        font-size: 1.2vw;
+                        padding: .5rem 1rem;
+                        border-radius: 1.25rem;
+                        border: none;
+                        font-weight: 600;
+                        cursor: pointer;
+
+                        &:nth-child(1) {
                             background-color: $color3;
                             color: #333333;
                         }
-                        &:nth-child(2){
+
+                        &:nth-child(2) {
                             background-color: $primary_color;
                             color: $color5;
                         }
                     }
                 }
             }
-        }
-    }
-}
-
-// HomePage Banner Styling
-.homepage__banner{
-    background-color: $primary_color;
-    color: $color5;
-    &__main{
-        width: 80%;
-        margin: 0 auto;
-        display: flex;
-        &__content{
-            display: flex;
-            flex-direction: column;
-            padding: 2rem 0;
-            &__title{
-                font-size: 3vw;
-                font-weight: 700;
-                line-height: 135%;
-            }
-            &__description{
-                font-size: 1.35vw;
-                padding: 3rem 0;
-            }
-            &__button{
-                button{
-                    padding: .75rem 1.5rem;
-                    border-radius: 2rem;
-                    border: none;
-                    background-color: $secondary_color;
-                    color: $color5;
-                    font-weight: 600;
-                    font-size: 1.35vw;
-                }
-            }
-        }
-        &__video{
-            padding: 1rem 2.5rem;
-            display: flex;
-            align-items: center;
-            img{
-                width: 35vw;
-                height: 60vh;
-            }
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    .homepage__header {
-
-        &__section {
-            width: 90%;
-
-            &__nav1 {
-
-                &__navcontent {
-                    display: none;
-                }
-            }
-
-            &__nav2 {
-                display: none;
-            }
 
             &__hamburger {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 0 1rem 0 1rem;
+                display: none;
+                position: relative;
 
-                button {
-                    padding: .5rem 1rem;
-                    border: none;
-                    border-radius: 1rem;
+                & .toggledropdown {
+                    position: absolute;
+                    top: 99%;
+                    right: -0.05rem;
                     background-color: $color4;
-                    font-weight: 600;
-                    i {
-                        font-size: 1.75rem;
-                        color: $primary_color;
-                        background-color: $color4;
+                    width: 30vw;
+                    padding: 1rem 0;
+                    max-width: 300px;
+                    border-radius: .25rem;
+
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        text-align: left;
+
+                        li {
+                            margin-bottom: 0.5rem;
+                            padding-bottom: .75rem;
+                            border-bottom: 1px solid $color6;
+
+                            a {
+                                color: $color6;
+                                text-decoration: none;
+                                font-size: 2.25vw;
+                                padding: 0.25rem .5rem;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    .dropdown-btns {
+                        display: flex;
+                        justify-content: space-evenly;
+                        padding: .75rem 0 0.5rem 0;
+
+                        button {
+                            cursor: pointer;
+
+                            &:nth-child(1) {
+                                background-color: $color3;
+                                color: #333333;
+                            }
+
+                            &:nth-child(2) {
+                                background-color: $primary_color;
+                                color: $color5;
+                            }
+                        }
                     }
                 }
+            }
+        }
+    }
+
+    // HomePage Banner Styling
+    &__banner {
+        background-color: $primary_color;
+        color: $color5;
+
+        &__main {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+
+            &__content {
+                display: flex;
+                flex-direction: column;
+                padding: 2rem 0;
+
+                &__title {
+                    font-size: 3vw;
+                    font-weight: 700;
+                    line-height: 135%;
+                }
+
+                &__description {
+                    font-size: 1.35vw;
+                    padding: 2rem 0 1rem 0;
+                }
+
+                &__button {
+                    margin-top: 1rem;
+
+                    button {
+                        padding: .75rem 1.5rem;
+                        border-radius: 2rem;
+                        border: none;
+                        background-color: $secondary_color;
+                        color: $color5;
+                        font-weight: 600;
+                        font-size: 1.35vw;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &__video {
+                padding: 1rem 1rem 1rem 2.5rem;
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 35vw;
+                    height: 60vh;
+                }
+            }
+        }
+    }
+
+    // OurProjects Styling
+    &__ourprojects {
+        width: 100%;
+        background-color: $color5;
+
+        &__section {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem 0 2rem 0;
+
+            &__video {
+                img {
+                    width: 40vw;
+                    height: 55vh;
+                }
+            }
+
+            &__content {
+                display: flex;
+                flex-direction: column;
+                padding: 3rem 0 3rem 1.5rem;
+
+                &__title {
+                    font-weight: 700;
+                    font-size: 3vw;
+                }
+
+                &__description {
+                    p {
+                        font-weight: normal;
+                        padding-top: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+    // Our Features Styling
+    &__ourfeatures {
+        width: 100%;
+        background-color: $color3;
+        &__section{
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0.5rem;
+            &__heading{
+                text-align: center;
+                font-size: 3vw;
+                font-weight: 700;
+                color: $color6;
+            }
+
+            &__container{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                padding: 1rem 0;
+                &__card{
+                    display: flex;
+                    flex-direction: column;
+                    border: none;
+                    border-radius: 1.5rem;
+                    background-color: $color5;
+                    width: 31%;
+                    padding: 1rem;
+                    &-top{
+                        display: flex;
+                        flex-direction: row;
+                        div:nth-child(1){
+                            img{
+                                width: 4.5vw;
+                                height: 10.5vh;
+                            }
+                        }
+                        div:nth-child(2){
+                            color: $primary_color;
+                            font-size: 2vw;
+                            font-weight: 600;
+                            display: flex;
+                            align-items: center;
+                            padding: 0 0 0 0.1rem;
+                        }
+                    }
+                    &-bottom{
+
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .homepage {
+        &__header {
+            &__section {
+                width: 90%;
+
+                &__nav1 {
+
+                    &__navcontent {
+                        display: none;
+                    }
+                }
+
+                &__nav2 {
+                    display: none;
+                }
+
+                &__hamburger {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 1rem 0 1rem;
+
+                    button {
+                        border: none;
+                        border-radius: 1rem;
+                        background-color: $color4;
+                        font-weight: 600;
+
+                        i {
+                            font-size: 1.75rem;
+                            color: $primary_color;
+                            background-color: $color4;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__banner {
+            &__main {
+                width: 90%;
+
+                &__video {
+                    img {
+                        height: 45vh;
+                    }
+                }
+            }
+        }
+
+        &__ourprojects {
+            &__section {
+                width: 90%;
+                // flex-direction: column;
             }
         }
     }

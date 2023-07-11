@@ -32,6 +32,7 @@
 .homepage__header__section__nav1__navcontent li a {
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 .homepage__header__section__nav1__navcontent li a:hover {
   color: #4A49D9;
@@ -49,6 +50,7 @@
   border-radius: 1.25rem;
   border: none;
   font-weight: 600;
+  cursor: pointer;
 }
 .homepage__header__section__nav2__buttons button:nth-child(1) {
   background-color: #DBDBF7;
@@ -87,11 +89,15 @@
   text-decoration: none;
   font-size: 2.25vw;
   padding: 0.25rem 0.5rem;
+  cursor: pointer;
 }
 .homepage__header__section__hamburger .toggledropdown .dropdown-btns {
   display: flex;
   justify-content: space-evenly;
   padding: 0.75rem 0 0.5rem 0;
+}
+.homepage__header__section__hamburger .toggledropdown .dropdown-btns button {
+  cursor: pointer;
 }
 .homepage__header__section__hamburger .toggledropdown .dropdown-btns button:nth-child(1) {
   background-color: #DBDBF7;
@@ -101,7 +107,6 @@
   background-color: #4A49D9;
   color: #ffffff;
 }
-
 .homepage__banner {
   background-color: #4A49D9;
   color: #ffffff;
@@ -123,7 +128,10 @@
 }
 .homepage__banner__main__content__description {
   font-size: 1.35vw;
-  padding: 3rem 0;
+  padding: 2rem 0 1rem 0;
+}
+.homepage__banner__main__content__button {
+  margin-top: 1rem;
 }
 .homepage__banner__main__content__button button {
   padding: 0.75rem 1.5rem;
@@ -133,9 +141,10 @@
   color: #ffffff;
   font-weight: 600;
   font-size: 1.35vw;
+  cursor: pointer;
 }
 .homepage__banner__main__video {
-  padding: 1rem 2.5rem;
+  padding: 1rem 1rem 1rem 2.5rem;
   display: flex;
   align-items: center;
 }
@@ -143,7 +152,83 @@
   width: 35vw;
   height: 60vh;
 }
-
+.homepage__ourprojects {
+  width: 100%;
+  background-color: #ffffff;
+}
+.homepage__ourprojects__section {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 0 2rem 0;
+}
+.homepage__ourprojects__section__video img {
+  width: 40vw;
+  height: 55vh;
+}
+.homepage__ourprojects__section__content {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0 3rem 1.5rem;
+}
+.homepage__ourprojects__section__content__title {
+  font-weight: 700;
+  font-size: 3vw;
+}
+.homepage__ourprojects__section__content__description p {
+  font-weight: normal;
+  padding-top: 1.5rem;
+}
+.homepage__ourfeatures {
+  width: 100%;
+  background-color: #DBDBF7;
+}
+.homepage__ourfeatures__section {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0.5rem;
+}
+.homepage__ourfeatures__section__heading {
+  text-align: center;
+  font-size: 3vw;
+  font-weight: 700;
+  color: black;
+}
+.homepage__ourfeatures__section__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+.homepage__ourfeatures__section__container__card {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 1.5rem;
+  background-color: #ffffff;
+  width: 31%;
+  padding: 1rem;
+}
+.homepage__ourfeatures__section__container__card-top {
+  display: flex;
+  flex-direction: row;
+}
+.homepage__ourfeatures__section__container__card-top div:nth-child(1) img {
+  width: 4.5vw;
+  height: 10.5vh;
+}
+.homepage__ourfeatures__section__container__card-top div:nth-child(2) {
+  color: #4A49D9;
+  font-size: 2vw;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 0.1rem;
+}
 @media (max-width: 768px) {
   .homepage__header__section {
     width: 90%;
@@ -161,7 +246,6 @@
     margin: 0 1rem 0 1rem;
   }
   .homepage__header__section__hamburger button {
-    padding: 0.5rem 1rem;
     border: none;
     border-radius: 1rem;
     background-color: #F5F3FE;
@@ -171,5 +255,14 @@
     font-size: 1.75rem;
     color: #4A49D9;
     background-color: #F5F3FE;
+  }
+  .homepage__banner__main {
+    width: 90%;
+  }
+  .homepage__banner__main__video img {
+    height: 45vh;
+  }
+  .homepage__ourprojects__section {
+    width: 90%;
   }
 }/*# sourceMappingURL=homepage.css.map */
