@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import urls from "../../../urls/urls";
+// import BraneGet from "../../../library/BraneGet";
+
 
 export const getHomepageBanner = createAsyncThunk(
   "getHomepageBanner",
   async (object, { getState, rejectWithValue }) => {
     console.log(getState());
     try {
-      const { data } = await axios.get("http://localhost:8080/homepage_banner");
+      const { BASE_URL } = urls;
+      const { data } = await axios.get(`${BASE_URL}/homepage_banner`);
       return data;
     } catch (error) {
       rejectWithValue(error.response);

@@ -4,6 +4,8 @@ $color3: #DBDBF7;
 $color4: #F5F3FE;
 $color5: #ffffff;
 $color6: black;
+$color7: #FFF7F4;
+$color8: #9a9797;
 
 * {
     margin: 0;
@@ -71,7 +73,7 @@ $color6: black;
                         &:nth-child(1) {
                             background-color: $color3;
                             color: #333333;
-                            
+
                         }
 
                         &:nth-child(2) {
@@ -241,25 +243,28 @@ $color6: black;
     &__ourfeatures {
         width: 100%;
         background-color: $color3;
-        &__section{
+
+        &__section {
             width: 80%;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             padding: 2rem 0.5rem;
-            &__heading{
+
+            &__heading {
                 text-align: center;
                 font-size: 3vw;
                 font-weight: 700;
                 color: $color6;
             }
 
-            &__container{
+            &__container {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 2rem;
                 padding: 1rem 0;
-                &__card{
+
+                &__card {
                     display: flex;
                     flex-direction: column;
                     border: none;
@@ -268,10 +273,12 @@ $color6: black;
                     width: 31%;
                     padding: 1rem;
                     box-shadow: 0px 22px 20px #898dd68c;
-                    &-top{
+
+                    &-top {
                         display: flex;
                         flex-direction: row;
-                        div:nth-child(2){
+
+                        div:nth-child(2) {
                             color: $primary_color;
                             font-size: 1.65vw;
                             font-weight: 600;
@@ -280,7 +287,8 @@ $color6: black;
                             padding: 0 0 0 1rem;
                         }
                     }
-                    &-bottom{
+
+                    &-bottom {
                         text-align: center;
                         font-size: 1.1vw;
                         padding: .25rem 0;
@@ -290,32 +298,128 @@ $color6: black;
         }
     }
 
-    &__newscomponent{
+    &__newscomponent {
         width: 100%;
-        &__image{
+
+        &__image {
             width: 100%;
             background-color: $primary_color;
-            img{
+
+            img {
                 height: 28vh;
             }
         }
     }
 
-    &__boards{
+    &__boards {
         width: 100%;
-        &__heading{
+
+        &__heading {
             padding: 2rem 0 1rem 0;
-            font-size: 3vw;
+            font-size: 2.5vw;
             color: rgb(84, 71, 71);
             font-weight: 700;
             text-align: center;
         }
-        &__images{
+
+        &__images {
             width: 80%;
             margin: 0 auto;
-            marquee img{
+
+            marquee img {
                 height: 20vh;
                 margin: 1rem;
+            }
+        }
+    }
+
+    &__ourpartners {
+        background: $color7;
+        padding: .8rem 0;
+
+        &__heading {
+            text-align: center;
+            color: $color6;
+            font-size: 2.25rem;
+            padding: 1.25rem 0px;
+        }
+
+        &__parent {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 0;
+
+            img {
+                width: 14vw;
+                height: 11vh;
+            }
+        }
+    }
+
+    &__footer{
+        background-image: url('homepage_assets/footerImg.png');
+        background-position: cover;
+        width: 100%;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        &__section{
+            display:flex;
+            justify-content: center;
+            column-gap: 3rem;
+            color: $color5;
+            padding: 2rem 0 .5rem 0;
+            a{
+                text-decoration: none;
+                color: $color8;
+            }
+            ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            &__materials{
+                font-size: medium;
+                line-height: 2rem;
+            }
+            &__community{
+                font-size: medium;
+                line-height: 2rem;
+            }
+            &__company{
+                font-size: medium;
+                line-height: 2rem;
+            }
+            &__contact{
+                font-size: medium;
+                line-height: 2rem;
+                color: $color8;
+            }
+        }
+        &__bottom{
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            &__logo {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+            }
+            &__rights {
+                flex: 1;
+                color: $color8 ;
+                display: flex;
+                justify-content: center;
+            }
+            &__socialmedia {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                gap : 0.5rem;
+                padding-bottom: .75rem;
+                a{
+                    color: $color8;
+                }
             }
         }
     }
@@ -381,13 +485,15 @@ $color6: black;
         }
 
         // Our Features
-        &__ourfeatures{
-            &__section{
+        &__ourfeatures {
+            &__section {
                 width: 90%;
-                &__container{
-                    &__card{
+
+                &__container {
+                    &__card {
                         width: 30%;
-                        &-bottom{
+
+                        &-bottom {
                             font-size: 1.5vw;
                         }
                     }

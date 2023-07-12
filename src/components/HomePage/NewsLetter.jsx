@@ -8,6 +8,11 @@ import boardimg2 from 'homepage_assets/board2.png'
 import boardimg3 from 'homepage_assets/board3.png'
 import boardimg4 from 'homepage_assets/board4.png'
 import boardimg5 from 'homepage_assets/board5.png'
+import partner1 from 'homepage_assets/partner1.png'
+import partner2 from 'homepage_assets/partner2.png'
+import partner3 from 'homepage_assets/partner3.png'
+import partner4 from 'homepage_assets/partner4.png'
+import partner5 from 'homepage_assets/partner5.png'
 
 const NewsLetter = () => {
     return (
@@ -48,8 +53,19 @@ const NewsLetter = () => {
                         <img src={boardimg4}></img>
                         <img src={boardimg5}></img>
                         <img src={boardimg1}></img>
-                </marquee>
-            </article>
+                    </marquee>
+                </article>
+            </section>
+
+            <section className='homepage__ourpartners'>
+                <h1 className='homepage__ourpartners__heading'>Our Partners</h1>
+                <article className="homepage__ourpartners__parent" >
+                    {/* <img src={partner1} /> */}
+                    <img src={partner2} />
+                    <img src={partner3} />
+                    <img src={partner4} />
+                    <img src={partner5} />
+                </article>
             </section>
         </>
     )

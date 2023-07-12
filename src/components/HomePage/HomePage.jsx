@@ -4,6 +4,7 @@ import Banner from './Banner';
 import OurProjects from './OurProjects';
 import OurFeatures from './OurFeatures';
 import NewsLetter from './NewsLetter';
+import Footer from './Footer';
 import "./homepage.css";
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
         <OurProjects />
         <OurFeatures />
         <NewsLetter />
+        <Footer />
     </>
   )
 }

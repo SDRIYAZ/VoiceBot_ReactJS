@@ -248,7 +248,7 @@
 }
 .homepage__boards__heading {
   padding: 2rem 0 1rem 0;
-  font-size: 3vw;
+  font-size: 2.5vw;
   color: rgb(84, 71, 71);
   font-weight: 700;
   text-align: center;
@@ -260,6 +260,93 @@
 .homepage__boards__images marquee img {
   height: 20vh;
   margin: 1rem;
+}
+.homepage__ourpartners {
+  background: #FFF7F4;
+  padding: 0.8rem 0;
+}
+.homepage__ourpartners__heading {
+  text-align: center;
+  color: black;
+  font-size: 2.25rem;
+  padding: 1.25rem 0px;
+}
+.homepage__ourpartners__parent {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+.homepage__ourpartners__parent img {
+  width: 14vw;
+  height: 11vh;
+}
+.homepage__footer {
+  background-image: url("homepage_assets/footerImg.png");
+  background-position: cover;
+  width: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+.homepage__footer__section {
+  display: flex;
+  justify-content: center;
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+  color: #ffffff;
+  padding: 2rem 0 0.5rem 0;
+}
+.homepage__footer__section a {
+  text-decoration: none;
+  color: #9a9797;
+}
+.homepage__footer__section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.homepage__footer__section__materials {
+  font-size: medium;
+  line-height: 2rem;
+}
+.homepage__footer__section__community {
+  font-size: medium;
+  line-height: 2rem;
+}
+.homepage__footer__section__company {
+  font-size: medium;
+  line-height: 2rem;
+}
+.homepage__footer__section__contact {
+  font-size: medium;
+  line-height: 2rem;
+  color: #9a9797;
+}
+.homepage__footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.homepage__footer__bottom__logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.homepage__footer__bottom__rights {
+  flex: 1;
+  color: #9a9797;
+  display: flex;
+  justify-content: center;
+}
+.homepage__footer__bottom__socialmedia {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+}
+.homepage__footer__bottom__socialmedia a {
+  color: #9a9797;
 }
 
 @media (max-width: 768px) {
