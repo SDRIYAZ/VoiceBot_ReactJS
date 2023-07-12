@@ -71,6 +71,7 @@ $color6: black;
                         &:nth-child(1) {
                             background-color: $color3;
                             color: #333333;
+                            
                         }
 
                         &:nth-child(2) {
@@ -126,11 +127,13 @@ $color6: black;
                             &:nth-child(1) {
                                 background-color: $color3;
                                 color: #333333;
+                                padding: .5rem 1rem;
                             }
 
                             &:nth-child(2) {
                                 background-color: $primary_color;
                                 color: $color5;
+                                padding: .5rem 1rem;
                             }
                         }
                     }
@@ -264,38 +267,59 @@ $color6: black;
                     background-color: $color5;
                     width: 31%;
                     padding: 1rem;
+                    box-shadow: 0px 22px 20px #898dd68c;
                     &-top{
                         display: flex;
                         flex-direction: row;
-                        div:nth-child(1){
-                            img{
-                                width: 4.5vw;
-                                height: 10.5vh;
-                            }
-                        }
                         div:nth-child(2){
                             color: $primary_color;
-                            font-size: 2vw;
+                            font-size: 1.65vw;
                             font-weight: 600;
                             display: flex;
                             align-items: center;
-                            padding: 0 0 0 0.1rem;
+                            padding: 0 0 0 1rem;
                         }
                     }
                     &-bottom{
-
+                        text-align: center;
+                        font-size: 1.1vw;
+                        padding: .25rem 0;
                     }
                 }
             }
         }
+    }
 
+    &__newscomponent{
+        width: 100%;
+        &__image{
+            width: 100%;
+            background-color: $primary_color;
+            img{
+                height: 28vh;
+            }
+        }
+    }
 
+    &__boards{
+        width: 100%;
+        &__heading{
+            padding: 2rem 0 1rem 0;
+            font-size: 3vw;
+            color: rgb(84, 71, 71);
+            font-weight: 700;
+            text-align: center;
+        }
+        &__images{
+            width: 80%;
+            margin: 0 auto;
+            marquee img{
+                height: 20vh;
+                margin: 1rem;
+            }
+        }
     }
 }
-
-
-
-
 
 
 @media (max-width: 768px) {
@@ -353,6 +377,21 @@ $color6: black;
             &__section {
                 width: 90%;
                 // flex-direction: column;
+            }
+        }
+
+        // Our Features
+        &__ourfeatures{
+            &__section{
+                width: 90%;
+                &__container{
+                    &__card{
+                        width: 30%;
+                        &-bottom{
+                            font-size: 1.5vw;
+                        }
+                    }
+                }
             }
         }
     }

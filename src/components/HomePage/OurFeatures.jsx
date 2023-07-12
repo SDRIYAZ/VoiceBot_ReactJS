@@ -28,11 +28,72 @@ const OurFeatures = () => {
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quae tempora minus cumque aperiam illum obcaecati. At enim minus cumque!
                             </div>
                         </article>
-                        <article className="homepage__ourfeatures__section__container__card"></article>
-                        <article className="homepage__ourfeatures__section__container__card"></article>
-                        <article className="homepage__ourfeatures__section__container__card"></article>
-                        <article className="homepage__ourfeatures__section__container__card"></article>
-                        <article className="homepage__ourfeatures__section__container__card"></article>
+                        <article className="homepage__ourfeatures__section__container__card">
+                            <div className='homepage__ourfeatures__section__container__card-top'>
+                                <div>
+                                    <img src={memory} alt="Memory Skills" />
+                                </div>
+                                <div>
+                                    Memory Skills
+                                </div>
+                            </div>
+                            <div className='homepage__ourfeatures__section__container__card-bottom'>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quae tempora minus cumque aperiam illum obcaecati. At enim minus cumque!
+                            </div>
+                        </article>
+                        <article className="homepage__ourfeatures__section__container__card">
+                            <div className='homepage__ourfeatures__section__container__card-top'>
+                                <div>
+                                    <img src={spelling} alt="Spelling Skills" />
+                                </div>
+                                <div>
+                                    Spelling Skills
+                                </div>
+                            </div>
+                            <div className='homepage__ourfeatures__section__container__card-bottom'>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quae tempora minus cumque aperiam illum obcaecati. At enim minus cumque!
+                            </div>
+                        </article>
+                        <article className="homepage__ourfeatures__section__container__card">
+                            <div className='homepage__ourfeatures__section__container__card-top'>
+                                <div>
+                                    <img src={dynamic} alt="Dynamic TimeTable" />
+                                </div>
+                                <div>
+                                    Dynamic TimeTable
+                                </div>
+                            </div>
+                            <div className='homepage__ourfeatures__section__container__card-bottom'>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quae tempora minus cumque aperiam illum obcaecati. At enim minus cumque!
+                            </div>
+                        </article>
+                        <article className="homepage__ourfeatures__section__container__card">
+                            <div className='homepage__ourfeatures__section__container__card-top'>
+                                <div>
+                                    <img src={search} alt="General Search" />
+                                </div>
+                                <div>
+                                    General Search
+                                </div>
+                            </div>
+                            <div className='homepage__ourfeatures__section__container__card-bottom'>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quae tempora minus cumque aperiam illum obcaecati. At enim minus cumque!
+                            </div>
+                        </article>
+                        <article className="homepage__ourfeatures__section__container__card">
+                            <div className='homepage__ourfeatures__section__container__card-top'>
+                                <div>
+                                    <img src={video} alt="Video Based Library" />
+                                </div>
+                                <div>
+                                    Video Based Library
+                                </div>
+                            </div>
+                            <div className='homepage__ourfeatures__section__container__card-bottom'>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quae tempora minus cumque aperiam illum obcaecati. At enim minus cumque!
+                            </div>
+                        </article>
+
                     </article>
                 </article>
             </section>
