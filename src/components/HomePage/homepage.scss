@@ -394,6 +394,9 @@ $color8: #9a9797;
                 font-size: medium;
                 line-height: 2rem;
                 color: $color8;
+                h4{
+                    color: $color5;
+                }
             }
         }
         &__bottom{
@@ -499,6 +502,14 @@ $color8: #9a9797;
                     }
                 }
             }
+        }
+        &__footer{
+            width: 100%;
+            &__section{
+                width: 100%;
+                padding: 2rem 1rem;
+            }
+
         }
     }
 }

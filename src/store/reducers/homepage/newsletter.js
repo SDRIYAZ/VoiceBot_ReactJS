@@ -1,42 +1,20 @@
+// Developer Riyaz
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
-export const getHomepagenewsletter = createAsyncThunk(
-  "getHomepagenewsletter",
-  async (object, { getState, rejectWithValue }) => {
-    console.log(getState());
-    try {
-      const { data } = await axios.get("http://localhost:8080/homepage_newsletter");
-      return data;
-    } catch (error) {
-      rejectWithValue(error.response);
-    }
-  }
-);
+import { getHomepageNewsletter } from "../../../services/homepage_services/getHomepageNewsletter";
 
 const newsletterSlice = createSlice({
-  name: "homepage_newsletter_slice",
+  name: "getHomepageNewsletter",
   initialState: {
     data: [],
     loading: false,
     isSuccess: false,
     message: "",
   },
-  reducers: {},
-  extraReducers: {
-    [getHomepagenewsletter.pending]: (state, action) => {
-      state.loading = true;
-    },
-    [getHomepagenewsletter.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.data = payload;
-      state.isSuccess = true;
-    },
-    [getHomepagenewsletter.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.isSuccess = false;
-      state.message = "failed";
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getHomepageNewsletter.fulfilled, (state, action) => {
+        return action.payload;
+      })
   },
 });
 

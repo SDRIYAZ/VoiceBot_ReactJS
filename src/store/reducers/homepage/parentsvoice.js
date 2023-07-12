@@ -1,43 +1,21 @@
+// Developer Riyaz
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import urls from "../../../urls/urls";
-export const getHomepageparentsvoice = createAsyncThunk(
-  "getHomepageparentsvoice",
-  async (object, { getState, rejectWithValue }) => {
-    console.log(getState());
-    try {
-      const {BASE_URL}=urls;
-      const { data } = await axios.get(`${BASE_URL}/homepage_parentsvoice`);
-      return data;
-    } catch (error) {
-      rejectWithValue(error.response);
-    }
-  }
-);
+import { getHomepageParentsvoice } from "../../../services/homepage_services/getHomepageParentsvoice";
 
-const ourparentsvoiceSlice = createSlice({
-  name: "homepage_parentsvoice_slice",
+const parentsvoiceSlice = createSlice({
+  name: "getHomepageParentsvoice",
   initialState: {
     data: [],
     loading: false,
     isSuccess: false,
     message: "",
   },
-  extraReducers: {
-    [getHomepageparentsvoice.pending]: (state, action) => {
-      state.loading = true;
-    },
-    [getHomepageparentsvoice.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.data = payload;
-      state.isSuccess = true;
-    },
-    [getHomepageparentsvoice.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.isSuccess = false;
-      state.message = "failed";
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getHomepageParentsvoice.fulfilled, (state, action) => {
+        return action.payload;
+      })
   },
 });
 
-export default ourparentsvoiceSlice;
+export default parentsvoiceSlice;

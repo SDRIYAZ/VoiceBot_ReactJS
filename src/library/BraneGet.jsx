@@ -1,25 +1,4 @@
-// import { useState, useEffect } from "react";
-
-// import axios from "axios";
-
-// const BraneGet = (url) => {
-//   const [data, setData] = useState(null);
-
-//   useEffect(() => {
-//     const getData = async () => {
-//       const data = await axios.get(url);
-
-//       setData(data);
-//     };
-
-//     getData();
-//   }, [url]);
-
-//   return [data];
-// };
-
-// export default BraneGet;
-
+// Devloper Rakesh 
 import axios from 'axios';
 
 export const braneGet = async (url) => {

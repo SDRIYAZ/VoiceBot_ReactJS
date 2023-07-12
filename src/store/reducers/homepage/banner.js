@@ -1,45 +1,20 @@
+// Developer Riyaz
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import urls from "../../../urls/urls";
-// import BraneGet from "../../../library/BraneGet";
-
-
-export const getHomepageBanner = createAsyncThunk(
-  "getHomepageBanner",
-  async (object, { getState, rejectWithValue }) => {
-    console.log(getState());
-    try {
-      const { BASE_URL } = urls;
-      const { data } = await axios.get(`${BASE_URL}/homepage_banner`);
-      return data;
-    } catch (error) {
-      rejectWithValue(error.response);
-    }
-  }
-);
+import { getHomepageBanner } from "../../../services/homepage_services/getHomepageBanner";
 
 const bannerSlice = createSlice({
-  name: "homepage_banner_slice",
+  name: "getHomepageBanner",
   initialState: {
     data: [],
     loading: false,
     isSuccess: false,
     message: "",
   },
-  extraReducers: {
-    [getHomepageBanner.pending]: (state, action) => {
-      state.loading = true;
-    },
-    [getHomepageBanner.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.data = payload;
-      state.isSuccess = true;
-    },
-    [getHomepageBanner.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.isSuccess = false;
-      state.message = "failed";
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getHomepageBanner.fulfilled, (state, action) => {
+        return action.payload;
+      })
   },
 });
 

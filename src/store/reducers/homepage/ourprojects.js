@@ -1,41 +1,20 @@
+// Developer Riyaz
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
-export const getHomepageourprojects = createAsyncThunk(
-  "getHomepageourprojects",
-  async (object, { getState, rejectWithValue }) => {
-    console.log(getState());
-    try {
-      const { data } = await axios.get("http://localhost:8080/homepage_ourprojects");
-      return data;
-    } catch (error) {
-      rejectWithValue(error.response);
-    }
-  }
-);
+import { getHomepageOurprojects } from "../../../services/homepage_services/getHomepageOurprojects";
 
 const ourprojectsSlice = createSlice({
-  name: "homepage_ourprojects_slice",
+  name: "getHomepageOurprojects",
   initialState: {
     data: [],
     loading: false,
     isSuccess: false,
     message: "",
   },
-  extraReducers: {
-    [getHomepageourprojects.pending]: (state, action) => {
-      state.loading = true;
-    },
-    [getHomepageourprojects.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.data = payload;
-      state.isSuccess = true;
-    },
-    [getHomepageourprojects.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.isSuccess = false;
-      state.message = "failed";
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getHomepageOurprojects.fulfilled, (state, action) => {
+        return action.payload;
+      })
   },
 });
 
