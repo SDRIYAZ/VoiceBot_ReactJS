@@ -1,8 +1,25 @@
-import React, { useState } from "react";
-import logo from "homepage_assets/Branelogo.png";
-
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getHomepageHeader } from "../../services/homepage_services/getHomepageHeader";
 // Developer Name Sairam
 const Navbar = () => {
+    const dispatch = useDispatch();
+    const header = useSelector((state) => state.homepage_header);
+    const { data, loading, isSuccess, message } = header;
+    const [finalHeaderData, setFinalHeaderData] = useState([]);
+    const [logo, setLogo] = useState("")
+    useEffect(() => {
+        dispatch(getHomepageHeader());
+    }, []);
+
+    useEffect(() => {
+        if (!loading && isSuccess) {
+            const [header_data] = data;
+            const {logoimg, navlinks} = header_data;
+            setLogo(logoimg);
+            setFinalHeaderData(navlinks);
+        }
+    }, [loading, isSuccess, data]);
     const [toggleNavMenu, setToggleNavMenu] = useState(false);
     const onToggle = () => {
         setToggleNavMenu(!toggleNavMenu);
@@ -17,25 +34,11 @@ const Navbar = () => {
                             <img src={logo} alt="123" />
                         </article>
                         <ul className="homepage__header__section__nav1__navcontent">
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-
-                            <li>
-                                <a href="#">About</a>
-                            </li>
-
-                            <li>
-                                <a href="#">For Parents</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Patents</a>
-                            </li>
+                           {finalHeaderData.map((element, index) => (
+                                <li key={index}>
+                                    <a href="#">{element}</a>
+                                </li>
+                            ))}
                         </ul>
                     </article>
 
@@ -53,21 +56,11 @@ const Navbar = () => {
                         {toggleNavMenu && (
                             <div className="toggledropdown">
                                 <ul>
-                                    <li>
-                                        <a href="#">Home</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">About</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Contact</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">For Parents</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Patents</a>
-                                    </li>
+                                    {finalHeaderData.map((element, index) => (
+                                        <li key={index}>
+                                            <a href="#">{element}</a>
+                                        </li>
+                                    ))}
                                 </ul>
                                 <div className="dropdown-btns">
                                     <button>Login</button>

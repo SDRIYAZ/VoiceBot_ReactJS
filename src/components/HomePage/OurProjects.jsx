@@ -1,21 +1,41 @@
-import React from 'react'
+// Developer Riyaz
+import React, {useEffect, useState} from 'react'
 import ourprojectsimg from 'homepage_assets/OurprojectsImage.png'
+import { useDispatch, useSelector } from 'react-redux';
+import {getHomepageOurprojects} from '../../services/homepage_services/getHomepageOurprojects';
+
 const OurProjects = () => {
+
+    const dispatch = useDispatch();
+    const ourprojects = useSelector((state) => state.homepage_ourprojects);
+
+    const { data, loading, isSuccess, message } = ourprojects;
+    const [ourprojectsData , setOurProjectsData] = useState({});
+    useEffect(() => {
+        dispatch(getHomepageOurprojects());
+    }, []);
+
+    useEffect(() => {
+        if (!loading && isSuccess) {
+            const [ourprojects_data] = data;
+            const {ourprojectstitle, description, video} = ourprojects_data;
+            setOurProjectsData({"ourprojectstitle": ourprojectstitle, "description":description, "video":video})
+        }
+    }, [loading, isSuccess, data]);
+
     return (
         <>
             <section className="homepage__ourprojects">
                 <article className='homepage__ourprojects__section'>
                     <article className="homepage__ourprojects__section__video">
-                        <img src={ourprojectsimg}></img>
+                        <video src={ourprojectsData.video} controls autoPlay muted></video>
                     </article>
 
                     <article className='homepage__ourprojects__section__content'>
-                        <article className='homepage__ourprojects__section__content__title'>Tranforming Education Using AI </article>
+                        <article className='homepage__ourprojects__section__content__title'>{ourprojectsData.ourprojectstitle} </article>
                         <article className='homepage__ourprojects__section__content__description'>
                             <p> 
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis animi fuga.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis animi fuga.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis animi fuga.
+                                {ourprojectsData.description}
                             </p>
                         </article>
                     </article>

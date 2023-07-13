@@ -112,6 +112,7 @@
 .homepage__banner {
   background-color: #4A49D9;
   color: #ffffff;
+  padding: 2rem 0;
 }
 .homepage__banner__main {
   width: 80%;
@@ -129,7 +130,7 @@
   line-height: 135%;
 }
 .homepage__banner__main__content__description {
-  font-size: 1.35vw;
+  font-size: 1.25vw;
   padding: 2rem 0 1rem 0;
 }
 .homepage__banner__main__content__button {
@@ -166,9 +167,10 @@
   gap: 2rem;
   padding: 3rem 0 2rem 0;
 }
-.homepage__ourprojects__section__video img {
-  width: 40vw;
+.homepage__ourprojects__section__video video {
+  width: 41vw;
   height: 55vh;
+  border-radius: 1rem;
 }
 .homepage__ourprojects__section__content {
   display: flex;
@@ -238,7 +240,7 @@
 }
 .homepage__newscomponent__image {
   width: 100%;
-  background-color: #4A49D9;
+  background-color: #DBDBF7;
 }
 .homepage__newscomponent__image img {
   height: 28vh;
@@ -280,6 +282,78 @@
 .homepage__ourpartners__parent img {
   width: 14vw;
   height: 11vh;
+}
+.homepage__parentsvoice {
+  width: 100%;
+  background-color: #4A49D9;
+}
+.homepage__parentsvoice__section {
+  width: 80%;
+  padding: 2.5rem 0;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.homepage__parentsvoice__section .carousel.carousel-slider .control-arrow:hover {
+  background: none;
+}
+.homepage__parentsvoice__section__title {
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+.homepage__parentsvoice__section__carousel-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+.homepage__parentsvoice__section__carousel-row-card1 {
+  background-color: #ffffff;
+  width: 22vw;
+  padding: 1em;
+  margin-top: 1em;
+  border-radius: 0.5em;
+  position: relative;
+}
+.homepage__parentsvoice__section__carousel-row-card1-image {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: -2.4rem;
+  border: 4px solid white;
+  border-radius: 5rem;
+}
+.homepage__parentsvoice__section__carousel-row-card1-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+.homepage__parentsvoice__section__carousel-row-card1-text-name {
+  padding-top: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1b5079;
+  margin: 0;
+}
+.homepage__parentsvoice__section__carousel-row-card1-text-desc {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #9c9c9c;
+  margin: 0;
+}
+.homepage__parentsvoice__section__carousel-row-card1-text-review {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #5c5d60;
+  padding: 0.5rem;
+  margin: 0;
+  text-align: center;
 }
 .homepage__footer {
   background-image: url("homepage_assets/footerImg.png");

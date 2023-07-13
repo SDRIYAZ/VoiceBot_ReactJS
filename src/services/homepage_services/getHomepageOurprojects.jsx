@@ -6,11 +6,9 @@ import urls from "../../urls/urls";
 export const getHomepageOurprojects = createAsyncThunk(
     "getHomepageOurprojects",
     async (object, { getState, rejectWithValue }) => {
-      console.log(getState());
       try {
         const { BASE_URL } = urls; 
-        const data = braneGet(`${BASE_URL}/homepage_banner`);
-        console.log(data);
+        const data = braneGet(`${BASE_URL}/homepage_ourprojects`);
         return data;
       } catch (error) {
         rejectWithValue(error.response);

@@ -1,24 +1,44 @@
-import React from 'react'
-import bannerimg from "homepage_assets/bannerimage.jpg";
+import React,{useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getHomepageBanner } from '../../services/homepage_services/getHomepageBanner';
 
 const Banner = () => {
+
+    const dispatch = useDispatch();
+    const banner = useSelector((state) => state.homepage_banner);
+
+    const { data, loading, isSuccess, message } = banner;
+    const [bannerData , setBannerData] = useState({});
+    useEffect(() => {
+        dispatch(getHomepageBanner());
+    }, []);
+
+    useEffect(() => {
+        if (!loading && isSuccess) {
+            const [banner_data] = data;
+            const {bannerimg, bannerdescription, bannerquote} = banner_data;
+            setBannerData({"bannerimg": bannerimg, "bannerquote":bannerquote, "bannerdescription":bannerdescription})
+        }
+    }, [loading, isSuccess, data]);
+
     return (
         <>
             <section className='homepage__banner'>
                 <article className='homepage__banner__main'>
                     <article className='homepage__banner__main__content'>
                         <article className='homepage__banner__main__content__title'>
-                            Elevate. Educate. Empower.<br></br> AI Enhanced Learning for the 21st Century
+                            {bannerData.bannerquote}
                         </article>
                         <article className='homepage__banner__main__content__description'>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos nam, dolores laboriosam delectus ut Lorem, ipsum Lorem, ipsum dolor.
+                            {bannerData.bannerdescription}
                         </article>
                         <article className='homepage__banner__main__content__button'>
                             <button>Get Started <i className="fa fa-arrow-right" aria-hidden="true"></i></button>
                         </article>
                     </article>
                     <article className='homepage__banner__main__video'>
-                        <img src={bannerimg} alt="homepagebg" />
+                        {/* {console.log(bannerData.bannerimg)} */}
+                        <img src={bannerData.bannerimg} alt="homepagebg" />
                     </article>
                 </article>
             </section>
