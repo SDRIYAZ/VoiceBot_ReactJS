@@ -444,6 +444,12 @@ $color8: #9a9797;
         }
     }
 
+    &__leadersvoice{
+        font-size: 2.75vw;
+        color: $color6;
+        text-align: center;
+    }
+
     &__footer {
         background-image: url('homepage_assets/footerImg.png');
         background-position: cover;

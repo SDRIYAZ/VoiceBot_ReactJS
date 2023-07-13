@@ -355,6 +355,11 @@
   margin: 0;
   text-align: center;
 }
+.homepage__leadersvoice {
+  font-size: 2.75vw;
+  color: black;
+  text-align: center;
+}
 .homepage__footer {
   background-image: url("homepage_assets/footerImg.png");
   background-position: cover;

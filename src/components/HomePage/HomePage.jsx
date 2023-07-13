@@ -5,6 +5,7 @@ import OurProjects from './OurProjects';
 import OurFeatures from './OurFeatures';
 import NewsLetter from './NewsLetter';
 import ParentsVoice from './ParentsVoice';
+import Example from './LeadersVoice';
 import Footer from './Footer';
 import "./homepage.css";
 
@@ -16,6 +17,7 @@ const HomePage = () => {
         <OurProjects />
         <OurFeatures />
         <ParentsVoice />
+        <Example />
         <NewsLetter />
         <Footer />
     </>
