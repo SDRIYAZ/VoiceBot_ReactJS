@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import VerticalCarousel from "./VerticalCarousel";
 import { config } from "react-spring";
-import leadervideo from "homepage_assets/leadervideo.mp4";
-import thumbnailimg from "homepage_assets/thumbnail.png";
+import leadervideo from "assets/homepage_assets/leadervideo.mp4";
+import thumbnailimg from "assets/homepage_assets/thumbnail.png";
 
 let slides = [
   {

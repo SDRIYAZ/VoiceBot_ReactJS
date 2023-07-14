@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "homepage_assets/footerlogoImg.png";
+import logo from "assets/homepage_assets/footerlogoImg.png";
 function Footer() {
   return (
     <>

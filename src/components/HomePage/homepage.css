@@ -170,7 +170,6 @@
 .homepage__ourprojects__section__video video {
   width: 41vw;
   height: 55vh;
-  border-radius: 1rem;
 }
 .homepage__ourprojects__section__content {
   display: flex;
@@ -361,7 +360,7 @@
   text-align: center;
 }
 .homepage__footer {
-  background-image: url("homepage_assets/footerImg.png");
+  background-image: url("assets/homepage_assets/footerImg.png");
   background-position: cover;
   width: 100%;
   background-repeat: no-repeat;

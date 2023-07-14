@@ -217,7 +217,6 @@ $color8: #9a9797;
                 video {
                     width: 41vw;
                     height: 55vh;
-                    border-radius : 1rem; 
                 }
             }
 
@@ -451,7 +450,7 @@ $color8: #9a9797;
     }
 
     &__footer {
-        background-image: url('homepage_assets/footerImg.png');
+        background-image: url('assets/homepage_assets/footerImg.png');
         background-position: cover;
         width: 100%;
         background-repeat: no-repeat;

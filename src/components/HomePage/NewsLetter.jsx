@@ -1,19 +1,17 @@
 import React, {useEffect,useState}from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import { Carousel } from 'react-responsive-carousel';
-import {getHomepageNewsletter} from '../../services/homepage_services/getHomepageNewsletter'
+import {getHomepageNewsletter} from 'services/homepage_services/getHomepageNewsletter'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import NewsImg from 'homepage_assets/NewsImg.png'
-import NewsImg2 from 'homepage_assets/NewsImg2.png'
-import boardimg1 from 'homepage_assets/board1.png'
-import boardimg2 from 'homepage_assets/board2.png'
-import boardimg3 from 'homepage_assets/board3.png'
-import boardimg4 from 'homepage_assets/board4.png'
-import boardimg5 from 'homepage_assets/board5.png'
-import partner2 from 'homepage_assets/partner2.png'
-import partner3 from 'homepage_assets/partner3.png'
-import partner4 from 'homepage_assets/partner4.png'
-import partner5 from 'homepage_assets/partner5.png'
+import boardimg1 from 'assets/homepage_assets/board1.png'
+import boardimg2 from 'assets/homepage_assets/board2.png'
+import boardimg3 from 'assets/homepage_assets/board3.png'
+import boardimg4 from 'assets/homepage_assets/board4.png'
+import boardimg5 from 'assets/homepage_assets/board5.png'
+import partner2 from 'assets/homepage_assets/partner2.png'
+import partner3 from 'assets/homepage_assets/partner3.png'
+import partner4 from 'assets/homepage_assets/partner4.png'
+import partner5 from 'assets/homepage_assets/partner5.png'
 
 const NewsLetter = () => {
     const dispatch = useDispatch();

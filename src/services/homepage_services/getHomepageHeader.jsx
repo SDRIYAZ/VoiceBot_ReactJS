@@ -1,7 +1,7 @@
 // Developer Riyaz
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { braneGet } from "../../library/BraneGet";
-import urls from "../../urls/urls";
+import { braneGet } from "library/BraneGet";
+import urls from "urls/urls";
 
 export const getHomepageHeader = createAsyncThunk(
   "getHomepageHeader",

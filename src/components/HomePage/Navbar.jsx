@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getHomepageHeader } from "../../services/homepage_services/getHomepageHeader";
+import { getHomepageHeader } from "services/homepage_services/getHomepageHeader";
 // Developer Name Sairam
 const Navbar = () => {
     const dispatch = useDispatch();

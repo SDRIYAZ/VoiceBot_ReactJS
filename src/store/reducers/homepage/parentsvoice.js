@@ -1,6 +1,6 @@
 // Developer Riyaz
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getHomepageParentsvoice } from "../../../services/homepage_services/getHomepageParentsvoice";
+import { getHomepageParentsvoice } from "services/homepage_services/getHomepageParentsvoice";
 
 const initialState = {
   data: [], // Set initial state to an empty array

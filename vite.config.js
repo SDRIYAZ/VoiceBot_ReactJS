@@ -11,7 +11,11 @@ export default defineConfig({
       components: `${path.resolve(__dirname, "./src/components/")}`,
       public: `${path.resolve(__dirname, "./public/")}`,
       assets: `${path.resolve(__dirname, "./src/assets/")}`,
-      homepage_assets:`${path.resolve(__dirname, "./src/assets/HomePage_Assets")}`,
+      services:`${path.resolve(__dirname, "./src/services/")}`,
+      urls:`${path.resolve(__dirname, './src/urls/')}`,
+      library: `${path.resolve(__dirname, './src/library/')}`,
+      store: `${path.resolve(__dirname, './src/store/')}`,
+      reducers: `${path.resolve(__dirname, './src/store/reducers/')}`,
     },
   },
 });

@@ -1,6 +1,6 @@
 // Developer Riyaz
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getHomepageLeadersvoice } from "../../../services/homepage_services/getHomepageLeadersvoice";
+import { getHomepageLeadersvoice } from "services/homepage_services/getHomepageLeadersvoice";
 
 
 const initialState = {

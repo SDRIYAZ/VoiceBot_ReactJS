@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getHomepageHeader } from "../../../services/homepage_services/getHomepageHeader";
+import { getHomepageHeader } from "services/homepage_services/getHomepageHeader";
 
 const initialState = {
   data: [], // Set initial state to an empty array

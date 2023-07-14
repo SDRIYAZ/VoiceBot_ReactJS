@@ -1,10 +1,10 @@
 import React from 'react'
-import listening from 'homepage_assets/listening.png'
-import memory from 'homepage_assets/memory.png'
-import spelling from 'homepage_assets/spelling.png'
-import dynamic from 'homepage_assets/dynamic.png'
-import search from 'homepage_assets/search.png'
-import video from 'homepage_assets/video.png'
+import listening from 'assets/homepage_assets/listening.png'
+import memory from 'assets/homepage_assets/memory.png'
+import spelling from 'assets/homepage_assets/spelling.png'
+import dynamic from 'assets/homepage_assets/dynamic.png'
+import search from 'assets/homepage_assets/search.png'
+import video from 'assets/homepage_assets/video.png'
 
 const OurFeatures = () => {
     return (

@@ -1,6 +1,6 @@
 // Developer Riyaz
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getHomepageOurprojects } from "../../../services/homepage_services/getHomepageOurprojects";
+import { getHomepageOurprojects } from "services/homepage_services/getHomepageOurprojects";
 
 const initialState = {
   data: [], // Set initial state to an empty array

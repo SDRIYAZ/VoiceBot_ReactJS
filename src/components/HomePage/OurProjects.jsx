@@ -1,8 +1,8 @@
 // Developer Riyaz
 import React, {useEffect, useState} from 'react'
-import ourprojectsimg from 'homepage_assets/OurprojectsImage.png'
+import ourprojectsimg from 'assets/homepage_assets/OurprojectsImage.png'
 import { useDispatch, useSelector } from 'react-redux';
-import {getHomepageOurprojects} from '../../services/homepage_services/getHomepageOurprojects';
+import {getHomepageOurprojects} from 'services/homepage_services/getHomepageOurprojects';
 
 const OurProjects = () => {
 

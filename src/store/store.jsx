@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import headerSlice from "./reducers/homepage/header";
-import bannerSlice from "./reducers/homepage/banner";
-import ourprojectsSlice from "./reducers/homepage/ourprojects";
-import ourparentsvoiceSlice from "./reducers/homepage/parentsvoice";
-import leadersvoiceSlice from "./reducers/homepage/leadersvoice";
-import newsletterSlice from "./reducers/homepage/newsletter";
+import headerSlice from "reducers/homepage/header";
+import bannerSlice from "reducers/homepage/banner";
+import ourprojectsSlice from "reducers/homepage/ourprojects";
+import ourparentsvoiceSlice from "reducers/homepage/parentsvoice";
+import leadersvoiceSlice from "reducers/homepage/leadersvoice";
+import newsletterSlice from "reducers/homepage/newsletter";
 
 const HomePageStore = configureStore({
   reducer: {

@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getHomepageBanner } from '../../services/homepage_services/getHomepageBanner';
+import { getHomepageBanner } from 'services/homepage_services/getHomepageBanner';
 
 const Banner = () => {
 
