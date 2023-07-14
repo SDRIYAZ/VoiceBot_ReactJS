@@ -43,20 +43,6 @@ class VerticalCarousel extends React.Component {
     newSlide: false
   };
 
-  componentDidMount = () => {
-    document.addEventListener("keydown", (event) => {
-      if (event.isComposing || event.keyCode === 229) {
-        return;
-      }
-      if (event.keyCode === 38) {
-        this.moveSlide(-1);
-      }
-      if (event.keyCode === 40) {
-        this.moveSlide(1);
-      }
-    });
-  };
-
   static propTypes = {
     slides: PropTypes.arrayOf(
       PropTypes.shape({
@@ -121,8 +107,8 @@ class VerticalCarousel extends React.Component {
     if (showNavigation) {
       navigationButtons = (
         <NavigationButtons>
-          <NavBtn style={{rotate:"-90deg"}} onClick={() => this.moveSlide(-1)}>➤</NavBtn>
-          <NavBtn style={{rotate:"90deg"}} onClick={() => this.moveSlide(1)}>➤</NavBtn>
+          <NavBtn style={{rotate:"-90deg", cursor:"pointer"}} onClick={() => this.moveSlide(-1)}>➤</NavBtn>
+          <NavBtn style={{rotate:"90deg", cursor:"pointer"}} onClick={() => this.moveSlide(1)}>➤</NavBtn>
         </NavigationButtons>
       );
     }
