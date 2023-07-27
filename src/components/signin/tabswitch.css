@@ -1,0 +1,64 @@
+.wrapper {
+  border-radius: 37px;
+  background-color: #f4f4f4;
+  padding: 8px;
+  width: 100%;
+  max-width: 316px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.taeb-switch {
+  position: relative;
+  text-align: center;
+}
+
+.taeb-switch:after {
+  content: "";
+  position: absolute;
+  width: 33.33%;
+  top: 0;
+  transition: left cubic-bezier(0.88, -0.35, 0.565, 1.35) 0.4s;
+  border-radius: 27.5px;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+  background-color: #3d90ef;
+  height: 100%;
+  z-index: 0;
+}
+
+.taeb-switch.left:after {
+  left: 0;
+}
+
+.taeb-switch.center:after {
+  left: 33.33%;
+}
+
+.taeb-switch.right:after {
+  left: 66.66%;
+}
+
+.taeb-switch .taeb {
+  display: inline-block;
+  width: 33.33%;
+  padding: 12px 0;
+  z-index: 1;
+  position: relative;
+  cursor: pointer;
+  transition: color 200ms;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: normal;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.taeb-switch .taeb.active {
+  color: #ffffff;
+}
+
+.text-center {
+  text-align: center;
+  padding-top: 1rem;
+}/*# sourceMappingURL=tabswitch.css.map */

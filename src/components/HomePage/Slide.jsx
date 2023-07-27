@@ -13,6 +13,7 @@ const SlideContainer = styled(animated.div)`
   align-items: center;
   justify-content: center;
   transform-origin: 50% 50%;
+  background-color:white;
 `;
 
 const SlideCard = styled.div`
@@ -101,9 +102,8 @@ function Slide({
 
   const springStyle = useSpring({
     transform: `translateX(0%) translateY(${translateY}%) scale(${distanceFactor})`,
-    top: `${
-      offsetRadius === 0 ? 50 : 50 + (offsetFromMiddle * 50) / offsetRadius
-    }%`,
+    top: `${offsetRadius === 0 ? 50 : 50 + (offsetFromMiddle * 50) / offsetRadius
+      }%`,
     opacity: distanceFactor * distanceFactor,
     zIndex: Math.abs(Math.abs(offsetFromMiddle) - 2),
     config: animationConfig
@@ -115,15 +115,15 @@ function Slide({
         <ContentWrapper>
           <QuoteSymbol>❝</QuoteSymbol>
           <div style={{ flex: 1, margin: "auto" }}>
-            <text>{content.quote}</text>
+            <span>{content.quote}</span>
           </div>
-          <div style={{ flex: 1, width: "33vw", display: "flex", textAlign: "center", flexDirection: "column", alignItems: "center" }}>
-          <Video controls poster={content.thumbnail}>
-  <source src={content.video} type="video/mp4" />
-</Video>
-            <div style={{ marginTop:'0.5rem' }} >
-              <videocap>{content.caption}</videocap>
-              <Caption>{content.subcaption}</Caption> {/* Add the additional caption */}
+          <div style={{ flex: 1, width: "33vw", display: "flex", textAlign: "center", flexDirection: "column", alignItems: "center", backgroundColor: 'white', padding: '9vw' }}>
+            <Video controls poster={'https://static01.nyt.com/images/2021/01/30/business/29musk-print/29musk-1-videoSixteenByNineJumbo1600.jpg'} style={{ width: '33vw' }}>
+              <source src={content.video} type="video/mp4" />
+            </Video>
+            <div style={{ marginTop: '0.5rem' }} >
+              <div style={{ fontSize: "1.25rem" }}>{content.caption}</div>
+              <div style={{ fontSize: ".75rem" }}>{content.subcaption}</div> {/* Add the additional caption */}
             </div>
           </div>
         </ContentWrapper>

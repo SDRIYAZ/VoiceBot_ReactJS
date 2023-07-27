@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getHomepageHeader } from "services/homepage_services/getHomepageHeader";
+import { Link } from 'react-router-dom';
 // Developer Name Sairam
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -30,8 +31,8 @@ const Navbar = () => {
             <header className="homepage__header">
                 <section className="homepage__header__section">
                     <article className="homepage__header__section__nav1">
-                        <article className="homepage__header__section__nav1__img">
-                            <img src={logo} alt="123" />
+                        <article className="homepage__header__section__nav1__img_spinner">
+                            <img src={logo} alt="123" className="homepage__header__section__nav1__img" />
                         </article>
                         <ul className="homepage__header__section__nav1__navcontent">
                            {finalHeaderData.map((element, index) => (
@@ -44,8 +45,9 @@ const Navbar = () => {
 
                     <article className="homepage__header__section__nav2">
                         <article className="homepage__header__section__nav2__buttons">
-                            <button>Login</button>
-                            <button>Sign Up</button>
+                            {/* <button>Login</button> */}
+                            <Link to="/login" className="homepage__header__section__nav2__buttons-btn">Login</Link>
+                            <Link to="/signup" className="homepage__header__section__nav2__buttons-btn">Sign Up</Link>
                         </article>
                     </article>
 

@@ -8,7 +8,7 @@
 .homepage__header {
   width: 100%;
   background-color: #F5F3FE;
-  height: 11vh;
+  height: 12vh;
 }
 .homepage__header__section {
   width: 80%;
@@ -44,19 +44,20 @@
   display: flex;
   gap: 2rem;
 }
-.homepage__header__section__nav2__buttons button {
+.homepage__header__section__nav2__buttons-btn {
   font-size: 1.2vw;
   padding: 0.5rem 1rem;
   border-radius: 1.25rem;
   border: none;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
 }
-.homepage__header__section__nav2__buttons button:nth-child(1) {
+.homepage__header__section__nav2__buttons-btn:nth-child(1) {
   background-color: #DBDBF7;
   color: #333333;
 }
-.homepage__header__section__nav2__buttons button:nth-child(2) {
+.homepage__header__section__nav2__buttons-btn:nth-child(2) {
   background-color: #4A49D9;
   color: #ffffff;
 }

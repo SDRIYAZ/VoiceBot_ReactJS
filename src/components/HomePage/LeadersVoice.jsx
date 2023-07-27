@@ -10,9 +10,10 @@ let slides = [
     content: {
       quote: "This voice-interactive AI platform is a game-changer.It revolutionizes education, engages students like never before, and prepares them for success in the future.",
       video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      // video:{leadervideo},
       caption: "Elon Musk",
       subcaption: " CEO of Tesla Motors and SpaceX",
-      thumbnail: {thumbnailimg}
+      thumbnail: "https://reqres.in/img/faces/8-image.jpg"
     }
   },
   {
@@ -22,7 +23,7 @@ let slides = [
       video: "https://example.com/video2.mp4",
       caption: "Video Caption 2",
       subcaption: " CEO of Tesla Motors and SpaceX",
-      thumbnail: "https://example.com/thumbnail1.jpg"
+      thumbnail: "https://reqres.in/img/faces/7-image.jpg"
     }
   },
   {
@@ -32,7 +33,7 @@ let slides = [
       video: "https://example.com/video3.mp4",
       caption: "Video Caption 3",
       subcaption: " CEO of Tesla Motors and SpaceX",
-      thumbnail: "https://example.com/thumbnail1.jpg"
+      thumbnail: "https://reqres.in/img/faces/6-image.jpg"
     }
   },
   {
@@ -42,7 +43,7 @@ let slides = [
       video: "https://example.com/video4.mp4",
       caption: "Video Caption 4",
       subcaption: " CEO of Tesla Motors and SpaceX",
-      thumbnail: "https://example.com/thumbnail1.jpg"
+      thumbnail: "https://reqres.in/img/faces/5-image.jpg"
     }
   },
   {
@@ -52,7 +53,7 @@ let slides = [
       video: "https://example.com/video5.mp4",
       caption: "Video Caption 5",
       subcaption: " CEO of Tesla Motors and SpaceX",
-      thumbnail: "https://example.com/thumbnail1.jpg"
+      thumbnail: "https://reqres.in/img/faces/4-image.jpg"
     }
   },
   {
@@ -62,7 +63,7 @@ let slides = [
       video: "https://example.com/video6.mp4",
       caption: "Video Caption 6",
       subcaption: " CEO of Tesla Motors and SpaceX",
-      thumbnail: "https://example.com/thumbnail1.jpg"
+      thumbnail: "https://reqres.in/img/faces/3-image.jpg"
     }
   },
   {
@@ -72,7 +73,7 @@ let slides = [
       video: "https://example.com/video7.mp4",
       caption: "Video Caption 7",
       subcaption: " CEO of Tesla Motors and SpaceX",
-      thumbnail: "https://example.com/thumbnail1.jpg"
+      thumbnail: "https://reqres.in/img/faces/2-image.jpg"
     }
   },
   
@@ -103,7 +104,7 @@ export default class Example extends Component {
           padding: "2rem 0"
         }}
       >
-        <div className="homepage__leadersvoice">Leaders Voice</div>
+        <div className="homepage__leadersvoice" style={{marginBottom:"5vw"}}>Leaders Voice</div>
         <VerticalCarousel
           slides={slides}
           offsetRadius={this.state.offsetRadius}

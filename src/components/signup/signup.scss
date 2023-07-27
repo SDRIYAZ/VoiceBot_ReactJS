@@ -1,0 +1,258 @@
+$inputboxcolor: #F0EDFFCC;
+$animation: #7c69f2;
+$primarycolor: white;
+$stepscolor: #14cc57;
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.signup {
+    width: 100%;
+    padding: .5rem 0;
+    background-color: #3B3B3B;
+
+    &__container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        background-color: $animation;
+
+        &__form {
+            background-color: $primarycolor;
+            width: 50%;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            max-height: auto;
+            min-height: 97vh;
+
+            &__animation {
+                flex: 1;
+                height: 100%;
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                & .progress-container {
+                    position: relative;
+                    margin: 2rem auto 2rem;
+                    padding: 4px 0 0;
+                    min-width: 21vw;
+                    height: 6px;
+                    background: #747272;
+                    box-shadow: inset 0 0 2px #666;
+
+                    ul {
+                        list-style: none;
+                        margin: -4px;
+                        padding: 0;
+
+                        li {
+                            position: absolute;
+                            top: -10px;
+                            left: 0;
+                            margin: 0;
+                            padding: .3rem .65rem;
+                            display: inline-table;
+                            height: 18px;
+                            width: 18px;
+                            color: $primarycolor;
+                            background: $stepscolor;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    & .progress-bar {
+                        height: 6px;
+                        width: 0%;
+                        background: $stepscolor;
+                        transition: width 0.9s ease-in-out;
+                    }
+                }
+            }
+
+            &__logo {
+                img {
+                    width: 4vw;
+                    height: 9vh;
+                }
+            }
+
+            &__div {
+                &__form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    h2{
+                        padding: .5rem 0 .75rem 0;
+                    }
+
+                    &__sec {
+                        min-height: 8.75rem;
+                        max-height: 18.75rem;
+                        overflow-y: auto;
+                        min-width: 81%;
+                        max-width: 90%;
+                        padding: 0 2rem .5rem;
+
+                        &::-webkit-scrollbar {
+                            width: 5px;
+                        }
+
+                        &::-webkit-scrollbar-track {
+                            background: #C6C4D2;
+                        }
+
+                        /* Handle */
+                        &::-webkit-scrollbar-thumb {
+                            background: #3B3B3B;
+                            border-radius: 5px;
+                        }
+
+                        /* Handle on hover */
+                        &::-webkit-scrollbar-thumb:hover {
+                            background: #3B3B3B;
+                        }
+
+                        &__main {
+                            width: 90%;
+                        }
+
+                        &__title {
+                            display: flex;
+                            justify-content: space-between;
+
+                            div:nth-child(1) {
+                                font-size: 1.5rem;
+                                color: black;
+                                padding: 1rem;
+                            }
+
+                            div:nth-child(2) {
+                                button {
+                                    margin: 1rem 1rem 0 0;
+                                    padding: 0.5rem;
+                                    background: #e15575;
+                                    color: $primarycolor;
+                                    border: none;
+                                    border-radius: 0.5rem;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                        &__input-container {
+                            display: flex;
+                            // width: 60%;
+                            padding: .5rem 0;
+
+                            & .dob-icon {
+                                padding: .75rem 0;
+                                background: $inputboxcolor;
+                                color: black;
+                                min-width: 50px;
+                                text-align: center;
+                                border-top-left-radius: .5rem;
+                                border-bottom-left-radius: .5rem;
+                            }
+
+                            & .icon {
+                                padding: .75rem 0;
+                                background: $inputboxcolor;
+                                color: black;
+                                min-width: 40px;
+                                text-align: center;
+                                border-top-left-radius: .5rem;
+                                border-bottom-left-radius: .5rem;
+                            }
+
+                            &__input-field {
+                                width: 100%;
+                                padding: .75rem 0;
+                                border: none;
+                                outline: none;
+                                background-color: $inputboxcolor;
+                                border-top-right-radius: .5rem;
+                                border-bottom-right-radius: .5rem;
+                            }
+
+                            input[type="date"] {
+                                padding: .75rem;
+                            }
+
+                            select {
+                                font-size: 1rem;
+                                color: #929295;
+
+                                option {
+                                    font-size: 1rem;
+                                    color: black;
+                                    background-color: $inputboxcolor;
+                                    margin: 5rem;
+                                }
+                            }
+                        }
+
+                        small {
+                            color: red;
+                        }
+                    }
+
+                    &__buttons {
+                        width: 70%;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+
+
+                }
+
+                &__button {
+                    padding: 0.5rem 1.25rem;
+                    font-size: 1rem;
+                    background-color: #4130AE;
+                    color: $primarycolor;
+                    border-radius: 0.75rem;
+                    border: none;
+                    cursor: pointer;
+                    margin-top: .5rem;
+                    text-decoration: none;
+
+                    &:disabled {
+                        background-color: #a69ed6;
+                        cursor:not-allowed;
+                    }
+                }
+
+
+                &__steps {
+                    p {
+                        text-align: center;
+                        padding: 1rem 0;
+                        font-size: 1.5rem;
+                    }
+
+                    &-indicator {
+                        display: flex;
+                        justify-content: center;
+                        padding-bottom: 1rem;
+                    }
+
+                }
+            }
+        }
+
+        &__animation {
+            width: 50%;
+            padding: 1rem;
+        }
+    }
+}
