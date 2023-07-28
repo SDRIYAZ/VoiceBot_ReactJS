@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const MultistepForm = () => {
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(4);
   const totalSteps = 4;
 
   const initialValues = {

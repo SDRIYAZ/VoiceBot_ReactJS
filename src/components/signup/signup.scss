@@ -11,12 +11,10 @@ $stepscolor: #14cc57;
 
 .signup {
     width: 100%;
-    padding: .5rem 0;
     background-color: #3B3B3B;
 
     &__container {
-        width: 80%;
-        margin: 0 auto;
+        width: 100%;
         display: flex;
         flex-direction: row;
         background-color: $animation;
@@ -28,7 +26,7 @@ $stepscolor: #14cc57;
             display: flex;
             flex-direction: column;
             max-height: auto;
-            min-height: 97vh;
+            min-height: 100vh;
             border-top-right-radius: 1rem;
             border-bottom-right-radius: 1rem;
             // border: 0.1rem solid black;
