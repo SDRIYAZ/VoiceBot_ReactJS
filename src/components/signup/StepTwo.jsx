@@ -12,7 +12,7 @@ const StepTwoSchema = Yup.object().shape({
     .oneOf([Yup.ref("parentspassword")], "Passwords do not match"),
 });
 
-const StepTwo = ({ handleNext, isValid, setFieldValue, errors, touched }) => {
+const StepTwo = ({ handleNext, isValid, setFieldValue, errors, touched, handleKeyPress }) => {
   const handleChange = (e, fieldname) => {
     const { value } = e.target
     setFieldValue(fieldname, value)
@@ -30,7 +30,8 @@ const StepTwo = ({ handleNext, isValid, setFieldValue, errors, touched }) => {
             id="parentspassword"
             name="parentspassword"
             onChange={(e) => { handleChange(e, "parentspassword") }}
-            placeholder="Enter Password"
+            placeholder="Set 4 digit Pin"
+            onKeyPress = {handleKeyPress}
           />
         </div>
         {
@@ -44,11 +45,12 @@ const StepTwo = ({ handleNext, isValid, setFieldValue, errors, touched }) => {
           <i className="bi bi-key icon"></i>
           <Field
             className="signup__container__form__div__form__sec__input-container__input-field"
-            type="text"
+            type="password"
             id="parentsconfirmpassword"
             name="parentsconfirmpassword"
             onChange={(e) => { handleChange(e, "parentsconfirmpassword") }}
-            placeholder="Re-enter Password"
+            placeholder="Re-enter Pin"
+            onKeyPress={handleKeyPress}
           />
         </div>
         {

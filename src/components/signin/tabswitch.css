@@ -1,11 +1,12 @@
 .wrapper {
   border-radius: 37px;
-  background-color: #f4f4f4;
+  background-color: #4646d9;
   padding: 8px;
   width: 100%;
   max-width: 316px;
   margin-left: auto;
   margin-right: auto;
+  color: white;
 }
 
 .taeb-switch {
@@ -21,7 +22,7 @@
   transition: left cubic-bezier(0.88, -0.35, 0.565, 1.35) 0.4s;
   border-radius: 27.5px;
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
-  background-color: #3d90ef;
+  background-color: #E8DFFF;
   height: 100%;
   z-index: 0;
 }
@@ -55,10 +56,14 @@
 }
 
 .taeb-switch .taeb.active {
-  color: #ffffff;
+  color: #000000;
 }
 
 .text-center {
   text-align: center;
-  padding-top: 1rem;
+}
+
+.login-title {
+  text-align: center;
+  padding: 1rem 0;
 }/*# sourceMappingURL=tabswitch.css.map */

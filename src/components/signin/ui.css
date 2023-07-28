@@ -4,6 +4,12 @@
   padding: 0px;
 }
 
+.bg-signin {
+  width: 100%;
+  background-color: #3b3b3b;
+  padding: 1.25rem 0;
+}
+
 .signin {
   width: 100%;
 }
@@ -12,14 +18,12 @@
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  margin-top: 1rem;
   background-color: blueviolet;
 }
 .signin__container__form {
   background-color: #ffffff;
   width: 50%;
   padding: 1rem;
-  border: 0.1rem solid black;
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   display: flex;
@@ -30,7 +34,11 @@
   width: 4vw;
   height: 9vh;
 }
+.signin__container__form__left {
+  text-align: center;
+}
 .signin__container__form__left form {
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,4 +50,22 @@
 .signin__container__right img {
   height: 25rem;
   margin-top: 5rem;
+}
+
+.input-field {
+  border: 1px solid #bbb;
+  display: block;
+  padding: 0.5rem;
+  resize: vertical;
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  background-color: rgba(240, 237, 255, 0.8);
+}
+
+.webcam-container {
+  width: 100%;
+  max-width: 28rem;
+  overflow: hidden;
+  height: 55vh;
 }/*# sourceMappingURL=ui.css.map */

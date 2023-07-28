@@ -54,7 +54,7 @@ const StepThreeSchema = Yup.object().shape({
 });
 
 
-const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values, errors, touched }) => {
+const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values, errors, touched, handleKeyPress }) => {
   const handleChange = (e, fieldname) => {
     const { value } = e.target
     setFieldValue(fieldname, value)
@@ -155,6 +155,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
             name="parentsalternateno"
             onChange={handleMobileNumberChange}
             placeholder="Alternate Mobileno"
+            onKeyPress = {handleKeyPress}
           />
         </div>
         {
@@ -172,6 +173,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
             name="parentsalternateotp"
             onChange={handleOTPChange}
             placeholder="OTP"
+            onKeyPress = {handleKeyPress}
           />
 
         </div>
@@ -244,7 +246,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
         }
 
         <div className="signup__container__form__div__form__sec__input-container">
-          <i class="bi bi-pin-map icon"></i>
+          <i className="bi bi-pin-map icon"></i>
           <Field
             className="signup__container__form__div__form__sec__input-container__input-field"
             type="text"
@@ -279,7 +281,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
         }
 
         <div className="signup__container__form__div__form__sec__input-container">
-          <i class="bi bi-geo-fill icon"></i>
+          <i className="bi bi-geo-fill icon"></i>
           <Field
             className="signup__container__form__div__form__sec__input-container__input-field"
             type="text"
@@ -297,7 +299,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
         }
 
         <div className="signup__container__form__div__form__sec__input-container">
-          <i class="bi bi-geo-alt-fill icon"></i>
+          <i className="bi bi-geo-alt-fill icon"></i>
           <textarea
             className="signup__container__form__div__form__sec__input-container__input-field"
             name="address"

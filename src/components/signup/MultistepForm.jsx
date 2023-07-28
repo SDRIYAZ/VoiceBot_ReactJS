@@ -7,10 +7,13 @@ import { StepThree, StepThreeSchema } from "./StepThree";
 import { StepFour, StepFourSchema } from "./StepFour";
 import "./signup.css";
 import branelogo from "assets/HomePage_Assets/branelogo_signup.png";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const MultistepForm = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const navigate = useNavigate();
+  const [currentStep, setCurrentStep] = useState(2);
   const totalSteps = 4;
 
   const initialValues = {
@@ -50,7 +53,17 @@ const MultistepForm = () => {
     ],
   };
 
-  const handleNext = () => {
+  const handleKeyPress = (e) => {
+    const digitPattern = /^[0-9]*$/;
+    const key = String.fromCharCode(e.which);
+
+    if (!digitPattern.test(key)) {
+      e.preventDefault();
+    }
+  };
+
+  const handleNext = (step) => {
+    console.log(step)
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
@@ -78,6 +91,7 @@ const MultistepForm = () => {
       setCurrentStep(1);
       resetForm();
       // Add your logic to handle the next steps or success message here.
+      navigate("/login");
 
     } catch (error) {
       // Handle errors if the request fails
@@ -91,7 +105,7 @@ const MultistepForm = () => {
       <section className="signup__container">
         <article className="signup__container__form">
           <article className="signup__container__form__logo">
-            <img src={branelogo} alt="logo" />
+            <Link to="/"><img src={branelogo} alt="logo" /></Link>
           </article>
           <article className="signup__container__form__div">
             <article className="signup__container__form__div__steps">
@@ -133,6 +147,7 @@ const MultistepForm = () => {
                       values={values}
                       errors={errors}
                       touched={touched}
+                      handleKeyPress={handleKeyPress}
                     />
                   )}
 
@@ -143,6 +158,7 @@ const MultistepForm = () => {
                       setFieldValue={setFieldValue}
                       errors={errors}
                       touched={touched}
+                      handleKeyPress={handleKeyPress}
                     />
                   )}
 
@@ -155,6 +171,7 @@ const MultistepForm = () => {
                       values={values}
                       errors={errors}
                       touched={touched}
+                      handleKeyPress={handleKeyPress}
                     />
                   )}
 
@@ -172,6 +189,7 @@ const MultistepForm = () => {
                 </Form>
               )}
             </Formik>
+            <div style={{textAlign:'center', padding:"1rem 0"}}>Already Have An Account? <Link to='/login'>Sign In</Link></div>
           </article>
         </article>
         <article className="signup__container__animation">

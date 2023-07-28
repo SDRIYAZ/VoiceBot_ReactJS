@@ -34,7 +34,7 @@ const StepOneSchema = Yup.object().shape({
 });
 
 
-const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched }) => {
+const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched, handleKeyPress }) => {
   const [otpSent, setOtpSent] = useState(false);
   const [generatedOTP, setGeneratedOTP] = useState("");
   const [isFieldsDisabled, setIsFieldsDisabled] = useState(false);
@@ -88,6 +88,7 @@ const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched }
             name="parentsmobileno"
             onChange={handleMobileNumberChange}
             placeholder="Mobile Number"
+            onKeyPress={handleKeyPress}
           />
         </div>
         {
@@ -105,12 +106,13 @@ const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched }
             name="parentsmobileotp"
             onChange={handleOTPChange}
             placeholder="OTP"
+            onKeyPress={handleKeyPress}
           />
 
         </div>
 
         {(isFieldsDisabled && isOTPMatched) ?
-          (<span style={{ position: "relative", top: "-44px", left: "328px"}}><i className="bi bi-check-lg" style={{ color: "green", fontSize:"1.75rem" }}></i>
+          (<span style={{ position: "relative", top: "-44px", left: "280px"}}><i className="bi bi-check-lg" style={{ color: "green", fontSize:"1.75rem" }}></i>
           </span>) :
           (
             (touched.parentsmobileotp && errors.parentsmobileotp) &&(
@@ -119,14 +121,14 @@ const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched }
           )
         }
         {(!isFieldsDisabled && !isOTPMatched && values.parentsmobileotp.length === 4) &&
-          <span style={{ position: "relative", top: "-44px", left: "229px"}}><i className="bi bi-x-lg" style={{ color: "red", fontSize:"1.75rem" }}></i></span>
+          <span style={{ position: "relative", top: "-44px", left: "182px"}}><i className="bi bi-x-lg" style={{ color: "red", fontSize:"1.75rem" }}></i></span>
         }
       </article>
 
       <button 
         className="signup__container__form__div__button"
         type="button" 
-        onClick={handleNext} disabled={!isOTPMatched}
+        onClick={()=>handleNext("step1")} disabled={!isOTPMatched}
       >
         Next
       </button>

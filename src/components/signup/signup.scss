@@ -29,6 +29,9 @@ $stepscolor: #14cc57;
             flex-direction: column;
             max-height: auto;
             min-height: 97vh;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            // border: 0.1rem solid black;
 
             &__animation {
                 flex: 1;

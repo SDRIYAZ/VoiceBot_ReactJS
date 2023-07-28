@@ -32,7 +32,7 @@ const Navbar = () => {
                 <section className="homepage__header__section">
                     <article className="homepage__header__section__nav1">
                         <article className="homepage__header__section__nav1__img_spinner">
-                            <img src={logo} alt="123" className="homepage__header__section__nav1__img" />
+                            <Link to="/"><img src={logo} alt="123" className="homepage__header__section__nav1__img" /></Link>
                         </article>
                         <ul className="homepage__header__section__nav1__navcontent">
                            {finalHeaderData.map((element, index) => (

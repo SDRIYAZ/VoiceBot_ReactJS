@@ -1,5 +1,5 @@
 $primary-color: #3d90ef;
-$secondary-color: #f4f4f4;
+$secondary-color: #4646d9;
 $text-color: #3d90ef;
 $font-family: 'Montserrat', sans-serif;
 $font-size: 14px;
@@ -61,6 +61,7 @@ $font-size: 14px;
   max-width: 316px;
   margin-left: auto;
   margin-right: auto;
+  color: white;
 }
 
 .taeb-switch {
@@ -76,7 +77,7 @@ $font-size: 14px;
   transition: left cubic-bezier(.88, -.35, .565, 1.35) .4s;
   border-radius: 27.5px;
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .1);
-  background-color: $primary-color;
+  background-color: #E8DFFF;
   height: 100%;
   z-index: 0;
 }
@@ -108,9 +109,12 @@ $font-size: 14px;
 }
 
 .taeb-switch .taeb.active {
-  color: #ffffff;
+  color: #000000;
 }
 .text-center{
   text-align: center;
-  padding-top: 1rem;
+}
+.login-title{
+  text-align: center;
+  padding: 1rem 0;
 }

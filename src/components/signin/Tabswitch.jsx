@@ -13,7 +13,7 @@ const TabSwitch = ({ switchTab }) => {
 
   return (
     <main>
-      <h2 className="text-center">Login to your account</h2>
+      <h2 className="login-title">Login to your account</h2>
       <div className="wrapper">
         <div className={`taeb-switch ${activeTab} text-center`}>
           <div

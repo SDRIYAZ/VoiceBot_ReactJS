@@ -1,4 +1,4 @@
-import React, { useEffect,useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -96,52 +96,50 @@ const Ui = () => {
     const { phoneNumber, password } = values;
 
     // Make the Axios GET request to fetch the user data for the provided phone number
-    axios
-      .get(`http://localhost:8080/signup_details`)
-      .then((response) => {
-        const userData = response.data;
+    axios.get(`http://localhost:8080/login`).then((response) => {
+      const userData = response.data;
 
-        // Find the user data for the entered phone number
-        const user = userData.find(
-          (user) => user.parentsmobileno === phoneNumber
-        );
-        if (!user) {
-          //   console.log("User not found!");
-          setLoginStatus("User not found!");
+      // Find the user data for the entered phone number
+      const user = userData.find(
+        (user) => user.parentsmobileno === phoneNumber
+      );
+      if (!user) {
+        //   console.log("User not found!");
+        setLoginStatus("User not found!");
 
-          // Handle user not found scenario, e.g., show an error message
-          return;
-        }
+        // Handle user not found scenario, e.g., show an error message
+        return;
+      }
 
-        // Check if the provided password matches the parent's password
-        if (password === user.parentspassword) {
-          //   console.log("Parent login successful!");
-          // Perform any actions or redirect here after successful parent login
-          // setLoginStatus("Parent login successful!");
-          // setChildDetails(null);
-          // return;
-          navigate('/parentspage');
-        }
+      // Check if the provided password matches the parent's password
+      if (password === user.parentspassword) {
+        //   console.log("Parent login successful!");
+        // Perform any actions or redirect here after successful parent login
+        // setLoginStatus("Parent login successful!");
+        // setChildDetails(null);
+        // return;
+        navigate('/parentspage');
+      }
 
-        // Check if the provided password matches any child's password
-        const matchingChild = user.child.find(
-          (child) => child.childpassword === password
-        );
-        if (matchingChild) {
-          //   console.log("Child login successful!");
-          //   console.log("Child Details:", matchingChild);
-          // Perform any actions or redirect here after successful child login
-          // setLoginStatus("Child login successful!");
-          // setChildDetails(matchingChild);
-          // return;
-          navigate('/childpage');
-        }
+      // Check if the provided password matches any child's password
+      const matchingChild = user.child.find(
+        (child) => child.childpassword === password
+      );
+      if (matchingChild) {
+        //   console.log("Child login successful!");
+        //   console.log("Child Details:", matchingChild);
+        // Perform any actions or redirect here after successful child login
+        // setLoginStatus("Child login successful!");
+        // setChildDetails(matchingChild);
+        // return;
+        navigate('/childpage');
+      }
 
-        // console.log("Login failed!");
-        setLoginStatus("Login failed!");
-        setChildDetails(null);
-        // Handle login failure here, e.g., show an error message
-      })
+      // console.log("Login failed!");
+      setLoginStatus("Login failed!");
+      setChildDetails(null);
+      // Handle login failure here, e.g., show an error message
+    })
 
       .catch((error) => {
         console.error("Error occurred during login:", error);
@@ -181,10 +179,10 @@ const Ui = () => {
     const blob = dataURLtoBlob(pictureSrc);
     const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
     setSigninImage(file);
-  
+
     const formData = new FormData();
     formData.append("image", file);
-  
+
     try {
       setLoading(true);
       setError("");
@@ -192,7 +190,7 @@ const Ui = () => {
         method: "POST",
         body: formData,
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         const verified = data.verified;
@@ -211,7 +209,7 @@ const Ui = () => {
       setLoading(false);
     }
   };
-  
+
 
   const dataURLtoBlob = (dataURL) => {
     const byteString = atob(dataURL.split(",")[1]);
@@ -224,121 +222,129 @@ const Ui = () => {
     return new Blob([ab], { type: mimeString });
   };
   return (
-    <section className="signin">
-      <section className="signin__container">
-        <article className="signin__container__form">
-          <article className="signin__container__form__logo">
-            <img src={branelogo} alt="logo" />
-          </article>
-          <article className="signup__container__form__left">
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={handleSubmit}
-            >
-              {({ values }) => (
-                <Form>
-                  <fieldset>
-                    {/* <legend>
+    <section className="bg-signin">
+      <section className="signin">
+        <section className="signin__container">
+          <article className="signin__container__form">
+            <article className="signin__container__form__logo">
+              <Link to="/"><img src={branelogo} alt="logo" /></Link>
+            </article>
+            <article className="signin__container__form__left">
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+              >
+                {({ values }) => (
+                  <Form>
+                    <fieldset>
+                      {/* <legend>
                       Fill Out Form With Speech Recognition (Chrome)
                     </legend> */}
-                    {/* <div id="result">live transcript here ...</div> */}
-                    <button
-                      type="button"
-                      id="toggle"
-                      className={isListening ? "listening" : ""}
-                      onClick={() => setIsListening((prevState) => !prevState)}
-                    >
-                      {isListening ? "Listening ..." : "Toggle listening"}
-                    </button>
-                    <div className="white-box">
-                      <TabSwitch
-                        activeTab={activeTab}
-                        switchTab={setActiveTab}
-                      />
-                      <div className="form-container">
-                        <div className={`tab-content ${activeTab}`}>
-                          {activeTab === "left" && (
-                            <div className="input-wrapper">
-                              <label>
-                                Phone Number
-                                <Field
-                                  type="tel"
-                                  name="phoneNumber"
-                                  onKeyPress={handleKeyPress}
-                                />
-                                <ErrorMessage
-                                  name="phoneNumber"
-                                  component="div"
-                                  className="error"
-                                />
-                              </label>
-                              <label>
-                                Password
-                                <Field
-                                  type="password"
-                                  name="password"
-                                  onKeyPress={handleKeyPress}
-                                />
-                                <ErrorMessage
-                                  name="password"
-                                  component="div"
-                                  className="error"
-                                />
-                              </label>
-                            </div>
-                          )}
-                          {activeTab === "center" && (
-                            <div className="input-wrapper">
-                              <form onSubmit={handleSignup}>
-                                <label>
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    required
-                                    onChange={(e) =>
-                                      setSignupImage(e.target.files[0])
-                                    }
+                      {/* <div id="result">live transcript here ...</div> */}
+                      <button
+                        type="button"
+                        id="toggle"
+                        className={isListening ? "listening" : ""}
+                        onClick={() => setIsListening((prevState) => !prevState)}
+                      >
+                        {isListening ? "Listening ..." : "Toggle listening"}
+                      </button>
+                      <div className="white-box">
+                        <TabSwitch
+                          activeTab={activeTab}
+                          switchTab={setActiveTab}
+                        />
+                        <div className="form-container">
+                          <div className={`tab-content ${activeTab}`}>
+                            {activeTab === "left" && (
+                              <div style={{ padding: "1rem 0" }}>
+                                <div className="input-container">
+                                  <i className="bi bi-telephone icon"></i>
+                                  <Field
+                                    className="input-field"
+                                    type="tel"
+                                    name="phoneNumber"
+                                    onKeyPress={handleKeyPress}
+                                    placeholder="Mobile Number"
                                   />
-                                  <button type="submit" onClick={handleSignup}>Sign Up</button>
-                                </label>
-                              </form>
-                              <form onSubmit={handleSignin}>
-                                <label>
-                                <div className="webcam-container">
-                                  <Webcam
-                                    audio={false}
-                                    ref={webcamRef}
-                                    screenshotFormat="image/jpeg"
-                                  />
-                                  </div>
-                                  <button type="submit"  onClick={handleSignin}> {loading ? "Signing In..." : "Sign In"}</button>
-                                </label>
-                                {verificationStatus&& <p>{verificationStatus}</p>}
-                              </form>
-                            </div>
-                          )}
-                          {activeTab === "right" && (
-                            <div className="input-wrapper">
-                              <label>
-                                Password
-                                <Field
-                                  type="password"
-                                  name="password"
-                                  onKeyPress={handleKeyPress}
-                                />
+                                </div>
                                 <ErrorMessage
-                                  name="password"
-                                  component="div"
+                                  name="phoneNumber"
+                                  component="small"
                                   className="error"
                                 />
-                              </label>
-                            </div>
-                          )}
-                          <button type="submit" id="loginButton">
-                            Login
-                          </button>
-                          {/* <div>
+                                <div className="input-container">
+                                  <i className="bi bi-lock-fill icon"></i>
+                                  <Field
+                                    className="input-field"
+                                    type="password"
+                                    name="password"
+                                    onKeyPress={handleKeyPress}
+                                    placeholder="4 Digit PIN"
+                                  />
+                                </div>
+                                <ErrorMessage
+                                  name="password"
+                                  component="small"
+                                  className="error"
+                                />
+
+                              </div>
+
+
+                            )}
+                            {activeTab === "center" && (
+                              <div className="input-wrapper">
+                                <form onSubmit={handleSignup}>
+                                  <label>
+                                    <input
+                                      type="file"
+                                      accept="image/*"
+                                      required
+                                      onChange={(e) =>
+                                        setSignupImage(e.target.files[0])
+                                      }
+                                    />
+                                    <button type="submit" onClick={handleSignup}>Sign Up</button>
+                                  </label>
+                                </form>
+                                <form onSubmit={handleSignin}>
+                                  <label>
+                                    <div className="webcam-container">
+                                      <Webcam
+                                        audio={false}
+                                        ref={webcamRef}
+                                        screenshotFormat="image/jpeg"
+                                      />
+                                    </div>
+                                    <button type="submit" onClick={handleSignin}> {loading ? "Signing In..." : "Sign In"}</button>
+                                  </label>
+                                  {verificationStatus && <p>{verificationStatus}</p>}
+                                </form>
+                              </div>
+                            )}
+                            {activeTab === "right" && (
+                              <div className="input-wrapper">
+                                <label>
+                                  Password
+                                  <Field
+                                    type="password"
+                                    name="password"
+                                    onKeyPress={handleKeyPress}
+                                  />
+                                  <ErrorMessage
+                                    name="password"
+                                    component="div"
+                                    className="error"
+                                  />
+                                </label>
+                              </div>
+                            )}
+                            <button type="submit" id="loginButton">
+                              Login
+                            </button>
+                            {/* <div>
                                 {loginStatus && (
                                   <p>Login Status: {loginStatus}</p>
                                 )}
@@ -351,17 +357,18 @@ const Ui = () => {
                                   </div>
                                 )}
                               </div> */}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </fieldset>
-                </Form>
-              )}
-            </Formik>
+                    </fieldset>
+                  </Form>
+                )}
+              </Formik>
+              <div>Dont have an Account? <Link to='/signup'>Sign Up</Link></div>
+            </article>
           </article>
-        </article>
-        <article className="signup__container__right">
-          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quas
+          <article className="signup__container__right">
+            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quas
           necessitatibus consequatur itaque veritatis exercitationem voluptatum
           amet, tempora, fugit soluta natus unde. Incidunt animi eveniet est
           illo dolore iusto ipsa vel voluptatibus possimus mollitia. Sed est
@@ -384,9 +391,10 @@ const Ui = () => {
           quidem molestiae atque libero vero labore recusandae tempora adipisci.
           Voluptatibus, nihil beatae sunt similique cum esse minima animi ipsum
           adipisci quibusdam repudiandae provident enim repellendus. */}
-          <img style={{  height: '25rem',  marginTop: '5rem' }} src={image}></img>
-        </article>
-      </section>
+            {/* <img style={{ height: '25rem', marginTop: '5rem' }} src={image}></img> */}
+          </article>
+        </section>
+      </section >
     </section>
   );
 };
