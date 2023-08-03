@@ -32,6 +32,7 @@ const StepTwo = ({ handleNext, isValid, setFieldValue, errors, touched, handleKe
             onChange={(e) => { handleChange(e, "parentspassword") }}
             placeholder="Set 4 digit Pin"
             onKeyPress = {handleKeyPress}
+            maxLength={4}
           />
         </div>
         {
@@ -51,6 +52,7 @@ const StepTwo = ({ handleNext, isValid, setFieldValue, errors, touched, handleKe
             onChange={(e) => { handleChange(e, "parentsconfirmpassword") }}
             placeholder="Re-enter Pin"
             onKeyPress={handleKeyPress}
+            maxLength={4}
           />
         </div>
         {

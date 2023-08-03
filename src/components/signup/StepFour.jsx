@@ -3,13 +3,19 @@ import { Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import VideoRecorder from "./VideoRecorder";
+import VideoRecorderComponent from "./VideoRecorderComponent";
 
 const StepFourSchema = Yup.object().shape({
     child: Yup.array().of(
         Yup.object().shape({
             childname: Yup.string().required("Child's name is required"),
             childsurname: Yup.string().required("Child's surname is required"),
-            childdob: Yup.date().required("Child's date of birth is required"),
+            childdob: Yup.string().required("Child's date of birth is required")
+                .matches(
+                    /^(0?[1-9]|[12]\d|3[01])\/(0?[1-9]|1[0-2])\/\d{4}$/,
+                    "Invalid date format. Please use dd/mm/yyyy."
+                ),
             childgender: Yup.string().required("Child's gender is required"),
             childnationality: Yup.string().required("Child's nationality is required"),
             childclass: Yup.string().notOneOf(["None"], "Please select a class").required("Child's class is required"),
@@ -50,7 +56,7 @@ const validatePasswords = (parentPassword, children) => {
 };
 
 
-const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values, errors, resetForm }) => {
+const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values, errors, touched, resetForm }) => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const handleInputChange = (index, fieldName, fieldValue) => {
         const updatedChild = [...values.child];
@@ -140,7 +146,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "childname", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childname`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors[`child[${index}].childname`] && (
+                            <small>{errors[`child[${index}].childname`]}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-person-fill icon"></i>
@@ -153,7 +161,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "childsurname", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childsurname`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childsurname}</small>
+                        )}
 
                         {/* <div className="signup__container__form__div__form__sec__input-container">
                             <i class="bi bi-calendar-event-fill icon"></i>
@@ -180,8 +190,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "childdob", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childdob`} component="div" /></small>
-
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childdob}</small>
+                        )}
                         {/* <div className="signup__container__form__div__form__sec__input-container">
                             <i
                                 className="bi bi-calendar-event-fill icon"
@@ -222,7 +233,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 <option value="Female">Female</option>
                             </select>
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childgender`} component="small" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childgender}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-globe2 icon"></i>
@@ -235,7 +248,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "childnationality", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childnationality`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childnationality}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-book-half icon"></i>
@@ -255,7 +270,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 <option value="class8">class8</option>
                             </select>
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childclass`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childclass}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-journal-bookmark-fill icon"></i>
@@ -272,7 +289,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 <option value="TS State">TS State</option>
                             </select>
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childsyllabus`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childsyllabus}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-building icon"></i>
@@ -285,7 +304,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "childschool", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childschool`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childschool}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-book-fill icon"></i>
@@ -301,7 +322,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 <option value="English">English</option>
                             </select>
                         </div>
-                        <small><ErrorMessage name={`child[${index}].mediumofinstruction`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].mediumofinstruction}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-journal-text icon"></i>
@@ -314,7 +337,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "firstlanguage", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].firstlanguage`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].firstlanguage}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-journal-text icon"></i>
@@ -327,7 +352,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "secondlanguage", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].secondlanguage`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].secondlanguage}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-journal-text icon"></i>
@@ -340,7 +367,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "thirdlanguage", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].thirdlanguage`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].thirdlanguage}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-key icon"></i>
@@ -349,11 +378,14 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 placeholder="Child Account Password"
                                 name={`child[${index}].childpassword`}
                                 type="password"
+                                maxLength={4}
                                 value={childData.childpassword || ""}
                                 onChange={(e) => handleInputChange(index, "childpassword", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childpassword`} component="div" /></small>
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childpassword}</small>
+                        )}
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-key icon"></i>
@@ -362,12 +394,16 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 placeholder="Re-enter Password"
                                 name={`child[${index}].childconfirmpassword`}
                                 type="password"
+                                maxLength={4}
                                 value={childData.childconfirmpassword || ""}
                                 onChange={(e) => handleInputChange(index, "childconfirmpassword", e.target.value)}
                             />
                         </div>
-                        <small><ErrorMessage name={`child[${index}].childconfirmpassword`} component="div" /></small>
-
+                        {touched.child && touched.child[index] && errors.child && errors.child[index] && (
+                            <small>{errors.child[index].childconfirmpassword}</small>
+                        )}
+                        <VideoRecorderComponent mobileno={values.parentsmobileno} childno={index + 1} />
+                        {/* <VideoRecorder mobileno="9390708854" childno="1" /> */}
                     </article>
                 </article>
             ))}

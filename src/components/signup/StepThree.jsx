@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -14,7 +14,6 @@ const sendOTPSMS = async (mobile, otp) => {
   console.log(url);
   try {
     const response = await axios.get(url);
-    console.log(response.data);
     if (response.data.return === true) {
       return true;
     } else {
@@ -32,17 +31,16 @@ const StepThreeSchema = Yup.object().shape({
   parentsname: Yup.string().required("Name is required"),
   parentssurname: Yup.string().required("Surname is required"),
   parentsalternateno: Yup.string()
-  .required("Alternate no is required")
-  .matches(/^\d{10}$/, "Enter only 10 digits")
-  .test(
-    "uniqueMobileNo",
-    "Alternate mobileno should not match with parentsmobile",
-    function (value) {
-      const { parentsmobileno } = this.parent;
-      return value !== parentsmobileno;
-    }
-  ),
-  parentsalternateotp: Yup.string().required("OTP is required"),
+    .matches(/^\d{10}$/, "Enter only 10 digits")
+    .test(
+      "uniqueMobileNo",
+      "Alternate mobileno should not match with parentsmobile",
+      function (value) {
+        const { parentsmobileno } = this.parent;
+        return value !== parentsmobileno;
+      }
+    ),
+  parentsalternateotp: Yup.string(),
   parentsemail: Yup.string().email("Invalid email").required("Email is required"),
   country: Yup.string().required("Country is required"),
   pincode: Yup.string().required("Pin Code is required"),
@@ -64,12 +62,13 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
   const [generatedOTP, setGeneratedOTP] = useState("");
   const [isFieldsDisabled, setIsFieldsDisabled] = useState(false);
   const [isOTPMatched, setIsOTPMatched] = useState(false);
+  const [isalternatenoentered, setIsAlternateNoEntered] = useState(false)
 
   const generateOtp = async (mobile) => {
-    if(mobile === values.parentsmobileno){
+    if (mobile === values.parentsmobileno) {
       setOtpSent(false);
     }
-    else{
+    else {
       const otp = generateRandomOTP();
       setGeneratedOTP(otp.toString());
       const sent = await sendOTPSMS(mobile, otp);
@@ -84,6 +83,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
     setFieldValue("parentsalternateno", mobileNumber);
 
     if (/^\d{10}$/.test(mobileNumber)) {
+      setIsAlternateNoEntered(true)
       await generateOtp(mobileNumber);
     } else {
       setOtpSent(false);
@@ -154,8 +154,9 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
             id="parentsalternateno"
             name="parentsalternateno"
             onChange={handleMobileNumberChange}
-            placeholder="Alternate Mobileno"
-            onKeyPress = {handleKeyPress}
+            placeholder="Alternate Mobileno (Optional)"
+            onKeyPress={handleKeyPress}
+            maxLength={10}
           />
         </div>
         {
@@ -164,22 +165,27 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
           )
         }
 
-        <div className="signup__container__form__div__form__sec__input-container">
-          <i className="bi bi-telephone icon"></i>
-          <Field
-            className="signup__container__form__div__form__sec__input-container__input-field"
-            type="text"
-            id="parentsalternateotp"
-            name="parentsalternateotp"
-            onChange={handleOTPChange}
-            placeholder="OTP"
-            onKeyPress = {handleKeyPress}
-          />
+        {
+          isalternatenoentered && (
+            <div className="signup__container__form__div__form__sec__input-container">
+              <i className="bi bi-telephone icon"></i>
+              <Field
+                className="signup__container__form__div__form__sec__input-container__input-field"
+                type="text"
+                id="parentsalternateotp"
+                name="parentsalternateotp"
+                onChange={handleOTPChange}
+                placeholder="OTP"
+                onKeyPress={handleKeyPress}
+                maxLength={4}
+              />
 
-        </div>
+            </div>
+          )
+        }
 
         {(isFieldsDisabled && isOTPMatched) ?
-          (<span style={{ position: "relative", top: "-44px", left: "280px" }}><i className="bi bi-check-lg" style={{ color: "green", fontSize: "1.75rem" }}></i>
+          (<span style={{ position: "relative", top: "-44px", left: "280px" }}><i className="fa fa-check-circle" style={{ color: "green", fontSize: "1.75rem" }}></i>
           </span>) :
           (
             (touched.parentsalternateotp && errors.parentsalternateotp) && (
@@ -188,7 +194,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
           )
         }
         {(!isFieldsDisabled && !isOTPMatched && values.parentsalternateotp.length === 4) &&
-          <span style={{ position: "relative", top: "-44px", left: "229px" }}><i className="bi bi-x-lg" style={{ color: "red", fontSize: "1.75rem" }}></i></span>
+          <span style={{ position: "relative", top: "-44px", left: "229px" }}><i className="fa fa-times-circle" style={{ color: "red", fontSize: "1.75rem" }}></i></span>
         }
 
         <div className="signup__container__form__div__form__sec__input-container">

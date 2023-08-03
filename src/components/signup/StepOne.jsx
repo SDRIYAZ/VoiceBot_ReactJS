@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -29,9 +29,24 @@ const sendOTPSMS = async (mobile, otp) => {
 };
 
 const StepOneSchema = Yup.object().shape({
-  parentsmobileno: Yup.string().required("Required").matches(/^\d{10}$/, "Enter only 10 digits"),
+  parentsmobileno: Yup.string()
+    .required("Required")
+    .matches(/^\d{10}$/, "Enter only 10 digits"),
+    // .test("uniqueMobileNumber", "Mobile number already exists", async function (value) {
+    //   if (!/^\d{10}$/.test(value)) {
+    //     return true; // If the digits validation fails, skip mobile number existence check
+    //   }
+
+    //   try {
+    //     const response = await axios.post("http://localhost:8080/ismobileno_matched", { parentsmobileno: value });
+    //     return !(response.data && response.data.match === true);
+    //   } catch (error) {
+    //     return true; // Treat any API error as if the mobile number is unique
+    //   }
+    // }),
   parentsmobileotp: Yup.string().required("Required").matches(/^\d{6}$/, "Enter only 4 digits"),
 });
+
 
 
 const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched, handleKeyPress }) => {
@@ -39,6 +54,7 @@ const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched, 
   const [generatedOTP, setGeneratedOTP] = useState("");
   const [isFieldsDisabled, setIsFieldsDisabled] = useState(false);
   const [isOTPMatched, setIsOTPMatched] = useState(false);
+  const [isMobilenoExists, setIsMobileNoExists] = useState();
 
   const generateOtp = async (mobile) => {
     const otp = generateRandomOTP();
@@ -54,7 +70,15 @@ const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched, 
     setFieldValue("parentsmobileno", mobileNumber);
 
     if (/^\d{10}$/.test(mobileNumber)) {
-      await generateOtp(mobileNumber);
+      const response = await axios.post("http://localhost:8080/ismobileno_matched", { parentsmobileno: mobileNumber })
+      if (response.data && response.data.match === true) {
+        setIsMobileNoExists(true)
+      }
+      else {
+        await generateOtp(mobileNumber);
+        setIsMobileNoExists(false)
+      }
+
     } else {
       setOtpSent(false);
     }
@@ -75,6 +99,13 @@ const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched, 
     }
   };
 
+  const handleResendOTP = async () => {
+    const mobileNumber = values.parentsmobileno;
+    await generateOtp(mobileNumber);
+    setIsFieldsDisabled(false);
+    setIsOTPMatched(false);
+  };
+
   return (
     <>
       <h2>Get Started Now</h2>
@@ -89,12 +120,16 @@ const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched, 
             onChange={handleMobileNumberChange}
             placeholder="Mobile Number"
             onKeyPress={handleKeyPress}
+            maxLength={10}
           />
         </div>
         {
-          (touched.parentsmobileno && errors.parentsmobileno) &&(
+          (touched.parentsmobileno && errors.parentsmobileno) && (
             <small>{errors.parentsmobileno}</small>
-          )
+          ) 
+        }
+        {
+          (isMobilenoExists) && <small>Mobile Number Already Exists</small>
         }
 
         <div className="signup__container__form__div__form__sec__input-container">
@@ -107,28 +142,38 @@ const StepOne = ({ handleNext, isValid, setFieldValue, values, errors, touched, 
             onChange={handleOTPChange}
             placeholder="OTP"
             onKeyPress={handleKeyPress}
+            maxLength={4}
           />
 
         </div>
 
         {(isFieldsDisabled && isOTPMatched) ?
-          (<span style={{ position: "relative", top: "-44px", left: "280px"}}><i className="bi bi-check-lg" style={{ color: "green", fontSize:"1.75rem" }}></i>
+          (<span style={{ position: "relative", top: "-44px", left: "280px" }}><i className="fa fa-check-circle" style={{ color: "green", fontSize: "1.75rem" }}></i>
           </span>) :
           (
-            (touched.parentsmobileotp && errors.parentsmobileotp) &&(
-                <small>{errors.parentsmobileotp}</small>
-              )
+            (touched.parentsmobileotp && errors.parentsmobileotp) && (
+              <small>{errors.parentsmobileotp}</small>
+            )
           )
         }
         {(!isFieldsDisabled && !isOTPMatched && values.parentsmobileotp.length === 4) &&
-          <span style={{ position: "relative", top: "-44px", left: "182px"}}><i className="bi bi-x-lg" style={{ color: "red", fontSize:"1.75rem" }}></i></span>
+          <span style={{ position: "relative", top: "-44px", left: "182px" }}><i className="fa fa-times-circle" style={{ color: "red", fontSize: "1.75rem" }}></i></span>
         }
       </article>
+      {(!otpSent && values.parentsmobileno.length === 10 && !isMobilenoExists) && (
+        <button
+          className="signup__container__form__div__button"
+          type="button"
+          onClick={handleResendOTP}
+        >
+          Resend OTP
+        </button>
+      )}
 
-      <button 
+      <button
         className="signup__container__form__div__button"
-        type="button" 
-        onClick={()=>handleNext("step1")} disabled={!isOTPMatched}
+        type="button"
+        onClick={() => handleNext("step1")} disabled={!isOTPMatched}
       >
         Next
       </button>

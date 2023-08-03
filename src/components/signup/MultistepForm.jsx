@@ -184,6 +184,7 @@ const MultistepForm = () => {
                       values={values}
                       errors={errors}
                       resetForm={resetForm}
+                      touched={touched}
                     />
                   )}
                 </Form>

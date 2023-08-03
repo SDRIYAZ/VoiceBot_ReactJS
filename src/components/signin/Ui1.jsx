@@ -159,19 +159,6 @@ const Ui = () => {
       e.preventDefault();
     }
   };
-  const handleSignup = (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append("image", signupImage);
-
-    fetch("http://localhost:8000/signup", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
-  };
 
   const handleSignin = async (event) => {
     event.preventDefault();
@@ -186,7 +173,7 @@ const Ui = () => {
     try {
       setLoading(true);
       setError("");
-      const response = await fetch("http://localhost:8000/signin", {
+      const response = await fetch("http://127.0.0.1:8000/signin", {
         method: "POST",
         body: formData,
       });
@@ -289,40 +276,43 @@ const Ui = () => {
                                   component="small"
                                   className="error"
                                 />
-
+                                <button type="submit" id="loginButton">
+                                  Login
+                                </button>
                               </div>
 
 
                             )}
                             {activeTab === "center" && (
-                              <div className="input-wrapper">
-                                <form onSubmit={handleSignup}>
-                                  <label>
-                                    <input
-                                      type="file"
-                                      accept="image/*"
-                                      required
-                                      onChange={(e) =>
-                                        setSignupImage(e.target.files[0])
-                                      }
+                              <form onSubmit={handleSignin}>
+                                <div className="input-container">
+                                  <i className="bi bi-telephone icon"></i>
+                                  <Field
+                                    className="input-field"
+                                    type="tel"
+                                    name="phoneNumber"
+                                    onKeyPress={handleKeyPress}
+                                    placeholder="Mobile Number"
+                                  />
+                                </div>
+                                <ErrorMessage
+                                  name="phoneNumber"
+                                  component="small"
+                                  className="error"
+                                />
+                                <label>
+                                  <div className="webcam-container">
+                                    <Webcam
+                                      audio={false}
+                                      ref={webcamRef}
+                                      screenshotFormat="image/jpeg"
                                     />
-                                    <button type="submit" onClick={handleSignup}>Sign Up</button>
-                                  </label>
-                                </form>
-                                <form onSubmit={handleSignin}>
-                                  <label>
-                                    <div className="webcam-container">
-                                      <Webcam
-                                        audio={false}
-                                        ref={webcamRef}
-                                        screenshotFormat="image/jpeg"
-                                      />
-                                    </div>
-                                    <button type="submit" onClick={handleSignin}> {loading ? "Signing In..." : "Sign In"}</button>
-                                  </label>
-                                  {verificationStatus && <p>{verificationStatus}</p>}
-                                </form>
-                              </div>
+                                  </div>
+                                  <button type="submit" onClick={handleSignin}> {loading ? "Signing In..." : "Sign In"}</button>
+                                </label>
+                                {verificationStatus && <p>{verificationStatus}</p>}
+                              </form>
+
                             )}
                             {activeTab === "right" && (
                               <div className="input-wrapper">
@@ -341,9 +331,9 @@ const Ui = () => {
                                 </label>
                               </div>
                             )}
-                            <button type="submit" id="loginButton">
-                              Login
-                            </button>
+                            {/* <button type="submit" id="loginButton">
+                            Login
+                          </button> */}
                             {/* <div>
                                 {loginStatus && (
                                   <p>Login Status: {loginStatus}</p>
@@ -395,7 +385,7 @@ const Ui = () => {
           </article>
         </section>
       </section >
-    </section>
+    </section >
   );
 };
 
