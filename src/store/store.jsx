@@ -5,15 +5,21 @@ import ourprojectsSlice from "reducers/homepage/ourprojects";
 import ourparentsvoiceSlice from "reducers/homepage/parentsvoice";
 import leadersvoiceSlice from "reducers/homepage/leadersvoice";
 import newsletterSlice from "reducers/homepage/newsletter";
+import navbarSlice from "./reducers/landingpage/navbar";
+import leftmenuSlice from "./reducers/landingpage/leftmenu";
+import bodySlice from "./reducers/landingpage/body";
 
 const HomePageStore = configureStore({
   reducer: {
     homepage_header: headerSlice.reducer,
     homepage_banner: bannerSlice.reducer,
-    homepage_ourprojects : ourprojectsSlice.reducer,
-    homepage_parentsvoice :ourparentsvoiceSlice.reducer,
-    homepage_newsletter : newsletterSlice.reducer,
-    homepage_leadersvoice : leadersvoiceSlice.reducer,
+    homepage_ourprojects: ourprojectsSlice.reducer,
+    homepage_parentsvoice: ourparentsvoiceSlice.reducer,
+    homepage_newsletter: newsletterSlice.reducer,
+    homepage_leadersvoice: leadersvoiceSlice.reducer,
+    landingpage_navbar: navbarSlice.reducer,
+    landingpage_leftmenu: leftmenuSlice.reducer,
+    ladingpage_body: bodySlice.reducer
   },
 });
 export default HomePageStore;

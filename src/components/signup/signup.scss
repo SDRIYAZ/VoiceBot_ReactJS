@@ -2,6 +2,7 @@ $inputboxcolor: #F0EDFFCC;
 $animation: #7c69f2;
 $primarycolor: white;
 $stepscolor: #14cc57;
+$textcolor: black;
 
 * {
     box-sizing: border-box;
@@ -231,6 +232,18 @@ $stepscolor: #14cc57;
                         background-color: #a69ed6;
                         cursor:not-allowed;
                     }
+                }
+
+                &__geolocationbtn{
+                    background-color: $primarycolor;
+                    padding: .75rem 1rem;
+                    color: $textcolor;
+                    border: 2px solid $inputboxcolor;
+                    margin: 0.5rem 0;
+                    cursor: pointer;
+                    width: 100%;
+                    // font-size: .9rem;
+                    
                 }
 
 

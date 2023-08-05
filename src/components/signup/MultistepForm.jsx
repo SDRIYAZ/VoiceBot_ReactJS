@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const MultistepForm = () => {
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(4);
+  const [currentStep, setCurrentStep] = useState(3);
   const totalSteps = 4;
 
   const initialValues = {
@@ -49,6 +49,7 @@ const MultistepForm = () => {
         thirdlanguage: "",
         childpassword: "",
         childconfirmpassword: "",
+        childimageurl:"",
       },
     ],
   };

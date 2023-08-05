@@ -445,7 +445,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 1rem 0 1rem;
+    margin: 0 1rem 0.5rem 1rem;
   }
   .homepage__header__section__hamburger button {
     border: none;
@@ -471,7 +471,7 @@
     width: 90%;
   }
   .homepage__ourfeatures__section__container__card {
-    width: 30%;
+    width: 29.5%;
   }
   .homepage__ourfeatures__section__container__card-bottom {
     font-size: 1.5vw;

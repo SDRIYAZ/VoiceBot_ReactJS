@@ -87,6 +87,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
       await generateOtp(mobileNumber);
     } else {
       setOtpSent(false);
+      setIsAlternateNoEntered(false)
     }
   };
 
@@ -102,6 +103,64 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
       }
     } else {
       setIsOTPMatched(false); // Handle the case when OTP is not 4 digits
+    }
+  };
+
+  // Function to fetch address details using OpenCage Geocoding API
+  const fetchAddressDetails = async (latitude, longitude) => {
+    const API_KEY_GEOLOCATION = "8a3404f050d14aab85555765ba3346ca";
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY_GEOLOCATION}`;
+
+    try {
+      const response = await axios.get(url);
+      const data = response.data;
+      if (data.results && data.results.length > 0) {
+        const result = data.results[0];
+        const address = {
+          country: result.components.country,
+          state: result.components.state,
+          city: result.components.city,
+          pincode: result.components.postcode,
+          address: result.formatted,
+          district: result.components.state_district,
+        };
+        return address;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching address details", error);
+      return null;
+    }
+  };
+
+
+  const handleGetLocation = async () => {
+    if ("geolocation" in navigator) {
+      try {
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+
+        const { latitude, longitude } = position.coords;
+        const address = await fetchAddressDetails(latitude, longitude);
+        if (address) {
+          // Update the relevant input fields with the address details
+          setFieldValue("country", address.country);
+          setFieldValue("state", address.state);
+          setFieldValue("city", address.city);
+          setFieldValue("pincode", address.pincode);
+          setFieldValue("address", address.address);
+          setFieldValue("district", address.district)
+        } else {
+          alert("Failed to get address details. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error getting location", error);
+        alert("An error occurred while getting the location. Please try again.");
+      }
+    } else {
+      alert("Geolocation is not available in your browser.");
     }
   };
 
@@ -214,6 +273,14 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
             <small>{errors.parentsemail}</small>
           )
         }
+        <button 
+          type="button" 
+          className="signup__container__form__div__geolocationbtn" 
+          onClick={handleGetLocation}
+        >
+          <i className="bi bi-geo-alt-fill"></i>&nbsp;
+          Click here to get Current Location
+        </button>
 
         <div className="signup__container__form__div__form__sec__input-container">
           <i className="bi bi-globe2 icon"></i>

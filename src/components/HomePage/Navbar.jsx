@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getHomepageHeader } from "services/homepage_services/getHomepageHeader";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // Developer Name Sairam
 const Navbar = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const header = useSelector((state) => state.homepage_header);
     const { data, loading, isSuccess, message } = header;
@@ -32,7 +33,7 @@ const Navbar = () => {
                 <section className="homepage__header__section">
                     <article className="homepage__header__section__nav1">
                         <article className="homepage__header__section__nav1__img_spinner">
-                            <Link to="/"><img src={logo} alt="123" className="homepage__header__section__nav1__img" /></Link>
+                            <Link to="/"><img src={logo} alt="123" width={170} height={46} className="homepage__header__section__nav1__img" /></Link>
                         </article>
                         <ul className="homepage__header__section__nav1__navcontent">
                            {finalHeaderData.map((element, index) => (
@@ -65,8 +66,8 @@ const Navbar = () => {
                                     ))}
                                 </ul>
                                 <div className="dropdown-btns">
-                                    <button>Login</button>
-                                    <button>Sing Up</button>
+                                    <button onClick={()=> navigate('/login')}>Login</button>
+                                    <button onClick={()=> navigate('/signup')}>Sing Up</button>
                                 </div>
                             </div>
                         )}

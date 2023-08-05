@@ -556,7 +556,7 @@ $color8: #9a9797;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    margin: 0 1rem 0 1rem;
+                    margin: 0 1rem 0.5rem 1rem;
 
                     button {
                         border: none;
@@ -600,7 +600,7 @@ $color8: #9a9797;
 
                 &__container {
                     &__card {
-                        width: 30%;
+                        width: 29.5%;
 
                         &-bottom {
                             font-size: 1.5vw;

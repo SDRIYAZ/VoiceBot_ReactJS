@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import VideoRecorder from "./VideoRecorder";
 import VideoRecorderComponent from "./VideoRecorderComponent";
+import TakeImage from "./TakeImage";
 
 const StepFourSchema = Yup.object().shape({
     child: Yup.array().of(
@@ -58,11 +59,18 @@ const validatePasswords = (parentPassword, children) => {
 
 const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values, errors, touched, resetForm }) => {
     const [showDatePicker, setShowDatePicker] = useState(false);
+    const [imageURL, setImageURL] = useState("")
     const handleInputChange = (index, fieldName, fieldValue) => {
         const updatedChild = [...values.child];
         updatedChild[index] = { ...updatedChild[index], [fieldName]: fieldValue };
         setFieldValue("child", updatedChild);
     };
+
+    const handleSetChildImageURL = (index, imageURL) => {
+        const updatedChild = [...values.child];
+        updatedChild[index] = { ...updatedChild[index], childimageurl: imageURL };
+        setFieldValue("child", updatedChild);
+      };
 
     const handleAddChild = () => {
         const updatedChild = [...values.child, {}];
@@ -193,7 +201,7 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].childdob}</small>
                         )}
-                        {/* <div className="signup__container__form__div__form__sec__input-container">
+                         {/* <div className="signup__container__form__div__form__sec__input-container">
                             <i
                                 className="bi bi-calendar-event-fill icon"
                                 onClick={() => setShowDatePicker(true)}
@@ -202,10 +210,12 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 className="signup__container__form__div__form__sec__input-container__input-field"
                                 placeholder="Date of Birth (dd/mm/yyyy)"
                                 name={`child[${index}].childdob`}
-                                type="text"
+                                type="date"
                                 value={childData.childdob || ""}
                                 onChange={(e) => handleInputChange(index, "childdob", e.target.value)}
                             />
+                        </div> */}
+                            {/*
                             {showDatePicker && (
                                 <DatePicker
                                     // className="signup__container__form__div__form__sec__input-container__input-field"
@@ -402,7 +412,10 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].childconfirmpassword}</small>
                         )}
-                        <VideoRecorderComponent mobileno={values.parentsmobileno} childno={index + 1} />
+                        <TakeImage mobileno={values.parentsmobileno} childno={index+1} setChildImageURL={handleSetChildImageURL} />
+                        
+                        {/* <VideoRecorder mobileno={values.parentsmobileno} childno={index + 1} /> */}
+                        {/* <VideoRecorderComponent mobileno={values.parentsmobileno} childno={index + 1} /> */}
                         {/* <VideoRecorder mobileno="9390708854" childno="1" /> */}
                     </article>
                 </article>

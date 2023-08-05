@@ -192,6 +192,15 @@
   background-color: #a69ed6;
   cursor: not-allowed;
 }
+.signup__container__form__div__geolocationbtn {
+  background-color: white;
+  padding: 0.75rem 1rem;
+  color: black;
+  border: 2px solid rgba(240, 237, 255, 0.8);
+  margin: 0.5rem 0;
+  cursor: pointer;
+  width: 100%;
+}
 .signup__container__form__div__steps p {
   text-align: center;
   padding: 1rem 0;

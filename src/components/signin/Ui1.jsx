@@ -160,42 +160,108 @@ const Ui = () => {
     }
   };
 
+  
+  // const handleSignin = async (event) => {
+  //   event.preventDefault();
+  //   const pictureSrc = webcamRef.current.getScreenshot();
+  //   const blob = dataURLtoBlob(pictureSrc);
+  //   const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
+  //   setSigninImage(file);
+
+  //   // Convert the image file to base64
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = async () => {
+  //     const base64Image = reader.result; // This will contain the base64 representation of the image
+
+  //     // Now you can send the base64Image to your server or perform any other action
+  //     // For example, you can use axios to send it as a part of your formData
+  //     const formData = new FormData();
+  //     formData.append("image_file", base64Image.split(',')[1]);
+  //     formData.append("mobile_number", "8290393139");
+  //     // console.log(base64Image)
+  //     // formData.append("base64Image", base64Image); // Append the base64 image to the formData
+
+  //     try {
+  //       setLoading(true);
+  //       setError("");
+  //       const response = await axios.post(
+  //         "http://127.0.0.1:8000/signin/",
+  //         formData,
+  //         {
+  //           headers: {
+  //             "Content-Type": "multipart/form-data",
+  //           },
+  //         }
+  //       );
+  //       console.log(response)
+  //       if (response.ok) {
+  //         console.log(response)
+  //         const data = await response.json();
+  //         const verified = data.verified;
+  //         if (verified) {
+  //           setVerificationStatus("Login successful");
+  //         } else {
+  //           setVerificationStatus("Login failed");
+  //         }
+  //       } else {
+  //         setError("Error during sign-in");
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //       setError("An error occurred");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  
+  //   // The rest of your code...
+  // };
+  
   const handleSignin = async (event) => {
     event.preventDefault();
     const pictureSrc = webcamRef.current.getScreenshot();
-    const blob = dataURLtoBlob(pictureSrc);
-    const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
-    setSigninImage(file);
+    // const blob = dataURLtoBlob(pictureSrc);
+    // const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
+    // setSigninImage(file);
 
     const formData = new FormData();
-    formData.append("image", file);
-
+    formData.append("image_file", pictureSrc.split(",")[1]);
+    formData.append("mobile_number", "8290393139")
     try {
       setLoading(true);
       setError("");
-      const response = await fetch("http://127.0.0.1:8000/signin", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const verified = data.verified;
-        if (verified) {
-          setVerificationStatus("Login successful");
-        } else {
-          setVerificationStatus("Login failed");
+      const response = await axios.post(
+        "http://127.0.0.1:8000/signin/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      } else {
-        setError("Error during sign-in");
+      );
+      console.log(response)
+      if(response.statusText == "OK"){
+        const response_message = response.data.message;
+        console.log(response_message)
+        if(response_message){
+          const child_number = response.data.child;
+          navigate(`/childpage`)
+        }else{
+          setVerificationStatus("login failed")
+        }
       }
-    } catch (error) {
-      console.error(error);
-      setError("An error occurred");
-    } finally {
-      setLoading(false);
-    }
-  };
+      else{
+        setError("Error During Signin")
+      }
+  }
+  catch(err){
+    setError("login failed")
+  }
+  finally{
+    setLoading(false)
+  }
+}
 
 
   const dataURLtoBlob = (dataURL) => {
@@ -310,7 +376,7 @@ const Ui = () => {
                                   </div>
                                   <button type="submit" onClick={handleSignin}> {loading ? "Signing In..." : "Sign In"}</button>
                                 </label>
-                                {verificationStatus && <p>{verificationStatus}</p>}
+                                {verificationStatus && <div style={{    fontSize: "1.35rem",color: "red",paddingTop: "1rem"}}>{verificationStatus}</div>}
                               </form>
 
                             )}
