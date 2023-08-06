@@ -160,7 +160,7 @@ const Ui = () => {
     }
   };
 
-  
+
   // const handleSignin = async (event) => {
   //   event.preventDefault();
   //   const pictureSrc = webcamRef.current.getScreenshot();
@@ -214,10 +214,10 @@ const Ui = () => {
   //       setLoading(false);
   //     }
   //   };
-  
+
   //   // The rest of your code...
   // };
-  
+
   const handleSignin = async (event) => {
     event.preventDefault();
     const pictureSrc = webcamRef.current.getScreenshot();
@@ -241,27 +241,27 @@ const Ui = () => {
         }
       );
       console.log(response)
-      if(response.statusText == "OK"){
+      if (response.statusText == "OK") {
         const response_message = response.data.message;
         console.log(response_message)
-        if(response_message){
+        if (response_message) {
           const child_number = response.data.child;
           navigate(`/childpage`)
-        }else{
+        } else {
           setVerificationStatus("login failed")
         }
       }
-      else{
+      else {
         setError("Error During Signin")
       }
+    }
+    catch (err) {
+      setError("login failed")
+    }
+    finally {
+      setLoading(false)
+    }
   }
-  catch(err){
-    setError("login failed")
-  }
-  finally{
-    setLoading(false)
-  }
-}
 
 
   const dataURLtoBlob = (dataURL) => {
@@ -273,6 +273,14 @@ const Ui = () => {
       ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ab], { type: mimeString });
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = (field) => {
+    if (field === "password") {
+      setShowPassword((prev) => !prev);
+    }
   };
   return (
     <section className="bg-signin">
@@ -330,12 +338,16 @@ const Ui = () => {
                                 <div className="input-container">
                                   <i className="bi bi-lock-fill icon"></i>
                                   <Field
-                                    className="input-field"
-                                    type="password"
+                                    className="input-field-password"
+                                    type={showPassword ? "text" : "password"}
                                     name="password"
                                     onKeyPress={handleKeyPress}
                                     placeholder="4 Digit PIN"
                                   />
+                                  <i
+                                    className={`bi bi-eye${showPassword ? "-slash" : ""} password-icon`}
+                                    onClick={() => togglePasswordVisibility("password")}
+                                  ></i>
                                 </div>
                                 <ErrorMessage
                                   name="password"
@@ -376,7 +388,7 @@ const Ui = () => {
                                   </div>
                                   <button type="submit" onClick={handleSignin}> {loading ? "Signing In..." : "Sign In"}</button>
                                 </label>
-                                {verificationStatus && <div style={{    fontSize: "1.35rem",color: "red",paddingTop: "1rem"}}>{verificationStatus}</div>}
+                                {verificationStatus && <div style={{ fontSize: "1.35rem", color: "red", paddingTop: "1rem" }}>{verificationStatus}</div>}
                               </form>
 
                             )}

@@ -147,6 +147,15 @@
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
+.signup__container__form__div__form__sec__input-container .password-icon {
+  padding: 0.75rem 0;
+  background: rgba(240, 237, 255, 0.8);
+  color: black;
+  min-width: 40px;
+  text-align: center;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
 .signup__container__form__div__form__sec__input-container__input-field {
   width: 100%;
   padding: 0.75rem 0;
@@ -155,6 +164,13 @@
   background-color: rgba(240, 237, 255, 0.8);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+}
+.signup__container__form__div__form__sec__input-container__input-field-password {
+  width: 100%;
+  padding: 0.75rem 0;
+  border: none;
+  outline: none;
+  background-color: rgba(240, 237, 255, 0.8);
 }
 .signup__container__form__div__form__sec__input-container input[type=date] {
   padding: 0.75rem;

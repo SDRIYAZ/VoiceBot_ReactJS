@@ -21,7 +21,6 @@ const StepFourSchema = Yup.object().shape({
             childnationality: Yup.string().required("Child's nationality is required"),
             childclass: Yup.string().notOneOf(["None"], "Please select a class").required("Child's class is required"),
             childsyllabus: Yup.string().notOneOf(["None"], "Please select a syllabus").required("Child's syllabus is required"),
-            childschool: Yup.string().required("Child's school/college name is required"),
             mediumofinstruction: Yup.string().notOneOf(["None"], "Please select a medium of instruction").required("Medium of instruction is required"),
             firstlanguage: Yup.string().required("Child's first language is required"),
             secondlanguage: Yup.string().required("Child's second language is required"),
@@ -70,7 +69,7 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
         const updatedChild = [...values.child];
         updatedChild[index] = { ...updatedChild[index], childimageurl: imageURL };
         setFieldValue("child", updatedChild);
-      };
+    };
 
     const handleAddChild = () => {
         const updatedChild = [...values.child, {}];
@@ -118,6 +117,25 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
         const updatedChild = [...values.child];
         updatedChild.splice(index, 1); // Remove the child at the specified index
         setFieldValue("child", updatedChild);
+    };
+
+    const [showPassword, setShowPassword] = useState(values.child.map(() => false)); // Array to store visibility state for each child's password
+    const [showConfirmPassword, setShowConfirmPassword] = useState(values.child.map(() => false)); // Array to store visibility state for each child's confirm password
+
+    const togglePasswordVisibility = (field, index) => {
+        if (field === "childpassword") {
+            setShowPassword((prevShowPassword) => {
+                const updatedShowPassword = [...prevShowPassword];
+                updatedShowPassword[index] = !updatedShowPassword[index];
+                return updatedShowPassword;
+            });
+        } else if (field === "childconfirmpassword") {
+            setShowConfirmPassword((prevShowConfirmPassword) => {
+                const updatedShowConfirmPassword = [...prevShowConfirmPassword];
+                updatedShowConfirmPassword[index] = !updatedShowConfirmPassword[index];
+                return updatedShowConfirmPassword;
+            });
+        }
     };
 
     return (
@@ -201,7 +219,7 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].childdob}</small>
                         )}
-                         {/* <div className="signup__container__form__div__form__sec__input-container">
+                        {/* <div className="signup__container__form__div__form__sec__input-container">
                             <i
                                 className="bi bi-calendar-event-fill icon"
                                 onClick={() => setShowDatePicker(true)}
@@ -215,7 +233,7 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "childdob", e.target.value)}
                             />
                         </div> */}
-                            {/*
+                        {/*
                             {showDatePicker && (
                                 <DatePicker
                                     // className="signup__container__form__div__form__sec__input-container__input-field"
@@ -307,7 +325,7 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                             <i className="bi bi-building icon"></i>
                             <Field
                                 className="signup__container__form__div__form__sec__input-container__input-field"
-                                placeholder="School/College Name"
+                                placeholder="School/College Name (Optional)"
                                 name={`child[${index}].childschool`}
                                 type="text"
                                 value={childData.childschool || ""}
@@ -380,40 +398,50 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].thirdlanguage}</small>
                         )}
-
+                        {/* Render the child password input field */}
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-key icon"></i>
                             <Field
-                                className="signup__container__form__div__form__sec__input-container__input-field"
+                                className="signup__container__form__div__form__sec__input-container__input-field-password"
                                 placeholder="Child Account Password"
                                 name={`child[${index}].childpassword`}
-                                type="password"
+                                type={showPassword[index] ? "text" : "password"} // Use the showPassword state to toggle visibility
                                 maxLength={4}
                                 value={childData.childpassword || ""}
                                 onChange={(e) => handleInputChange(index, "childpassword", e.target.value)}
                             />
+                            <i
+                                className={`bi bi-eye${showPassword[index] ? "-slash" : ""} password-icon`}
+                                onClick={() => togglePasswordVisibility("childpassword", index)}
+                            ></i>
                         </div>
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].childpassword}</small>
                         )}
 
+                        {/* Render the child confirm password input field */}
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-key icon"></i>
                             <Field
-                                className="signup__container__form__div__form__sec__input-container__input-field"
+                                className="signup__container__form__div__form__sec__input-container__input-field-password"
                                 placeholder="Re-enter Password"
                                 name={`child[${index}].childconfirmpassword`}
-                                type="password"
+                                type={showConfirmPassword[index] ? "text" : "password"} // Use the showConfirmPassword state to toggle visibility
                                 maxLength={4}
                                 value={childData.childconfirmpassword || ""}
                                 onChange={(e) => handleInputChange(index, "childconfirmpassword", e.target.value)}
                             />
+                            <i
+                                className={`bi bi-eye${showConfirmPassword[index] ? "-slash" : ""} password-icon`}
+                                onClick={() => togglePasswordVisibility("childconfirmpassword", index)}
+                            ></i>
                         </div>
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].childconfirmpassword}</small>
                         )}
-                        <TakeImage mobileno={values.parentsmobileno} childno={index+1} setChildImageURL={handleSetChildImageURL} />
-                        
+
+                        <TakeImage mobileno={values.parentsmobileno} childno={index + 1} setChildImageURL={handleSetChildImageURL} />
+
                         {/* <VideoRecorder mobileno={values.parentsmobileno} childno={index + 1} /> */}
                         {/* <VideoRecorderComponent mobileno={values.parentsmobileno} childno={index + 1} /> */}
                         {/* <VideoRecorder mobileno="9390708854" childno="1" /> */}
