@@ -8,6 +8,7 @@ import newsletterSlice from "reducers/homepage/newsletter";
 import navbarSlice from "./reducers/landingpage/navbar";
 import leftmenuSlice from "./reducers/landingpage/leftmenu";
 import bodySlice from "./reducers/landingpage/body";
+import signUpDataSlice from "./reducers/signup/signupdata";
 
 const HomePageStore = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const HomePageStore = configureStore({
     homepage_parentsvoice: ourparentsvoiceSlice.reducer,
     homepage_newsletter: newsletterSlice.reducer,
     homepage_leadersvoice: leadersvoiceSlice.reducer,
+    signupdata_slice: signUpDataSlice.reducer,
     landingpage_navbar: navbarSlice.reducer,
     landingpage_leftmenu: leftmenuSlice.reducer,
     ladingpage_body: bodySlice.reducer

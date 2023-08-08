@@ -218,16 +218,17 @@ const Ui = () => {
   //   // The rest of your code...
   // };
 
-  const handleSignin = async (event) => {
+  const handleSignin = async (event, values) => {
     event.preventDefault();
     const pictureSrc = webcamRef.current.getScreenshot();
+    const {phoneNumber} = values;
     // const blob = dataURLtoBlob(pictureSrc);
     // const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
     // setSigninImage(file);
 
     const formData = new FormData();
     formData.append("image_file", pictureSrc.split(",")[1]);
-    formData.append("mobile_number", "8290393139")
+    formData.append("mobile_number", phoneNumber)
     try {
       setLoading(true);
       setError("");
@@ -386,7 +387,7 @@ const Ui = () => {
                                       screenshotFormat="image/jpeg"
                                     />
                                   </div>
-                                  <button type="submit" onClick={handleSignin}> {loading ? "Signing In..." : "Sign In"}</button>
+                                  <button type="submit" onClick={(e)=>handleSignin(e,values)}> {loading ? "Signing In..." : "Sign In"}</button>
                                 </label>
                                 {verificationStatus && <div style={{ fontSize: "1.35rem", color: "red", paddingTop: "1rem" }}>{verificationStatus}</div>}
                               </form>

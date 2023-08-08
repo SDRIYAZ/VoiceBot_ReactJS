@@ -48,11 +48,12 @@ const StepThreeSchema = Yup.object().shape({
   city: Yup.string().required("City is required"),
   district: Yup.string().required("District is required"),
   address: Yup.string().required("Address is required"),
-  mothertongue: Yup.string().required("Mother Tongue is required"),
+  mothertongue: Yup.string().notOneOf(["None"], "Please select a Mother Tongue").required("Mother Tongue is required"),
 });
 
 
-const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values, errors, touched, handleKeyPress }) => {
+const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values, errors, touched, handleKeyPress, StepThreeData }) => {
+  const { mothertongue_data } = StepThreeData;
   const handleChange = (e, fieldname) => {
     const { value } = e.target
     setFieldValue(fieldname, value)
@@ -273,9 +274,9 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
             <small>{errors.parentsemail}</small>
           )
         }
-        <button 
-          type="button" 
-          className="signup__container__form__div__geolocationbtn" 
+        <button
+          type="button"
+          className="signup__container__form__div__geolocationbtn"
           onClick={handleGetLocation}
         >
           <i className="bi bi-geo-alt-fill"></i>&nbsp;
@@ -335,7 +336,6 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
             <small>{errors.state}</small>
           )
         }
-
         <div className="signup__container__form__div__form__sec__input-container">
           <i className="bi bi-buildings-fill icon"></i>          <Field
             className="signup__container__form__div__form__sec__input-container__input-field"
@@ -390,7 +390,7 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
 
         <div className="signup__container__form__div__form__sec__input-container">
           <i className="bi bi-journal-text icon"></i>
-          <Field
+          <select
             className="signup__container__form__div__form__sec__input-container__input-field"
             type="text"
             id="mothertongue"
@@ -398,7 +398,13 @@ const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values,
             onChange={(e) => handleChange(e, "mothertongue")}
             value={values.mothertongue}
             placeholder="Mother Tongue"
-          />
+          >
+            <option value="none">Mother Tongue</option>
+            {mothertongue_data.map((element, index) => (
+              <option key={index} value={element}>{element}</option>
+            ))}
+
+          </select>
         </div>
         {
           (touched.mothertongue && errors.mothertongue) && (

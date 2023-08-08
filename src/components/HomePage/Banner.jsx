@@ -12,7 +12,7 @@ const Banner = () => {
     useEffect(() => {
         dispatch(getHomepageBanner());
     }, []);
-
+    
     useEffect(() => {
         if (!loading && isSuccess) {
             const [banner_data] = data;

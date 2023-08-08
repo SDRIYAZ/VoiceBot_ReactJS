@@ -31,7 +31,7 @@ const TakeImage = ({mobileno, childno, setChildImageURL}) => {
         const formData = new FormData();
         formData.append("video_file", capturedImage.split(',')[1]);
         console.log(capturedImage.split(',')[1])
-        formData.append("mobile_number", "12221111");
+        formData.append("mobile_number", mobileno);
         formData.append("child_no", childno);
 
         const response = await axios.post(
@@ -89,7 +89,7 @@ const TakeImage = ({mobileno, childno, setChildImageURL}) => {
       {capturedImage && !isUploaded && (
         <div>
           {/* Show the captured image */}
-          <img src={capturedImage} alt="Captured" width={300} height={270} />
+          <img src={capturedImage} alt="Captured" width={270} height={220} />
           <br />
 
           <button type="button" style={{marginRight:"1rem"}} onClick={uploadImage}>Upload Image</button>

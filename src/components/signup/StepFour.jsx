@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import VideoRecorder from "./VideoRecorder";
 import VideoRecorderComponent from "./VideoRecorderComponent";
 import TakeImage from "./TakeImage";
+import AudioRecorder from "./AudioRecorder";
 
 const StepFourSchema = Yup.object().shape({
     child: Yup.array().of(
@@ -22,9 +23,9 @@ const StepFourSchema = Yup.object().shape({
             childclass: Yup.string().notOneOf(["None"], "Please select a class").required("Child's class is required"),
             childsyllabus: Yup.string().notOneOf(["None"], "Please select a syllabus").required("Child's syllabus is required"),
             mediumofinstruction: Yup.string().notOneOf(["None"], "Please select a medium of instruction").required("Medium of instruction is required"),
-            firstlanguage: Yup.string().required("Child's first language is required"),
-            secondlanguage: Yup.string().required("Child's second language is required"),
-            thirdlanguage: Yup.string().required("Child's third language is required"),
+            firstlanguage: Yup.string().notOneOf(["None"], "Please select First Language").required("First Language is required"),
+            secondlanguage: Yup.string().notOneOf(["None"], "Please select Second Language").required("Second Language is required"),
+            thirdlanguage: Yup.string().notOneOf(["None"], "Please select Third Language").required("Third Language is required"),
             childpassword: Yup.string()
                 .required("Required")
                 .matches(/^\d{4}$/, "Password must be a 4-digit pin"),
@@ -56,9 +57,10 @@ const validatePasswords = (parentPassword, children) => {
 };
 
 
-const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values, errors, touched, resetForm }) => {
+const StepFour = ({ StepFourData, handlePrevious, handleSubmit, isValid, setFieldValue, values, errors, touched, resetForm }) => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [imageURL, setImageURL] = useState("")
+    const { firstlanguage_data, secondlanguage_data, thirdlanguage_data, syllabus_data, classes_data, moi_data, nationality_data } = StepFourData;
     const handleInputChange = (index, fieldName, fieldValue) => {
         const updatedChild = [...values.child];
         updatedChild[index] = { ...updatedChild[index], [fieldName]: fieldValue };
@@ -288,14 +290,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "childclass", e.target.value)} required
                             >
                                 <option value="none">Select Class</option>
-                                <option value="class1">class1</option>
-                                <option value="class2">class2</option>
-                                <option value="class3">class3</option>
-                                <option value="class4">class4</option>
-                                <option value="class5">class5</option>
-                                <option value="class6">class6</option>
-                                <option value="class7">class7</option>
-                                <option value="class8">class8</option>
+                                {classes_data.map((element, index) => (
+                                    <option key={index} value={element}>{element}</option>
+                                ))}
                             </select>
                         </div>
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
@@ -311,10 +308,9 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 onChange={(e) => handleInputChange(index, "childsyllabus", e.target.value)}
                             >
                                 <option value="none">Select Syllabus</option>
-                                <option value="CBSE">CBSE</option>
-                                <option value="ICSE">ICSE</option>
-                                <option value="Cambridge">Cambridge</option>
-                                <option value="TS State">TS State</option>
+                                {syllabus_data.map((element, index) => (
+                                    <option key={index} value={element}>{element}</option>
+                                ))}
                             </select>
                         </div>
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
@@ -345,25 +341,31 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                                 required
                             >
                                 <option value="none">Medium of Instruction</option>
-                                <option value="Telugu">Telugu</option>
-                                <option value="Hindi">Hindi</option>
-                                <option value="English">English</option>
+                                {console.log(moi_data)}
+                                {moi_data.map((element, index) => (
+                                    <option key={index} value={element}>{element}</option>
+                                ))}
                             </select>
                         </div>
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].mediumofinstruction}</small>
                         )}
 
+
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-journal-text icon"></i>
-                            <Field
+                            <select
                                 className="signup__container__form__div__form__sec__input-container__input-field"
-                                placeholder="First Language"
                                 name={`child[${index}].firstlanguage`}
                                 type="text"
                                 value={childData.firstlanguage || ""}
                                 onChange={(e) => handleInputChange(index, "firstlanguage", e.target.value)}
-                            />
+                            >
+                                <option value="none">First Language</option>
+                                {firstlanguage_data.map((element, index) => (
+                                    <option key={index} value={element}>{element}</option>
+                                ))}
+                            </select>
                         </div>
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].firstlanguage}</small>
@@ -371,14 +373,18 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-journal-text icon"></i>
-                            <Field
+                            <select
                                 className="signup__container__form__div__form__sec__input-container__input-field"
-                                placeholder="Second Language"
                                 name={`child[${index}].secondlanguage`}
                                 type="text"
                                 value={childData.secondlanguage || ""}
                                 onChange={(e) => handleInputChange(index, "secondlanguage", e.target.value)}
-                            />
+                            >
+                                <option value="none">Second Language</option>
+                                {secondlanguage_data.map((element, index) => (
+                                    <option key={index} value={element}>{element}</option>
+                                ))}
+                            </select>
                         </div>
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].secondlanguage}</small>
@@ -386,14 +392,18 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
 
                         <div className="signup__container__form__div__form__sec__input-container">
                             <i className="bi bi-journal-text icon"></i>
-                            <Field
+                            <select
                                 className="signup__container__form__div__form__sec__input-container__input-field"
-                                placeholder="Third Language"
                                 name={`child[${index}].thirdlanguage`}
                                 type="text"
                                 value={childData.thirdlanguage || ""}
                                 onChange={(e) => handleInputChange(index, "thirdlanguage", e.target.value)}
-                            />
+                            >
+                                <option value="none">Third Language</option>
+                                {thirdlanguage_data.map((element, index) => (
+                                    <option key={index} value={element}>{element}</option>
+                                ))}
+                            </select>
                         </div>
                         {touched.child && touched.child[index] && errors.child && errors.child[index] && (
                             <small>{errors.child[index].thirdlanguage}</small>
@@ -441,7 +451,7 @@ const StepFour = ({ handlePrevious, handleSubmit, isValid, setFieldValue, values
                         )}
 
                         <TakeImage mobileno={values.parentsmobileno} childno={index + 1} setChildImageURL={handleSetChildImageURL} />
-
+                        <AudioRecorder />
                         {/* <VideoRecorder mobileno={values.parentsmobileno} childno={index + 1} /> */}
                         {/* <VideoRecorderComponent mobileno={values.parentsmobileno} childno={index + 1} /> */}
                         {/* <VideoRecorder mobileno="9390708854" childno="1" /> */}
