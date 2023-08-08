@@ -11,7 +11,6 @@ const generateRandomOTP = () => {
 
 const sendOTPSMS = async (mobile, otp) => {
   const url = `https://www.fast2sms.com/dev/bulkV2?authorization=${API_KEY}&variables_values=${otp}&route=otp&numbers=${mobile}`;
-  console.log(url);
   try {
     const response = await axios.get(url);
     if (response.data.return === true) {
@@ -53,7 +52,7 @@ const StepThreeSchema = Yup.object().shape({
 
 
 const StepThree = ({ handlePrevious, handleNext, isValid, setFieldValue, values, errors, touched, handleKeyPress, StepThreeData }) => {
-  const { mothertongue_data } = StepThreeData;
+  const { mothertongue_data=[] } = StepThreeData;
   const handleChange = (e, fieldname) => {
     const { value } = e.target
     setFieldValue(fieldname, value)

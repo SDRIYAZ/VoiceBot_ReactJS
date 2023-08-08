@@ -85,9 +85,10 @@
   min-height: 8.75rem;
   max-height: 18.75rem;
   overflow-y: auto;
-  min-width: 81%;
-  max-width: 90%;
+  min-width: 65%;
+  max-width: 75%;
   padding: 0 2rem 0.5rem;
+  margin: 0 auto;
   /* Handle */
   /* Handle on hover */
 }
@@ -115,6 +116,7 @@
   font-size: 1.5rem;
   color: black;
   padding: 1rem;
+  margin-left: 6rem;
 }
 .signup__container__form__div__form__sec__title div:nth-child(2) button {
   margin: 1rem 1rem 0 0;

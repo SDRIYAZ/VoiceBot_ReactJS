@@ -102,9 +102,10 @@ $textcolor: black;
                         min-height: 8.75rem;
                         max-height: 18.75rem;
                         overflow-y: auto;
-                        min-width: 81%;
-                        max-width: 90%;
+                        min-width: 65%;
+                        max-width: 75%;
                         padding: 0 2rem .5rem;
+                        margin: 0 auto;
 
                         &::-webkit-scrollbar {
                             width: 5px;
@@ -137,6 +138,7 @@ $textcolor: black;
                                 font-size: 1.5rem;
                                 color: black;
                                 padding: 1rem;
+                                margin-left: 6rem;
                             }
 
                             div:nth-child(2) {

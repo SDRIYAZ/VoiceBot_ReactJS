@@ -56,10 +56,8 @@ const MultistepForm = () => {
     }
   }, [loading, isSuccess, data]);
 
-  // console.log(signup_data)
-
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
   const totalSteps = 4;
 
   const initialValues = {
@@ -110,7 +108,6 @@ const MultistepForm = () => {
   };
 
   const handleNext = (step) => {
-    console.log(step)
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
@@ -134,7 +131,6 @@ const MultistepForm = () => {
 
       // If the request is successful, you can handle the next steps or show a success message.
       // For example, you can proceed to the next step or show a success message to the user.
-      console.log("Form submitted successfully");
       setCurrentStep(1);
       resetForm();
       // Add your logic to handle the next steps or success message here.
@@ -208,7 +204,6 @@ const MultistepForm = () => {
                       handleKeyPress={handleKeyPress}
                     />
                   )}
-                  {/* {console.log(signupData[0].StepThreeData)} */}
                   {currentStep === 3 && (
                     <StepThree
                       handlePrevious={handlePrevious}

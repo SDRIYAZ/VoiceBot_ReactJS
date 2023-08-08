@@ -77,14 +77,17 @@ const TakeImage = ({mobileno, childno, setChildImageURL}) => {
           height={270}
         />
       ) : null}
+      <br />
 
       {!capturedImage && !isUploaded && !isWebcamOpen && (
-        <button onClick={openWebcam}>Open Camera</button>
+        <button className="signup__container__form__div__button" onClick={openWebcam}>Open Camera</button>
       )}
+      <br />
 
       {isWebcamOpen && !capturedImage && (
-        <button style={{marginTop:"0"}} onClick={captureImage}>Capture</button>
+        <button className="signup__container__form__div__button" style={{marginTop:"0"}} onClick={captureImage}>Capture</button>
       )}
+      <br />
 
       {capturedImage && !isUploaded && (
         <div>
@@ -92,10 +95,17 @@ const TakeImage = ({mobileno, childno, setChildImageURL}) => {
           <img src={capturedImage} alt="Captured" width={270} height={220} />
           <br />
 
-          <button type="button" style={{marginRight:"1rem"}} onClick={uploadImage}>Upload Image</button>
-          <button type="button" onClick={recaptureImage}>ReCapture</button>
+          <button 
+            type="button" style={{marginRight:"1rem"}} 
+            onClick={uploadImage}
+            className="signup__container__form__div__button"
+          >
+            Upload Image
+          </button>
+          <button className="signup__container__form__div__button" type="button" onClick={recaptureImage}>ReCapture</button>
         </div>
       )}
+      <br />
 
       {isUploaded && (
         <div>
@@ -104,6 +114,7 @@ const TakeImage = ({mobileno, childno, setChildImageURL}) => {
           <img src={capturedImage} alt="Captured" width={300} height={270} />
         </div>
       )}
+      <br />
     </div>
   );
 };

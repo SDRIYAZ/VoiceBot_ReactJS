@@ -341,7 +341,6 @@ const StepFour = ({ StepFourData, handlePrevious, handleSubmit, isValid, setFiel
                                 required
                             >
                                 <option value="none">Medium of Instruction</option>
-                                {console.log(moi_data)}
                                 {moi_data.map((element, index) => (
                                     <option key={index} value={element}>{element}</option>
                                 ))}
@@ -458,7 +457,7 @@ const StepFour = ({ StepFourData, handlePrevious, handleSubmit, isValid, setFiel
                     </article>
                 </article>
             ))}
-            {values.child.length === 1 && <p>At least one child form is required.</p>}
+            {values.child.length === 1 && <p style={{fontSize:".8rem"}}>At least one child form is required.</p>}
             {values.child.length < 5 && (
                 <a style={{ background: "#007DFA" }} className="signup__container__form__div__button" href="#" onClick={handleAddChild}>
                     Add Child

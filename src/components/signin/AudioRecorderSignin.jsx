@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const AudioRecorder = () => {
+const AudioRecorderSignin = () => {
   const [recording, setRecording] = useState(false);
   const [audioBlob, setAudioBlob] = useState(null);
   const mediaRecorderRef = useRef(null);
@@ -64,9 +64,8 @@ const AudioRecorder = () => {
     <div style={{textAlign:"center"}}>
       {audioBlob ? (
         <div>
-          <audio controls src={URL.createObjectURL(audioBlob)} /><br />
+          <audio controls src={URL.createObjectURL(audioBlob)} /><br /><br />
           <button className="signup__container__form__div__button" type="button" onClick={recordAgain}>Record Again</button>
-          <br />
         </div>
       ) : (
         <button
@@ -76,9 +75,9 @@ const AudioRecorder = () => {
           {recording ? "Recording..." : "Record Audio"}
         </button>
       )}
-      <br />
+      <br /><br />
     </div>
   );
 };
 
-export default AudioRecorder;
+export default AudioRecorderSignin;

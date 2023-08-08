@@ -10,6 +10,7 @@ import image from '../../assets/HomePage_Assets/animation.png';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Webcam from "react-webcam";
+import AudioRecorderSignin from "./AudioRecorderSignin";
 
 const Ui = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Ui = () => {
   const [error, setError] = useState("");
   const [verificationStatus, setVerificationStatus] = useState("");
   const webcamRef = useRef(null);
-
+  /*
   useEffect(() => {
     init();
   }, []);
@@ -70,7 +71,7 @@ const Ui = () => {
         }
       });
     }
-  }
+  }*/
 
   const initialValues = {
     phoneNumber: "",
@@ -221,7 +222,7 @@ const Ui = () => {
   const handleSignin = async (event, values) => {
     event.preventDefault();
     const pictureSrc = webcamRef.current.getScreenshot();
-    const {phoneNumber} = values;
+    const { phoneNumber } = values;
     // const blob = dataURLtoBlob(pictureSrc);
     // const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
     // setSigninImage(file);
@@ -298,20 +299,20 @@ const Ui = () => {
                 onSubmit={handleSubmit}
               >
                 {({ values }) => (
-                  <Form>
+                  <Form className="login-form">
                     <fieldset>
                       {/* <legend>
                       Fill Out Form With Speech Recognition (Chrome)
                     </legend> */}
                       {/* <div id="result">live transcript here ...</div> */}
-                      <button
+                      {/* <button
                         type="button"
                         id="toggle"
                         className={isListening ? "listening" : ""}
                         onClick={() => setIsListening((prevState) => !prevState)}
                       >
                         {isListening ? "Listening ..." : "Toggle listening"}
-                      </button>
+                      </button> */}
                       <div className="white-box">
                         <TabSwitch
                           activeTab={activeTab}
@@ -354,8 +355,8 @@ const Ui = () => {
                                   name="password"
                                   component="small"
                                   className="error"
-                                />
-                                <button type="submit" id="loginButton">
+                                /><br></br>
+                                <button className="loginform-btn" type="submit" id="loginButton">
                                   Login
                                 </button>
                               </div>
@@ -363,7 +364,7 @@ const Ui = () => {
 
                             )}
                             {activeTab === "center" && (
-                              <form onSubmit={handleSignin}>
+                              <form className="login-form" onSubmit={handleSignin}>
                                 <div className="input-container">
                                   <i className="bi bi-telephone icon"></i>
                                   <Field
@@ -387,28 +388,32 @@ const Ui = () => {
                                       screenshotFormat="image/jpeg"
                                     />
                                   </div>
-                                  <button type="submit" onClick={(e)=>handleSignin(e,values)}> {loading ? "Signing In..." : "Sign In"}</button>
+                                  <br />
+                                  <button className="loginform-btn" type="submit" onClick={(e) => handleSignin(e, values)}> {loading ? "Signing In..." : "Sign In"}</button>
                                 </label>
                                 {verificationStatus && <div style={{ fontSize: "1.35rem", color: "red", paddingTop: "1rem" }}>{verificationStatus}</div>}
                               </form>
 
                             )}
                             {activeTab === "right" && (
-                              <div className="input-wrapper">
-                                <label>
-                                  Password
+                              <form className="login-form">
+                                <div className="input-container">
+                                  <i className="bi bi-telephone icon"></i>
                                   <Field
-                                    type="password"
-                                    name="password"
+                                    className="input-field"
+                                    type="tel"
+                                    name="phoneNumber"
                                     onKeyPress={handleKeyPress}
+                                    placeholder="Mobile Number"
                                   />
-                                  <ErrorMessage
-                                    name="password"
-                                    component="div"
-                                    className="error"
-                                  />
-                                </label>
-                              </div>
+                                </div>
+                                <ErrorMessage
+                                  name="phoneNumber"
+                                  component="small"
+                                  className="error"
+                                />
+                                <AudioRecorderSignin />
+                              </form>
                             )}
                             {/* <button type="submit" id="loginButton">
                             Login
@@ -437,30 +442,6 @@ const Ui = () => {
             </article>
           </article>
           <article className="signup__container__right">
-            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia quas
-          necessitatibus consequatur itaque veritatis exercitationem voluptatum
-          amet, tempora, fugit soluta natus unde. Incidunt animi eveniet est
-          illo dolore iusto ipsa vel voluptatibus possimus mollitia. Sed est
-          laboriosam, et odit inventore consequatur repellat necessitatibus
-          reiciendis corrupti eaque ab in dolores tempore ex placeat quasi earum
-          omnis sequi unde accusamus? Atque cupiditate esse, aliquam dolore
-          incidunt perferendis quasi nam dolorem in, quidem enim nostrum
-          reprehenderit rem modi sint? Quis nam beatae quos magni ratione
-          commodi eligendi consectetur. Dignissimos adipisci obcaecati
-          doloremque impedit! Alias est numquam vel eius, commodi id. Veniam
-          vitae deleniti et molestiae blanditiis consequuntur vero libero
-          voluptatibus rem similique exercitationem, ex nobis. Maiores itaque
-          omnis quas veritatis voluptatibus. Asperiores labore architecto a
-          saepe quisquam magnam placeat eligendi natus, necessitatibus debitis
-          impedit optio earum possimus aspernatur eius praesentium? Debitis
-          accusantium minus adipisci aspernatur, unde nostrum incidunt vel dicta
-          qui laboriosam eos sed officiis dolore repudiandae facere! Consectetur
-          voluptas explicabo nostrum veniam sit! Eaque ad illum nobis nam
-          nostrum ab voluptatibus et cum eos illo reprehenderit, repudiandae
-          quidem molestiae atque libero vero labore recusandae tempora adipisci.
-          Voluptatibus, nihil beatae sunt similique cum esse minima animi ipsum
-          adipisci quibusdam repudiandae provident enim repellendus. */}
-            {/* <img style={{ height: '25rem', marginTop: '5rem' }} src={image}></img> */}
           </article>
         </section>
       </section >

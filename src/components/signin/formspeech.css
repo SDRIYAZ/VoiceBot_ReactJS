@@ -1,12 +1,7 @@
 * {
   box-sizing: border-box;
 }
-body {
-  --gap: 1rem;
-  font-family: ui-sans-serif, system-ui, snas-serif;
-}
-button {
-  /* background-color: hsl(90, 50%, 30%); */
+.loginform-btn {
   background-color: #4130ae;
   border: 0;
   color: hsl(90, 50%, 95%);
@@ -14,16 +9,11 @@ button {
   padding: 0.75rem 1.25rem;
   border-radius: 0.5rem;
 }
-button.listening {
+.loginform-btn .listening {
   background-color: hsl(0, 50%, 50%);
   color: hsl(0, 50%, 95%);
 }
-code {
-  background: #333;
-  color: lime;
-  display: block;
-  padding: calc(var(--gap) / 2);
-}
+
 fieldset {
   background: #ffffff;
   /* border: 1px solid #bbb; */
@@ -31,25 +21,9 @@ fieldset {
   padding: var(--gap);
   width: 30rem;
 }
-form {
+.login-form {
   margin: 0 auto;
   max-width: 30rem;
-}
-input,
-textarea {
-  border: 1px solid #bbb;
-  display: block;
-  padding: calc(var(--gap) / 2);
-  resize: vertical;
-  width: 100%;
-}
-label {
-  display: block;
-  font-weight: 500;
-  margin-block-start: var(--gap);
-}
-p {
-  font-size: small;
 }
 
 .input-container {
