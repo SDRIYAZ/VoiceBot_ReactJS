@@ -1,0 +1,100 @@
+.videoClassScreenContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 75%;
+}
+
+.TopPart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Midpart {
+  display: flex;
+  justify-content: center;
+}
+
+.PrevNextControls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  margin-left: 4rem;
+}
+
+.control-button {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--button-radius);
+  background-color: #fff; /* Match the background color from VideoPlayerComponent */
+  color: #000; /* Match the text color from VideoPlayerComponent */
+  font-size: var(--font-size);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.control-button:hover {
+  background-color: #f0f0f0; /* Match the hover background color from VideoPlayerComponent */
+  color: #000; /* Match the hover text color from VideoPlayerComponent */
+}
+
+.assessment-button {
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+  border: 0.125rem solid #000; /* Equivalent to 2px in rem */
+  border-radius: var(--button-radius);
+  background-color: #fff; /* Match the background color from VideoPlayerComponent */
+  color: #000; /* Match the text color from VideoPlayerComponent */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.assessment-button:hover {
+  background-color: #000; /* Match the hover background color from VideoPlayerComponent */
+  color: #fff; /* Match the hover text color from VideoPlayerComponent */
+}
+
+.previous-topic,
+.next-topic {
+  padding: 0 1rem;
+  border: 0.125rem solid #000; /* Equivalent to 2px in rem */
+  border-radius: var(--button-radius);
+  background-color: #fff; /* Match the background color from VideoPlayerComponent */
+  color: #000; /* Match the text color from VideoPlayerComponent */
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 1rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.previous-topic:hover,
+.next-topic:hover {
+  background-color: #000; /* Match the hover background color from VideoPlayerComponent */
+  color: #fff; /* Match the hover text color from VideoPlayerComponent */
+}
+
+/* Arrow styles */
+.arrow {
+  font-size: 1.25rem;
+  margin-right: 0.625rem; /* Equivalent to 10px in rem */
+}
+
+.assessmenticon {
+  width: 2.2rem;
+}
+
+.back-button {
+  padding-top: 0.25rem;
+}
+.back-button img {
+  width: 2vw;
+  height: 4vh;
+}/*# sourceMappingURL=VideoClassScreen.css.map */

@@ -19,7 +19,7 @@ fieldset {
   /* border: 1px solid #bbb; */
   border: none;
   padding: var(--gap);
-  width: 30rem;
+  width: 100%;
 }
 .login-form {
   margin: 0 auto;

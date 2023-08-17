@@ -41,6 +41,7 @@ $color8: #9a9797;
                     gap: 2rem;
                     align-items: center;
                     list-style: none;
+                    margin: 0;
 
                     li a {
                         text-decoration: none;
@@ -60,7 +61,7 @@ $color8: #9a9797;
             &__nav2 {
                 &__buttons {
                     display: flex;
-                    gap: 2rem;
+                    gap: 1.5rem;
 
                     &-btn {
                         font-size: 1.2vw;
@@ -315,6 +316,7 @@ $color8: #9a9797;
 
     &__boards {
         width: 100%;
+        background-color: #ffffff;
 
         &__heading {
             padding: 2rem 0 1rem 0;
@@ -343,14 +345,14 @@ $color8: #9a9797;
             text-align: center;
             color: $color6;
             font-size: 2.25rem;
-            padding: 1.25rem 0px;
+            padding: 1rem 0px;
         }
 
         &__parent {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            padding: 2rem 0;
+            padding: 0.5rem 0;
 
             img {
                 width: 14vw;
@@ -463,7 +465,7 @@ $color8: #9a9797;
             justify-content: center;
             column-gap: 3rem;
             color: $color5;
-            padding: 2rem 0 .5rem 0;
+            padding: 1rem 0 .1rem 0;
 
             a {
                 text-decoration: none;
@@ -478,16 +480,25 @@ $color8: #9a9797;
             &__materials {
                 font-size: medium;
                 line-height: 2rem;
+                h4{
+                    font-size: 1rem;
+                }
             }
 
             &__community {
                 font-size: medium;
                 line-height: 2rem;
+                h4{
+                    font-size: 1rem;
+                }
             }
 
             &__company {
                 font-size: medium;
                 line-height: 2rem;
+                h4{
+                    font-size: 1rem;
+                }
             }
 
             &__contact {
@@ -496,15 +507,19 @@ $color8: #9a9797;
                 color: $color8;
 
                 h4 {
+                    font-size: 1rem;
                     color: $color5;
                 }
+            }
+            &__contact{
+                 width: 12rem;
             }
         }
 
         &__bottom {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: .2rem;
 
             &__logo {
                 flex: 1;
@@ -616,6 +631,9 @@ $color8: #9a9797;
             &__section {
                 width: 100%;
                 padding: 2rem 1rem;
+                &__contact{
+                    width: 12rem;
+                }
             }
 
         }

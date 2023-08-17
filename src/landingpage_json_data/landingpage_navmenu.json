@@ -1,0 +1,20 @@
+{
+  "landingpage_navmenu": [
+    {
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/dashboard.png",
+      "title": "Dashboard"
+    },
+    { 
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/Discuss.png", 
+      "title": "Learn" 
+    },
+    {
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/Schedule.png",
+      "title": "Dynamic TimeTable"
+    },
+    {
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/Discuss1.png",
+      "title": "Learning Network"
+    }
+  ]
+}

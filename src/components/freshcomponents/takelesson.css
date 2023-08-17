@@ -1,0 +1,63 @@
+.takelesson {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #dbdbf7;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.takelesson__navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #603E9F;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1.25rem;
+  align-items: center;
+}
+.takelesson__navbar__left {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+.takelesson__navbar__left a {
+  text-decoration: none;
+  color: white;
+}
+.takelesson__navbar__left a div {
+  font-size: 0.85rem;
+}
+.takelesson__navbar__left a div img {
+  height: 3.5vh;
+  width: 1.75vw;
+}
+.takelesson__navbar__right {
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+  font-weight: 500;
+}
+.takelesson__navbar__right img {
+  cursor: pointer;
+}
+.takelesson__navbar__right__searchbox {
+  background: #e2d8fd;
+  border-radius: 0.9rem;
+  border-color: #e2d8fd;
+  outline: none;
+  padding: 1rem;
+  width: 15rem;
+  height: 2rem;
+  border: 1px solid #e2d8fd;
+  font-size: 0.9rem;
+}
+.takelesson__navbar__right__notiicon {
+  width: 2rem;
+}
+.takelesson__container {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1.25rem;
+}/*# sourceMappingURL=takelesson.css.map */

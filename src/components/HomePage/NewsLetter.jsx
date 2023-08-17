@@ -37,7 +37,6 @@ const NewsLetter = () => {
                 <marquee scrollamount="12" className='homepage__newscomponent__image'>
                     {
                         newsletterData.map((element, index)=>{
-                            console.log(element)
                             return(
                                     <img src={element} key={index}></img>
                             )

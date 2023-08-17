@@ -1,0 +1,35 @@
+.Freshlandingpagemain {
+    display: flex;
+    gap: 1.2rem;
+
+}
+
+/* Freshlandingpage.css */
+.popup-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+    z-index: 999;
+    opacity: 0;
+    video {
+        max-width: 100%;
+        max-height: 90vh;
+    }
+}
+
+.popup-video-container.visible {
+    opacity: 1;
+}
+
+.popup-video-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+

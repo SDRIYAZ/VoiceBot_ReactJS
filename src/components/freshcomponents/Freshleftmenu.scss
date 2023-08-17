@@ -1,0 +1,169 @@
+// @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    // font-family: poppins;
+    background-color: #dbdbf7;
+}
+
+.menucontainer {
+
+    background-color: white;
+    border-radius: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .75rem .25rem;
+
+    .topsection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .branelogo {
+        width: 9rem;
+        margin-top: 1rem;
+    }
+
+    .userimage {
+        width: 4rem;
+        margin: 0.4rem;
+
+    }
+
+    .username {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .userclass {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #A5B4CB;
+    }
+
+    .line {
+        width: 115%;
+        border-bottom: 1.3px solid #DFE5F1;
+        /* Adjust color and style as needed */
+        margin: 0.4rem;
+    }
+
+    .Accordionitem {
+        width: 17vw;
+    }
+
+    .accordionsection {
+        overflow-x: hidden;
+        height: 44vh;
+        width: 17vw;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #C6C4D2;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #3B3B3B;
+            border-radius: 5px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #3B3B3B;
+        }
+    }
+
+
+}
+
+.accordion-body {
+    ul {
+        list-style-type: none;
+
+        li {
+            padding: 0.5rem 0 0 0;
+            border-bottom: 1px solid #0000004f;
+            font-size: .85rem;
+
+            a {
+                color: #3B3B3B;
+                text-decoration: none;
+                &:hover{
+                    color: #673ab7;
+                }
+            }
+        }
+    }
+}
+
+.accordion {
+    --bs-accordion-border-color: white;
+    --bs-accordion-btn-focus-border-color: white;
+    --bs-accordion-border-color: white;
+    --bs-accordion-border-width: white;
+
+
+}
+
+.accordion-header{
+    button{
+        font-size: .8rem;
+    }
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: white;
+    box-shadow: 0 0 0 white;
+}
+
+.accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.accordion-button {
+    height: 2.5rem;
+    font-size: 0.9rem;
+}
+
+.academicsimg {
+    width: 1.3rem;
+    margin-right: 0.8rem;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: white;
+    outline: 0;
+    box-shadow: white;
+}
+
+.myaccount {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 1.3rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.logoutbutton {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: -3.1rem;
+    margin-top: 2.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}

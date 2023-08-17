@@ -1,0 +1,42 @@
+.speech-bot-container {
+    position: relative; /* Ensure the container is positioned */
+  }
+  
+  .button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99; /* Make sure the button is on top */
+  }
+  .listening-icon {
+    font-size: 40px;
+    color: #007bff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .start-listening-icon,
+.listening-indicator {
+  font-size: 40px;
+  color: #007bff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.listening-indicator {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+
+  i {
+    margin-right: 8px;
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "landingpage_navmenu": [
+    {
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/dashboard.png",
+      "title": "Dashboard"
+    },
+    {
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/Discuss.png",
+      "title": "Learn"
+    },
+    {
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/Schedule.png",
+      "title": "Dynamic TimeTable"
+    },
+    {
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/Discuss1.png",
+      "title": "Learning Network"
+    }
+  ],
+
+  "leftmenu": [
+    {
+      "logo": "https://brane.s3.ap-south-1.amazonaws.com/images/Homepage/branelogo.png",
+      "name": "John Doe",
+      "class": "Class X",
+      "image": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/studentimg.png"
+    },
+    {
+      "id": 1,
+      "title": "Academics",
+      "icon": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/Book.png",
+      "content": [
+        { "title": "Maths", "path": "Maths" },
+        { "title": "Physics", "path": "Physics" },
+        { "title": "Telugu", "path": "Telugu" },
+        { "title": "Hindi", "path": "Hindi" },
+        { "title": "Science", "path": "Science" },
+        { "title": "Social", "path": "Social" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Special Skills",
+      "icon": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/flash-circle.png",
+      "content": [
+        { "title": "Special Skill1", "path": "Special Skill1" },
+        { "title": "Special Skill2", "path": "Special Skill2" },
+        { "title": "Special Skill3", "path": "Special Skill3" },
+        { "title": "Special Skill4", "path": "Special Skill4" },
+        { "title": "Special Skill5", "path": "Special Skill5" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Sports",
+      "icon": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/basket+ball.png",
+      "content": [
+        { "title": "Cricket", "path": "Cricket" },
+        { "title": "VolleyBall", "path": "VolleyBall" },
+        { "title": "Chess", "path": "Chess" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Health & Wellness",
+      "icon": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/health.png",
+      "content": [
+        { "title": "HealthTips1", "path": "HealthTips1" },
+        { "title": "HealthTips2", "path": "HealthTips2" },
+        { "title": "HealthTips3", "path": "HealthTips3" },
+        { "title": "HealthTips4", "path": "HealthTips4" },
+        { "title": "HealthTips5", "path": "HealthTips5" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Life Skills",
+      "icon": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/survival+1.png",
+      "content": [
+        { "title": "Life Skills1", "path": "Life Skills1" },
+        { "title": "Life Skills2", "path": "Life Skills2" },
+        { "title": "Life Skills3", "path": "Life Skills3" },
+        { "title": "Life Skills4", "path": "Life Skills4" },
+        { "title": "Life Skills5", "path": "Life Skills5" }
+      ]
+    }
+  ],
+
+  "landingpage_defaultdata": [
+    {
+      "greetingimg": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/greetingimage.png",
+      "name": "JohnDoe",
+      "wish": "Good Morning"
+    },
+    {
+      "quotation": "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.",
+      "author": "Christian D. Larson"
+    },
+    {
+      "thumnail": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/video-thumnail.png",
+      "video_link": "https://brane.s3.ap-south-1.amazonaws.com/images/landingpage/motivationalspeaker.mp4"
+    }
+  ],
+
+  "landingpage_chapters": [
+    {
+      "id": 1,
+      "title": "Chapter 1 : Real Numbers",
+      "description": "Real numbers are a fundamental concept in mathematics that encompasses a wide range of numbers used to represent quantities on the number line. Real numbers include all rational numbers and all irrational numbers",
+      "content": [
+        { "title": "Topic1 : Introduction to Real Numbers", "path": "topic1" },
+        {
+          "title": "Topic2 : Decimal Expansion of Real Numbers",
+          "path": "topic2"
+        },
+        { "title": "Topic3 : Euclid's Division Lamma", "path": "topic3" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Chapter 2 : Polynomials",
+      "description": "A polynomial is a mathematical expression made up of variables (usually represented by letters) and coefficients (numbers that multiply the variables).",
+      "content": [
+        { "title": "Topic1 : Types of Polynomials", "path": "topic1" },
+        {
+          "title": "Topic2 : Degree of Polynomials",
+          "path": "topic2"
+        },
+        { "title": "Topic3 : Factorization of Polynomials", "path": "topic3" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Chapter 3 : Pair of Linear Equations in Two Variables",
+      "description": "Pair of Linear Equations in Two Variables Soon",
+      "content": [
+        { "title": "Topic1 :Introduction to Real Numbers", "path": "topic1" },
+        {
+          "title": "Topic2 : Decimal Expansion of Real Numbers",
+          "path": "topic2"
+        },
+        { "title": "Topic3 : Euclid's Division Lamma", "path": "topic3" }
+      ]
+    }
+  ]
+}

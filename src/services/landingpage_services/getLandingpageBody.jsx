@@ -9,7 +9,7 @@ export const getLandingpageBody = createAsyncThunk(
       try {
         const { BASE_URL } = urls; 
         const data = braneGet(`${BASE_URL}/landingpage_body`);
-        // console.log(data)
+        // console.log("----------",data)
         return data;
       } catch (error) {
         rejectWithValue(error.response);

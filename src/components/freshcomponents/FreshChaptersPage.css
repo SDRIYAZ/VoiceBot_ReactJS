@@ -1,0 +1,49 @@
+.accordionsection {
+  margin-top: 1rem;
+  background-color: white;
+  overflow-x: hidden;
+  border-radius: 1rem;
+}
+
+.Accordionitem .accordion {
+  width: 75vw;
+}
+
+.accordion {
+  --bs-accordion-border-color: white;
+  --bs-accordion-btn-focus-border-color: white;
+  --bs-accordion-border-color: white;
+  --bs-accordion-border-width: white;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: white;
+  box-shadow: 0 0 0 white;
+}
+
+.accordion-item:first-of-type .accordion-button {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.accordion-button {
+  height: 2.5rem;
+  font-size: 0.9rem;
+}
+
+.academicsimg {
+  width: 1.3rem;
+  margin-right: 0.8rem;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: white;
+  outline: 0;
+  box-shadow: white;
+}/*# sourceMappingURL=FreshChaptersPage.css.map */

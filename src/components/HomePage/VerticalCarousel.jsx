@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  user-select: none;
   height: 100%;
 `;
 
@@ -16,7 +17,7 @@ const NavigationButtons = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  // top: 50%;
+ margin-top: 10rem;
   transform: translateY(-50%);
    left: 6rem; /* Adjust the left position as needed */
   z-index: 1000;

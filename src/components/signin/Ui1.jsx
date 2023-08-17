@@ -14,6 +14,8 @@ import AudioRecorderSignin from "./AudioRecorderSignin";
 
 const Ui = () => {
   const navigate = useNavigate();
+
+  const passwordRef=useRef(null);
   const [isListening, setIsListening] = useState(false);
   const [speechText, setSpeechText] = useState("");
   const [activeTab, setActiveTab] = useState("left");
@@ -25,53 +27,7 @@ const Ui = () => {
   const [error, setError] = useState("");
   const [verificationStatus, setVerificationStatus] = useState("");
   const webcamRef = useRef(null);
-  /*
-  useEffect(() => {
-    init();
-  }, []);
-
-  function init() {
-    window.SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    if ("SpeechRecognition" in window || "webkitSpeechRecognition" in window) {
-      let speech = {
-        enabled: true,
-        listening: false,
-        recognition: new window.SpeechRecognition(),
-        text: "",
-      };
-      speech.recognition.continuous = true;
-      speech.recognition.interimResults = true;
-      speech.recognition.lang = "en-US";
-      speech.recognition.addEventListener("result", (event) => {
-        const audio = event.results[event.results.length - 1];
-        speech.text = audio[0].transcript;
-        const tag = document.activeElement.nodeName;
-        if (tag === "INPUT" || tag === "TEXTAREA") {
-          if (audio.isFinal) {
-            document.activeElement.value += speech.text;
-          }
-        }
-        setSpeechText(speech.text);
-        if (
-          speech.text.toLowerCase().includes("login") ||
-          speech.text.toLowerCase().includes("sign in")
-        ) {
-          document.getElementById("loginButton").click();
-        }
-      });
-
-      document.getElementById("toggle").addEventListener("click", () => {
-        speech.listening = !speech.listening;
-        setIsListening(speech.listening);
-        if (speech.listening) {
-          speech.recognition.start();
-        } else {
-          speech.recognition.stop();
-        }
-      });
-    }
-  }*/
+  
 
   const initialValues = {
     phoneNumber: "",
@@ -159,112 +115,126 @@ const Ui = () => {
     if (!digitPattern.test(key)) {
       e.preventDefault();
     }
+    const phoneNumberValue = e.target.value;
+
+    if (phoneNumberValue.length === 10) {
+
+      passwordRef.current.focus(); // Focus on the password input
+
+    }
   };
 
 
-  // const handleSignin = async (event) => {
-  //   event.preventDefault();
-  //   const pictureSrc = webcamRef.current.getScreenshot();
-  //   const blob = dataURLtoBlob(pictureSrc);
-  //   const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
-  //   setSigninImage(file);
 
-  //   // Convert the image file to base64
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onloadend = async () => {
-  //     const base64Image = reader.result; // This will contain the base64 representation of the image
-
-  //     // Now you can send the base64Image to your server or perform any other action
-  //     // For example, you can use axios to send it as a part of your formData
-  //     const formData = new FormData();
-  //     formData.append("image_file", base64Image.split(',')[1]);
-  //     formData.append("mobile_number", "8290393139");
-  //     // console.log(base64Image)
-  //     // formData.append("base64Image", base64Image); // Append the base64 image to the formData
-
-  //     try {
-  //       setLoading(true);
-  //       setError("");
-  //       const response = await axios.post(
-  //         "http://127.0.0.1:8000/signin/",
-  //         formData,
-  //         {
-  //           headers: {
-  //             "Content-Type": "multipart/form-data",
-  //           },
-  //         }
-  //       );
-  //       console.log(response)
-  //       if (response.ok) {
-  //         console.log(response)
-  //         const data = await response.json();
-  //         const verified = data.verified;
-  //         if (verified) {
-  //           setVerificationStatus("Login successful");
-  //         } else {
-  //           setVerificationStatus("Login failed");
-  //         }
-  //       } else {
-  //         setError("Error during sign-in");
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //       setError("An error occurred");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   // The rest of your code...
-  // };
-
-  const handleSignin = async (event, values) => {
-    event.preventDefault();
-    const pictureSrc = webcamRef.current.getScreenshot();
-    const { phoneNumber } = values;
-    // const blob = dataURLtoBlob(pictureSrc);
-    // const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
-    // setSigninImage(file);
-
-    const formData = new FormData();
-    formData.append("image_file", pictureSrc.split(",")[1]);
-    formData.append("mobile_number", phoneNumber)
-    try {
-      setLoading(true);
-      setError("");
-      const response = await axios.post(
-        "http://127.0.0.1:8000/signin/",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+    const handleSignin = async () => {
+      // event.preventDefault();
+      const pictureSrc = webcamRef.current.getScreenshot();
+      // const blob = dataURLtoBlob(pictureSrc);
+      // const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
+      // setSigninImage(file);
+  
+      const formData = new FormData();
+      formData.append("image", pictureSrc.split(",")[1]);
+      try {
+        setLoading(true);
+        setError("");
+        const response = await axios.post(
+          "http://127.0.0.1:8000/signin/",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response)
+        if (response.statusText == "OK") {
+          const response_message = response.data.success;
+          console.log(response_message)
+          if (response_message) {
+            const child_number = response.data.child;
+            navigate(`/childpage`)
+          } else {
+            setVerificationStatus("login failed")
+          }
         }
-      );
-      console.log(response)
-      if (response.statusText == "OK") {
-        const response_message = response.data.message;
-        console.log(response_message)
-        if (response_message) {
-          const child_number = response.data.child;
-          navigate(`/childpage`)
-        } else {
-          setVerificationStatus("login failed")
+        else {
+          setError("Error During Signin")
         }
       }
-      else {
-        setError("Error During Signin")
+      catch (err) {
+        setError("login failed")
       }
-    }
-    catch (err) {
-      setError("login failed")
-    }
-    finally {
-      setLoading(false)
-    }
-  }
+      finally {
+        setLoading(false)
+      }
+    };
 
+  useEffect(()=>{
+    setTimeout(()=>{
+      handleSignin();
+    },4000)
+  },[]);
+
+
+
+
+
+
+
+
+
+
+//   useEffect(()=>{
+//     const handleSignin = async (event) => {
+//       event.preventDefault();
+//       const pictureSrc = webcamRef.current.getScreenshot();
+//       // const blob = dataURLtoBlob(pictureSrc);
+//       // const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
+//       // setSigninImage(file);
+  
+//       const formData = new FormData();
+//       formData.append("image", pictureSrc.split(",")[1]);
+//       try {
+//         setLoading(true);
+//         setError("");
+//         const response = await axios.post(
+//           "http://127.0.0.1:5000/signin/",
+//           formData,
+//           {
+//             headers: {
+//               "Content-Type": "multipart/form-data",
+//             },
+//           }
+//         );
+//         console.log(response)
+//         if (response.statusText == "OK") {
+//           const response_message = response.data.success;
+//           console.log(response_message)
+//           if (response_message) {
+//             const child_number = response.data.child;
+//             navigate(`/childpage`)
+//           } else {
+//             setVerificationStatus("login failed")
+//           }
+//         }
+//         else {
+//           setError("Error During Signin")
+//         }
+//       }
+//       catch (err) {
+//         setError("login failed")
+//       }
+//       finally {
+//         setLoading(false)
+//       }
+//     }
+//   });
+ 
+// setTimeout(()=>{
+//   handleSignin();
+// }, 5000);
+// },[]);
 
   const dataURLtoBlob = (dataURL) => {
     const byteString = atob(dataURL.split(",")[1]);
@@ -330,6 +300,13 @@ const Ui = () => {
                                     name="phoneNumber"
                                     onKeyPress={handleKeyPress}
                                     placeholder="Mobile Number"
+                                   
+                                    innerRef={(el) => { // Attach a ref to the phone number input 
+                                      if (el) { 
+                                        el.oninput = handleKeyPress; // Attach the event handler
+                                       if (el.value.length === 10) { 
+                                        passwordRef.current.focus(); // Focus on the password input 
+                                      } } }}
                                   />
                                 </div>
                                 <ErrorMessage
@@ -345,6 +322,7 @@ const Ui = () => {
                                     name="password"
                                     onKeyPress={handleKeyPress}
                                     placeholder="4 Digit PIN"
+                                    innerRef={passwordRef}
                                   />
                                   <i
                                     className={`bi bi-eye${showPassword ? "-slash" : ""} password-icon`}
@@ -365,7 +343,7 @@ const Ui = () => {
                             )}
                             {activeTab === "center" && (
                               <form className="login-form" onSubmit={handleSignin}>
-                                <div className="input-container">
+                                {/* <div className="input-container">
                                   <i className="bi bi-telephone icon"></i>
                                   <Field
                                     className="input-field"
@@ -379,7 +357,7 @@ const Ui = () => {
                                   name="phoneNumber"
                                   component="small"
                                   className="error"
-                                />
+                                /> */}
                                 <label>
                                   <div className="webcam-container">
                                     <Webcam
@@ -389,7 +367,7 @@ const Ui = () => {
                                     />
                                   </div>
                                   <br />
-                                  <button className="loginform-btn" type="submit" onClick={(e) => handleSignin(e, values)}> {loading ? "Signing In..." : "Sign In"}</button>
+                                  {/* <button className="loginform-btn"  disabled type="submit" onClick={(e) => handleSignin(e, values)}> {loading ? "Signing In..." : "Sign In"}</button>  */}
                                 </label>
                                 {verificationStatus && <div style={{ fontSize: "1.35rem", color: "red", paddingTop: "1rem" }}>{verificationStatus}</div>}
                               </form>

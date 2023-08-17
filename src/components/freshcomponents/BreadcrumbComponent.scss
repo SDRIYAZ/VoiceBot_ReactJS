@@ -1,0 +1,41 @@
+/* BreadcrumbComponent.css */
+.custom-breadcrumb {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.1); 
+    ol{
+      margin: 0;
+    }
+  }
+  
+  .breadcrumb-item {
+    font-size: .85rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .breadcrumb-icon {
+    margin-right: 0.5rem;
+    width: 3rem; /* Adjust the width as needed */
+    height: 3rem; /* Adjust the height as needed */
+  }
+  
+  .breadcrumb{
+      --bs-breadcrumb-padding-x: 0;
+  --bs-breadcrumb-padding-y: 0;
+  --bs-breadcrumb-margin-bottom: 1rem;
+  --bs-breadcrumb-bg: ;
+  --bs-breadcrumb-border-radius: ;
+  --bs-breadcrumb-divider-color: var(--bs-secondary-color);
+  --bs-breadcrumb-item-padding-x: 0.5rem;
+  --bs-breadcrumb-item-active-color: var(--bs-secondary-color);
+  display: flex;
+  flex-wrap: wrap;
+  padding: var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);
+  margin-bottom: var(--bs-breadcrumb-margin-bottom);
+  font-size: var(--bs-breadcrumb-font-size);
+  list-style: none;
+  background-color: var(--bs-breadcrumb-bg);
+  border-radius: var(--bs-breadcrumb-border-radius);
+  }

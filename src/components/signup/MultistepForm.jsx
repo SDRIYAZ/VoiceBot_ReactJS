@@ -57,7 +57,7 @@ const MultistepForm = () => {
   }, [loading, isSuccess, data]);
 
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
 
   const initialValues = {

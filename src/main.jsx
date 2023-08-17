@@ -5,11 +5,16 @@ import './index.css'
 import { Provider } from 'react-redux'
 import HomePageStore from "store/store.jsx"
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Sample from './components/signup/sample.jsx'
+import Freshlandingpage from './components/freshcomponents/Freshlandingpage.jsx'
+import FreshNavbar from './components/freshcomponents/Freshnavbar.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <Sample />
-  <Provider store={HomePageStore}>
+
+   <Provider store={HomePageStore}>
     <App></App>
-  </Provider>
+   </Provider>
+//  <Freshlandingpage></Freshlandingpage>
+ 
 )

@@ -139,7 +139,8 @@
 
 // import { Link } from "react-router-dom";
 
-import logo from "assets/homepage_assets/footerlogoImg.png";
+import logo from "assets/homepage_assets/footericon.png";
+
 
 import facebook from "assets/homepage_assets/facebook.png"
 
@@ -289,17 +290,15 @@ function Footer() {
 
             <address>
 
-              Corporate Office: <br />
+              Corporate Office: 
 
-              Building 3A & 3B, <br />
+              Building 3A & 3B,
 
-              Raheja Mindspace, <br />
+              Raheja Mindspace,
 
-              HUDA Techno Enclave, <br />
+              HUDA Techno Enclave,
 
               HITEC City,
-
-              <br />
 
               Telangana 500081
 
@@ -327,7 +326,7 @@ function Footer() {
 
           <article className="homepage__footer__bottom__logo">
 
-            <img src={logo} />
+            <img src={logo} alt="Logo" width="52" height="52" />
 
           </article>
 

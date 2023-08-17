@@ -21,7 +21,7 @@ const HomePageStore = configureStore({
     signupdata_slice: signUpDataSlice.reducer,
     landingpage_navbar: navbarSlice.reducer,
     landingpage_leftmenu: leftmenuSlice.reducer,
-    ladingpage_body: bodySlice.reducer
+    landingpage_body: bodySlice.reducer
   },
 });
 export default HomePageStore;

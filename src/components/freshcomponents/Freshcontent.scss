@@ -1,0 +1,128 @@
+.content {
+    box-sizing: border-box;
+    border-radius: 1rem;
+    background-color: white;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+    min-height: 84vh;
+
+    &__top {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    &__greeting {
+        width: 42vw;
+        height: 19vh;
+        border-radius: 1rem;
+        background-color: #673ab7;
+        display: flex;
+
+        img {
+            height: 6.5rem;
+            // width:10px;
+            margin-left: 1.5rem;
+        }
+
+        &__text {
+            display: flex;
+            flex-direction: column;
+            text-shadow: 2px 4px 68px BLACK;
+            margin-left: 0.5rem;
+
+            &_1 {
+                font-size: 2.2rem;
+                font-weight: 800;
+                margin-top: 0.5rem;
+                color: white;
+
+            }
+
+            &_2 {
+                font-size: 2.2rem;
+                font-weight: 800;
+                margin-left: 7rem;
+                margin-top: -0.7rem;
+                color: white;
+            }
+
+        }
+
+    }
+}
+
+.content__quote {
+    width: 30vw;
+    height: 19vh;
+    background-color: #313131;
+    border-radius: 1rem;
+    padding: .75rem;
+
+    &__text1 {
+        color: white;
+        // margin-top: 1rem;
+        // margin-left: 1rem;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    &__text2 {
+        color: white;
+        margin-top: 0.35rem;
+        margin-left: 2.8rem;
+        font-size: 1rem;
+    }
+
+    &__text3 {
+        color: white;
+        margin-top: 0.1rem;
+        margin-left: 7rem;
+        font-size: 1rem;
+    }
+
+    &__text4 {
+        color: white;
+        // margin-top: 0.3rem;
+        // margin-left: 19rem;
+        text-align: right;
+        font-size: 0.65rem;
+    }
+
+}
+
+.content__video {
+    // position:relative;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    margin-top: -1.2rem;
+    font-size: 1.1rem;
+
+    &__video {
+        text-align: center;
+    }
+}
+
+.video-js {
+    border-radius: 1rem;
+    background-color: transparent;
+    min-width: 25vw;
+    min-height: 30vh;
+}
+
+.video-js .vjs-tech {
+    border-radius: 1rem;
+
+}
+
+.vjs-has-started .vjs-control-bar,
+.vjs-audio-only-mode .vjs-control-bar {
+    border-radius: 1rem;
+}
+
+.vjs-poster img {
+    border-radius: 1rem;
+}

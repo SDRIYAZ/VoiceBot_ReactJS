@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getHomepageBanner } from 'services/homepage_services/getHomepageBanner';
 
+
 const Banner = () => {
 
     const dispatch = useDispatch();
@@ -38,7 +39,8 @@ const Banner = () => {
                     </article>
                     <article className='homepage__banner__main__video'>
                         {/* {console.log(bannerData.bannerimg)} */}
-                        <img src={bannerData.bannerimg} alt="homepagebg" />
+                        <video src="https://brane.s3.ap-south-1.amazonaws.com/videos/banneranimation.mp4"  autoPlay loop muted style={{height:"55vh", width:"35vw"}}></video>
+                        {/* <img src={bannerData.bannerimg} alt="homepagebg" /> */}
                     </article>
                 </article>
             </section>
