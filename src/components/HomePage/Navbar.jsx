@@ -66,8 +66,10 @@ const Navbar = () => {
                                     ))}
                                 </ul>
                                 <div className="dropdown-btns">
-                                    <button onClick={()=> navigate('/login')}>Login</button>
-                                    <button onClick={()=> navigate('/signup')}>Sing Up</button>
+                                    <Link to="/login">Login</Link>
+                                    <Link to="/signup">Sign Up</Link>
+                                    {/* <button onClick={()=> navigate('/login')}>Login</button>
+                                    <button onClick={()=> navigate('/signup')}>Sign Up</button> */}
                                 </div>
                             </div>
                         )}

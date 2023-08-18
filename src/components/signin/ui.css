@@ -86,4 +86,10 @@
   text-align: center;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .webcam-container {
+    width: 80%;
+  }
 }/*# sourceMappingURL=ui.css.map */

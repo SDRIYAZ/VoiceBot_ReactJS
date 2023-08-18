@@ -15,7 +15,7 @@ const BreadcrumbComponent = () => {
       <Breadcrumb.Item href="/" className="breadcrumb-item">
         <img src={icon} alt="Home" className="breadcrumb-icon" /> Mathematics
       </Breadcrumb.Item>
-      <Breadcrumb.Item href="/products" className="breadcrumb-item"> Chapter-1
+      <Breadcrumb.Item href="childpage/childpage/chapters" className="breadcrumb-item"> Chapter-1
       </Breadcrumb.Item>
       <Breadcrumb.Item active className="breadcrumb-item">
         Intro to Real Numbers

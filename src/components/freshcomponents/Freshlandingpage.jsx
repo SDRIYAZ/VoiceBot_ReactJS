@@ -25,10 +25,10 @@ function Freshlandingpage() {
           <Outlet></Outlet>
         </div>
       </div>
-      <PopupVideo
+      {/* <PopupVideo
         videoUrl= {videoUrl}
         onClose={handleVideoCompletion}
-      />
+      /> */}
     </>
   )
 }

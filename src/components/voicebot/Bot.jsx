@@ -20,6 +20,7 @@ const SpeechBot = () => {
     if ((result === 'brain') || (result === 'brane')) {
       respondTowakeword();
     }
+    
     else if (result.toLowerCase().includes("scroll up")) {
       window.scrollTo({
         top: 0,

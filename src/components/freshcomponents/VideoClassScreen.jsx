@@ -32,6 +32,7 @@ const VideoClassScreen = () => {
             width="640"
             height="362"
             poster={motivationalvideo}
+            // src={motivationalspeaker}
             data-setup="{}"
           >
             <source src={motivationalspeaker} type="video/mp4" />

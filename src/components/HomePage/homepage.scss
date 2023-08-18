@@ -99,6 +99,7 @@ $color8: #9a9797;
                     padding: 1rem 0;
                     max-width: 300px;
                     border-radius: .25rem;
+                    z-index: 333;
 
                     ul {
                         list-style: none;
@@ -125,8 +126,10 @@ $color8: #9a9797;
                         justify-content: space-evenly;
                         padding: .75rem 0 0.5rem 0;
 
-                        button {
+                        a {
                             cursor: pointer;
+                            text-decoration: none;
+                            border-radius: 1.25rem;
 
                             &:nth-child(1) {
                                 background-color: $color3;

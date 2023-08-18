@@ -97,14 +97,15 @@
 }
 
 .webcam-container {
-    width: 100%;  
-    max-width: 23rem;  
-    overflow: hidden;  
-    height: 60vh;  
-    margin-left: 3rem;  
-    border-radius: 50%;  
-    margin-top: 2rem;  
-  }
+    width: 100%;
+    max-width: 23rem;
+    overflow: hidden;
+    height: 60vh;
+    margin-left: 3rem;
+    border-radius: 50%;
+    margin-top: 2rem;
+}
+
 .password-icon {
     padding: .75rem 0;
     background: #F0EDFFCC;
@@ -113,4 +114,10 @@
     text-align: center;
     border-top-right-radius: .5rem;
     border-bottom-right-radius: .5rem;
+}
+
+@media (max-width: 768px) {
+    .webcam-container {
+        width: 80%;
+    }
 }

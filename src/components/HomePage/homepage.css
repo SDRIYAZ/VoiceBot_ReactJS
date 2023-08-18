@@ -75,6 +75,7 @@
   padding: 1rem 0;
   max-width: 300px;
   border-radius: 0.25rem;
+  z-index: 333;
 }
 .homepage__header__section__hamburger .toggledropdown ul {
   list-style: none;
@@ -98,15 +99,17 @@
   justify-content: space-evenly;
   padding: 0.75rem 0 0.5rem 0;
 }
-.homepage__header__section__hamburger .toggledropdown .dropdown-btns button {
+.homepage__header__section__hamburger .toggledropdown .dropdown-btns a {
   cursor: pointer;
+  text-decoration: none;
+  border-radius: 1.25rem;
 }
-.homepage__header__section__hamburger .toggledropdown .dropdown-btns button:nth-child(1) {
+.homepage__header__section__hamburger .toggledropdown .dropdown-btns a:nth-child(1) {
   background-color: #DBDBF7;
   color: #333333;
   padding: 0.5rem 1rem;
 }
-.homepage__header__section__hamburger .toggledropdown .dropdown-btns button:nth-child(2) {
+.homepage__header__section__hamburger .toggledropdown .dropdown-btns a:nth-child(2) {
   background-color: #4A49D9;
   color: #ffffff;
   padding: 0.5rem 1rem;
