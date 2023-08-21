@@ -27,8 +27,9 @@ const App = () => {
             <Route path="/signup" element={<MultistepForm />} />
           </Routes>
         </div>
+        <SpeechBot />
       </Router>
-      <SpeechBot />
+      
     </>
   )
 }

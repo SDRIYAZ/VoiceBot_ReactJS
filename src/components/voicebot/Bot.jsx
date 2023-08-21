@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./bot.css";
+import { useNavigate } from 'react-router-dom';
 const SpeechBot = () => {
+  const navigate = useNavigate()
   const [isListening, setIsListening] = useState(false);
   const [botResponse, setBotResponse] = useState('');
   const [utterance, setUtterance] = useState('');
@@ -17,7 +19,7 @@ const SpeechBot = () => {
     const result = event.results[event.results.length - 1][0].transcript;
     // setUtterance(result);
     console.log(result);
-    if ((result === 'brain') || (result === 'brane')) {
+    if ((result === 'brain.') || (result === 'brane') || (result === 'Brain.') ) {
       respondTowakeword();
     }
     
@@ -65,7 +67,8 @@ const SpeechBot = () => {
       if (route) {
         // Navigate to the specified route
         setTimeout(() => {
-          window.location.href = route;
+          navigate(route)
+          // window.location.href = route;
         }, 4000)
       }
 
