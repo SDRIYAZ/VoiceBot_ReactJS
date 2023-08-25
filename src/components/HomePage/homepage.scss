@@ -374,7 +374,8 @@ $color8: #9a9797;
             padding: 2.5rem 0;
             box-sizing: border-box;
             margin: 0 auto;
-            .carousel.carousel-slider .control-arrow:hover{
+
+            .carousel.carousel-slider .control-arrow:hover {
                 background: none;
             }
 
@@ -449,7 +450,7 @@ $color8: #9a9797;
         }
     }
 
-    &__leadersvoice{
+    &__leadersvoice {
         font-size: 2.75vw;
         color: $color6;
         text-align: center;
@@ -483,7 +484,8 @@ $color8: #9a9797;
             &__materials {
                 font-size: medium;
                 line-height: 2rem;
-                h4{
+
+                h4 {
                     font-size: 1rem;
                 }
             }
@@ -491,7 +493,8 @@ $color8: #9a9797;
             &__community {
                 font-size: medium;
                 line-height: 2rem;
-                h4{
+
+                h4 {
                     font-size: 1rem;
                 }
             }
@@ -499,7 +502,8 @@ $color8: #9a9797;
             &__company {
                 font-size: medium;
                 line-height: 2rem;
-                h4{
+
+                h4 {
                     font-size: 1rem;
                 }
             }
@@ -514,8 +518,9 @@ $color8: #9a9797;
                     color: $color5;
                 }
             }
-            &__contact{
-                 width: 12rem;
+
+            &__contact {
+                width: 12rem;
             }
         }
 
@@ -634,11 +639,43 @@ $color8: #9a9797;
             &__section {
                 width: 100%;
                 padding: 2rem 1rem;
-                &__contact{
+
+                &__contact {
                     width: 12rem;
                 }
             }
 
         }
+    }
+}
+
+.spinner-container {
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+}
+
+.spinner_logo {
+    width: 350px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
     }
 }

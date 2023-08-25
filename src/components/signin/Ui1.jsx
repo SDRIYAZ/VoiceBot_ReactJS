@@ -61,10 +61,7 @@ const Ui = () => {
         (user) => user.parentsmobileno === phoneNumber
       );
       if (!user) {
-        //   console.log("User not found!");
         setLoginStatus("User not found!");
-
-        // Handle user not found scenario, e.g., show an error message
         return;
       }
 
@@ -128,10 +125,18 @@ const Ui = () => {
 
     const handleSignin = async () => {
       // event.preventDefault();
+      if(!webcamRef || !webcamRef.current){
+        console.log("Webcam Reference not available");
+        return;
+      }
       const pictureSrc = webcamRef.current.getScreenshot();
       // const blob = dataURLtoBlob(pictureSrc);
       // const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
       // setSigninImage(file);
+      if(!pictureSrc){
+        setVerificationStatus("Login Failed");
+        return;
+      }
   
       const formData = new FormData();
       formData.append("image", pictureSrc.split(",")[1]);
@@ -153,6 +158,7 @@ const Ui = () => {
           console.log(response_message)
           if (response_message) {
             const child_number = response.data.child;
+            console.log(child_number)
             navigate(`/childpage`)
           } else {
             setVerificationStatus("login failed")
@@ -175,66 +181,6 @@ const Ui = () => {
       handleSignin();
     },4000)
   },[]);
-
-
-
-
-
-
-
-
-
-
-//   useEffect(()=>{
-//     const handleSignin = async (event) => {
-//       event.preventDefault();
-//       const pictureSrc = webcamRef.current.getScreenshot();
-//       // const blob = dataURLtoBlob(pictureSrc);
-//       // const file = new File([blob], "signinImage.jpeg", { type: "image/jpeg" });
-//       // setSigninImage(file);
-  
-//       const formData = new FormData();
-//       formData.append("image", pictureSrc.split(",")[1]);
-//       try {
-//         setLoading(true);
-//         setError("");
-//         const response = await axios.post(
-//           "http://127.0.0.1:5000/signin/",
-//           formData,
-//           {
-//             headers: {
-//               "Content-Type": "multipart/form-data",
-//             },
-//           }
-//         );
-//         console.log(response)
-//         if (response.statusText == "OK") {
-//           const response_message = response.data.success;
-//           console.log(response_message)
-//           if (response_message) {
-//             const child_number = response.data.child;
-//             navigate(`/childpage`)
-//           } else {
-//             setVerificationStatus("login failed")
-//           }
-//         }
-//         else {
-//           setError("Error During Signin")
-//         }
-//       }
-//       catch (err) {
-//         setError("login failed")
-//       }
-//       finally {
-//         setLoading(false)
-//       }
-//     }
-//   });
- 
-// setTimeout(()=>{
-//   handleSignin();
-// }, 5000);
-// },[]);
 
   const dataURLtoBlob = (dataURL) => {
     const byteString = atob(dataURL.split(",")[1]);
@@ -271,18 +217,6 @@ const Ui = () => {
                 {({ values }) => (
                   <Form className="login-form">
                     <fieldset>
-                      {/* <legend>
-                      Fill Out Form With Speech Recognition (Chrome)
-                    </legend> */}
-                      {/* <div id="result">live transcript here ...</div> */}
-                      {/* <button
-                        type="button"
-                        id="toggle"
-                        className={isListening ? "listening" : ""}
-                        onClick={() => setIsListening((prevState) => !prevState)}
-                      >
-                        {isListening ? "Listening ..." : "Toggle listening"}
-                      </button> */}
                       <div className="white-box">
                         <TabSwitch
                           activeTab={activeTab}
@@ -334,6 +268,7 @@ const Ui = () => {
                                   component="small"
                                   className="error"
                                 /><br></br>
+                                {loginStatus && (<small>{loginStatus}</small>)}<br />
                                 <button className="loginform-btn" type="submit" id="loginButton">
                                   Login
                                 </button>

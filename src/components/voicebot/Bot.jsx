@@ -3,7 +3,7 @@ import axios from 'axios';
 import "./bot.css";
 import { useNavigate } from 'react-router-dom';
 const SpeechBot = () => {
-  const navigate = useNavigate()
+  const navigate=useNavigate();
   const [isListening, setIsListening] = useState(false);
   const [botResponse, setBotResponse] = useState('');
   const [utterance, setUtterance] = useState('');
@@ -16,13 +16,13 @@ const SpeechBot = () => {
     setIsListening(true);
   };
   recognition.onresult = (event) => {
+    console.log("-------------------------------------------")
     const result = event.results[event.results.length - 1][0].transcript;
     // setUtterance(result);
     console.log(result);
-    if ((result === 'brain.') || (result === 'brane') || (result === 'Brain.') ) {
+    if ((result === 'Brane.') || (result === 'brane.') || (result === 'Brain.')|| (result === 'brain.') || (result === 'brain')) {
       respondTowakeword();
     }
-    
     else if (result.toLowerCase().includes("scroll up")) {
       window.scrollTo({
         top: 0,
@@ -67,7 +67,7 @@ const SpeechBot = () => {
       if (route) {
         // Navigate to the specified route
         setTimeout(() => {
-          navigate(route)
+          navigate(route);
           // window.location.href = route;
         }, 4000)
       }
@@ -75,7 +75,9 @@ const SpeechBot = () => {
       // Use the Web Speech API for TTS
       const synth = window.speechSynthesis;
       const utterance = new SpeechSynthesisUtterance(botResponse);
+      console.log(utterance.text)
       synth.speak(utterance);
+     
     } catch (error) {
       console.error('Error sending request:', error);
     }

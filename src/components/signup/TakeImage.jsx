@@ -29,13 +29,13 @@ const TakeImage = ({mobileno, childno, setChildImageURL}) => {
       // Upload the video as a base64 string
       if (capturedImage) {
         const formData = new FormData();
-        formData.append("video_file", capturedImage.split(',')[1]);
+        formData.append("image", capturedImage.split(',')[1]);
         console.log(capturedImage.split(',')[1])
         formData.append("mobile_number", mobileno);
         formData.append("child_no", childno);
 
         const response = await axios.post(
-          "http://127.0.0.1:8000/process_video/",
+          "http://127.0.0.1:8000/signup/",
           formData,
           {
             headers: {
@@ -110,7 +110,6 @@ const TakeImage = ({mobileno, childno, setChildImageURL}) => {
       {isUploaded && (
         <div>
           <p style={{fontSize:"1.5rem"}}>Image uploaded successfully!</p>
-          {/* Show the captured image again after uploading */}
           <img src={capturedImage} alt="Captured" width={300} height={270} />
         </div>
       )}
