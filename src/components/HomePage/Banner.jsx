@@ -39,7 +39,7 @@ const Banner = () => {
                     </article>
                     <article className='homepage__banner__main__video'>
                         {/* {console.log(bannerData.bannerimg)} */}
-                        <video src={bannerData.bannerimg}  autoPlay loop muted style={{height:"55vh", width:"35vw"}}></video>
+                        <video  src={bannerData.bannerimg}  autoPlay loop muted style={{height:"55vh", width:"35vw"}}></video>
                         {/* <img src={bannerData.bannerimg} alt="homepagebg" /> */}
                     </article>
                 </article>
